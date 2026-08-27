@@ -1,0 +1,247 @@
+{
+  "helper.HelperClass": {
+    "id": "helper.HelperClass",
+    "component_type": "class",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\helper.py",
+    "relative_path": "helper.py",
+    "depends_on": [
+      "helper.HelperClass.process_data",
+      "helper.DataProcessor",
+      "helper.HelperClass._internal_process",
+      "helper.HelperClass.get_result"
+    ],
+    "start_line": 2,
+    "end_line": 50,
+    "has_docstring": true,
+    "docstring": "\n    Represents a utility for managing and processing data.\n\n    The `HelperClass` is designed to facilitate data processing tasks by leveraging the `DataProcessor` class. It serves as an intermediary that manages the workflow of data processing, making it easier to handle data updates and retrievals within a system. This class is particularly useful in scenarios where data needs to be processed and accessed in a structured manner.\n\n    The `HelperClass` fits into the larger system architecture as a component that coordinates data processing tasks. It achieves its purpose by using the `DataProcessor` to perform the actual data processing and then managing the processed data internally.\n\n    Example:\n        # Initialize the HelperClass\n        helper = HelperClass()\n\n        # Process data using the helper\n        helper.process_data()\n\n        # Retrieve the processed data result\n        result = helper.get_result()\n        print(result)  # Output: '[1, 2, 3]'\n\n    Attributes:\n        data (list): Stores the processed data, initially an empty list.\n    "
+  },
+  "helper.HelperClass.__init__": {
+    "id": "helper.HelperClass.__init__",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\helper.py",
+    "relative_path": "helper.py",
+    "depends_on": [],
+    "start_line": 25,
+    "end_line": 26,
+    "has_docstring": false,
+    "docstring": ""
+  },
+  "helper.HelperClass.process_data": {
+    "id": "helper.HelperClass.process_data",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\helper.py",
+    "relative_path": "helper.py",
+    "depends_on": [
+      "helper.DataProcessor"
+    ],
+    "start_line": 28,
+    "end_line": 38,
+    "has_docstring": true,
+    "docstring": "\n        Processes and updates the internal data.\n\n        This method orchestrates the data processing workflow by invoking the `DataProcessor.process()` method to perform the main data processing task. It then calls `_internal_process()` to finalize the processing and update the internal `data` attribute. Use this method when you need to refresh or initialize the data within the `HelperClass` instance.\n\n        Returns:\n            None: This method updates the internal state and does not return a value.\n        "
+  },
+  "helper.HelperClass._internal_process": {
+    "id": "helper.HelperClass._internal_process",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\helper.py",
+    "relative_path": "helper.py",
+    "depends_on": [],
+    "start_line": 40,
+    "end_line": 44,
+    "has_docstring": true,
+    "docstring": "\n        No docstring provided.\n        "
+  },
+  "helper.HelperClass.get_result": {
+    "id": "helper.HelperClass.get_result",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\helper.py",
+    "relative_path": "helper.py",
+    "depends_on": [],
+    "start_line": 46,
+    "end_line": 50,
+    "has_docstring": true,
+    "docstring": "\n        No docstring provided.\n        "
+  },
+  "helper.DataProcessor": {
+    "id": "helper.DataProcessor",
+    "component_type": "class",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\helper.py",
+    "relative_path": "helper.py",
+    "depends_on": [
+      "helper.DataProcessor.process",
+      "helper.DataProcessor._internal_process"
+    ],
+    "start_line": 52,
+    "end_line": 108,
+    "has_docstring": true,
+    "docstring": "\n    \"\"\"Handles basic data processing tasks within a system.\n\n        This class is designed to perform simple data processing operations, providing\n        utility methods that can be used in various scenarios where basic data manipulation\n        is required. It is particularly useful in contexts where a straightforward list of\n        integers is needed for further processing or testing.\n\n        The `DataProcessor` class fits into the larger system architecture as a utility\n        component, offering static and internal methods to handle specific processing tasks.\n        It achieves its purpose by providing a static method for general use and an internal\n        method for class-specific operations.\n\n        Example:\n            # Initialize the DataProcessor class\n            processor = DataProcessor()\n\n            # Use the static method to process data\n            result = DataProcessor.process()\n            print(result)  # Output: [1, 2, 3]\n\n            # Use the internal method for internal processing\n            internal_result = processor._internal_process()\n            print(internal_result)  # Output: 'processed'\n    \"\"\"\n    "
+  },
+  "helper.DataProcessor.process": {
+    "id": "helper.DataProcessor.process",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\helper.py",
+    "relative_path": "helper.py",
+    "depends_on": [],
+    "start_line": 81,
+    "end_line": 93,
+    "has_docstring": true,
+    "docstring": "\n        \"\"\"Processes data and returns a list of integers.\n\n            This static method is designed to perform a basic data processing task\n            and return a predefined list of integers. It can be used whenever a simple\n            list of integers is required for further operations or testing purposes.\n\n            Returns:\n                list of int: A list containing the integers [1, 2, 3].\n        \"\"\"\n        "
+  },
+  "helper.DataProcessor._internal_process": {
+    "id": "helper.DataProcessor._internal_process",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\helper.py",
+    "relative_path": "helper.py",
+    "depends_on": [],
+    "start_line": 95,
+    "end_line": 108,
+    "has_docstring": true,
+    "docstring": "\n        \"\"\"Processes internal data and returns a status message.\n\n            This method is used internally within the `DataProcessor` class to perform\n            specific data processing tasks that are not exposed publicly. It is typically\n            called by other methods within the class to handle intermediate processing\n            steps.\n\n            Returns:\n                str: A string indicating the processing status, specifically 'processed'.\n            \"\"\"\n        "
+  },
+  "main.main_function": {
+    "id": "main.main_function",
+    "component_type": "function",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\main.py",
+    "relative_path": "main.py",
+    "depends_on": [
+      "inner.inner_functions.generate_timestamp",
+      "helper.HelperClass",
+      "main.utility_function"
+    ],
+    "start_line": 5,
+    "end_line": 23,
+    "has_docstring": true,
+    "docstring": "\n    Executes data processing and utility operations, returning the processed data as a string.\n\n    This function initializes a `HelperClass` instance to manage and process data, invokes a utility function to provide a placeholder value, and generates a static timestamp for consistency in logging or testing scenarios. The function is useful when a complete data processing sequence is needed, integrating utility operations to produce a final result.\n\n    Returns:\n        str: The processed data result as a string, derived from the `HelperClass` instance after executing the data processing and utility functions.\n\n    Example:\n        # Execute the main function to process data and retrieve the result\n        result = main_function()\n        print(result)  # Output: '[1, 2, 3]'\n    "
+  },
+  "main.utility_function": {
+    "id": "main.utility_function",
+    "component_type": "function",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\main.py",
+    "relative_path": "main.py",
+    "depends_on": [],
+    "start_line": 25,
+    "end_line": 34,
+    "has_docstring": true,
+    "docstring": "\n    Returns a utility string.\n\n    This function provides a simple utility string, which can be used in various contexts where a placeholder or a generic return value is needed. It is typically used within workflows that require a consistent return value for testing or demonstration purposes.\n\n    Returns:\n        str: The string 'utility', serving as a generic utility value.\n    "
+  },
+  "processor.AdvancedProcessor": {
+    "id": "processor.AdvancedProcessor",
+    "component_type": "class",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\processor.py",
+    "relative_path": "processor.py",
+    "depends_on": [
+      "processor.AdvancedProcessor.process_result",
+      "main.utility_function",
+      "processor.DataProcessor",
+      "helper.HelperClass",
+      "processor.AdvancedProcessor.run"
+    ],
+    "start_line": 6,
+    "end_line": 61,
+    "has_docstring": true,
+    "docstring": "\n    Facilitates advanced data processing by coordinating multiple processing components.\n\n    The `AdvancedProcessor` class is designed to manage and execute complex data processing workflows by integrating the functionalities of `HelperClass` and `DataProcessor`. It is ideal for scenarios where a comprehensive processing sequence is needed, providing a streamlined approach to handle data operations and produce a final result.\n\n    This class fits into the larger system architecture as a high-level orchestrator of data processing tasks, ensuring that each component's capabilities are effectively utilized to achieve the desired outcome.\n\n    Example:\n        # Initialize the AdvancedProcessor\n        processor = AdvancedProcessor()\n\n        # Execute the processing workflow\n        result = processor.run()\n        print(result)  # Output: 'utility'\n\n    Attributes:\n        helper (HelperClass): An instance of `HelperClass` used to manage data processing tasks.\n        data_processor (DataProcessor): An instance of `DataProcessor` used to perform specific data processing operations.\n    "
+  },
+  "processor.AdvancedProcessor.__init__": {
+    "id": "processor.AdvancedProcessor.__init__",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\processor.py",
+    "relative_path": "processor.py",
+    "depends_on": [
+      "processor.DataProcessor",
+      "helper.HelperClass"
+    ],
+    "start_line": 27,
+    "end_line": 29,
+    "has_docstring": false,
+    "docstring": ""
+  },
+  "processor.AdvancedProcessor.run": {
+    "id": "processor.AdvancedProcessor.run",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\processor.py",
+    "relative_path": "processor.py",
+    "depends_on": [],
+    "start_line": 31,
+    "end_line": 50,
+    "has_docstring": true,
+    "docstring": "\n        Executes the complete data processing workflow and returns the result.\n\n        This method coordinates the data processing tasks by utilizing both the `HelperClass` and `DataProcessor` to perform necessary operations. It is designed to be used when a full processing sequence is required, culminating in a final result that indicates the completion of these tasks.\n\n        Returns:\n            str: The result of the processing workflow, typically a utility string indicating successful completion.\n\n        Example:\n            # Create an instance of AdvancedProcessor\n            processor = AdvancedProcessor()\n\n            # Run the processing workflow\n            result = processor.run()\n            print(result)  # Output: 'utility'\n        "
+  },
+  "processor.AdvancedProcessor.process_result": {
+    "id": "processor.AdvancedProcessor.process_result",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\processor.py",
+    "relative_path": "processor.py",
+    "depends_on": [
+      "main.utility_function"
+    ],
+    "start_line": 52,
+    "end_line": 61,
+    "has_docstring": true,
+    "docstring": "\n        Returns a utility string as the result of processing.\n\n        This method is part of the `AdvancedProcessor` class workflow, providing a consistent utility value after processing operations. It is typically used when a placeholder or generic result is needed following the execution of data processing tasks within the class.\n\n        Returns:\n            str: The string 'utility', serving as a generic utility value to indicate the completion of processing tasks.\n        "
+  },
+  "test_file.test_function": {
+    "id": "test_file.test_function",
+    "component_type": "function",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\test_file.py",
+    "relative_path": "test_file.py",
+    "depends_on": [],
+    "start_line": 2,
+    "end_line": 11,
+    "has_docstring": true,
+    "docstring": "\n    Returns a boolean value indicating a successful test condition.\n\n    This function is typically used in scenarios where a simple, consistent boolean value is required to represent a successful outcome or condition. It can be integrated into workflows that need a straightforward pass/fail indicator for testing or validation purposes.\n\n    Returns:\n        bool: The boolean value `True`, indicating a successful or positive condition.\n    "
+  },
+  "inner.inner_functions.inner_function": {
+    "id": "inner.inner_functions.inner_function",
+    "component_type": "function",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\inner\\inner_functions.py",
+    "relative_path": "inner\\inner_functions.py",
+    "depends_on": [],
+    "start_line": 2,
+    "end_line": 16,
+    "has_docstring": true,
+    "docstring": "\n    Returns a greeting message from an inner function.\n\n    This function is designed to return a simple greeting message, which can be used in nested or internal function calls to verify execution flow or for debugging purposes. It is typically used in development environments where confirming the execution of specific code paths is necessary.\n\n    Returns:\n        str: A greeting message stating 'Hello from inner function!'\n\n    Example:\n        >>> message = inner_function()\n        >>> print(message)\n        'Hello from inner function!'\n    "
+  },
+  "inner.inner_functions.get_random_quote": {
+    "id": "inner.inner_functions.get_random_quote",
+    "component_type": "function",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\inner\\inner_functions.py",
+    "relative_path": "inner\\inner_functions.py",
+    "depends_on": [],
+    "start_line": 18,
+    "end_line": 32,
+    "has_docstring": true,
+    "docstring": "\n    Fetches a predefined inspirational quote.\n\n    This function is designed to provide users with a motivational quote, which can be used in applications that aim to inspire or uplift users. It is particularly useful in scenarios where a quick, positive message is needed to enhance user experience.\n\n    Returns:\n        str: A quote string stating 'The best way to predict the future is to create it.'\n\n    Example:\n        >>> quote = get_random_quote()\n        >>> print(quote)\n        'The best way to predict the future is to create it.'\n    "
+  },
+  "inner.inner_functions.generate_timestamp": {
+    "id": "inner.inner_functions.generate_timestamp",
+    "component_type": "function",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\inner\\inner_functions.py",
+    "relative_path": "inner\\inner_functions.py",
+    "depends_on": [],
+    "start_line": 34,
+    "end_line": 43,
+    "has_docstring": true,
+    "docstring": "\n    Generates and returns a static timestamp.\n\n    This function provides a hardcoded timestamp string, which can be used in scenarios where a consistent and predictable timestamp is required for testing or logging purposes. It fits into workflows where a fixed date and time representation is needed without relying on the current system time.\n\n    Returns:\n        str: A string representing the static timestamp '2023-05-15 14:30:22'.\n    "
+  },
+  "inner.inner_functions.get_system_status": {
+    "id": "inner.inner_functions.get_system_status",
+    "component_type": "function",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\inner\\inner_functions.py",
+    "relative_path": "inner\\inner_functions.py",
+    "depends_on": [],
+    "start_line": 45,
+    "end_line": 59,
+    "has_docstring": true,
+    "docstring": "\n    Provides a static message indicating the operational status of systems.\n\n    This function is used to retrieve a fixed status message that confirms all systems are functioning correctly. It is useful in monitoring dashboards or status pages where a quick confirmation of system health is required.\n\n    Returns:\n        str: A status message stating 'All systems operational.'\n\n    Example:\n        >>> status = get_system_status()\n        >>> print(status)\n        'All systems operational'\n    "
+  },
+  "inner.inner_functions.fetch_user_message": {
+    "id": "inner.inner_functions.fetch_user_message",
+    "component_type": "function",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo_simple\\inner\\inner_functions.py",
+    "relative_path": "inner\\inner_functions.py",
+    "depends_on": [],
+    "start_line": 61,
+    "end_line": 76,
+    "has_docstring": true,
+    "docstring": "\n    \"\"\"Fetches a predefined user message indicating notifications.\n\n        This function is used to retrieve a static message that informs the user about the number of notifications they have. It is typically used in scenarios where a quick status update is needed for user engagement.\n\n        Returns:\n            str: A message string stating 'Welcome back! You have 3 notifications.'\n\n        Example:\n            >>> message = fetch_user_message()\n            >>> print(message)\n            'Welcome back! You have 3 notifications.'\n        \"\"\"\n    "
+  }
+}

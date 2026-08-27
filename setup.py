@@ -101,9 +101,6 @@ setup(
         "dnspython>=2.7.0",
         "six>=1.16.0",
 
-        # CUDA requirements 
-        "torch>=2.0.0",
-        "accelerate>=1.4.0",
     ],
     extras_require={
         "dev": dev_requires,

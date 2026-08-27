@@ -12,6 +12,7 @@ class OpenAILLM(BaseLLM):
         self,
         api_key: str,
         model: str,
+        api_base: Optional[str] = None,
         rate_limits: Optional[Dict[str, Any]] = None
     ):
         """Initialize OpenAI LLM.
@@ -19,9 +20,14 @@ class OpenAILLM(BaseLLM):
         Args:
             api_key: OpenAI API key
             model: Model identifier (e.g., "gpt-4", "gpt-3.5-turbo")
+            api_base: Optional OpenAI-compatible API base URL
             rate_limits: Optional dictionary with rate limit settings
         """
-        self.client = openai.OpenAI(api_key=api_key)
+        client_kwargs = {"api_key": api_key}
+        if api_base:
+            client_kwargs["base_url"] = api_base
+
+        self.client = openai.OpenAI(**client_kwargs)
         self.model = model
         
         try:

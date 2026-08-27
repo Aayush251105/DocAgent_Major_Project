@@ -1,6 +1,7 @@
 # Copyright (c) Meta Platforms, Inc. and affiliates
 from typing import Dict, Any, Optional
 from abc import abstractmethod
+import yaml
 from .base import BaseAgent
 from .reader import CodeComponentType
 
@@ -15,6 +16,8 @@ class Writer(BaseAgent):
         """
         super().__init__("Writer", config_path=config_path)
         
+        self.docstring_options = self._load_docstring_options(config_path)
+
         # Base prompt that applies to all documentation
         self.base_prompt = """You are a Writer agent responsible for generating high-quality 
         docstrings that are both complete and helpful. Accessible context is provided to you for 
@@ -44,7 +47,16 @@ class Writer(BaseAgent):
         5. Follow Google docstring format:
            - Use consistent indentation
            - Maintain clear section separation
-           - Keep related information grouped"""
+           - Keep related information grouped
+
+        Length and style constraints:
+        - Keep the final docstring concise.
+        - Use no more than {max_lines} non-empty lines.
+        - Do not include examples unless they are explicitly necessary.
+        - Prefer a short summary plus Args/Returns/Raises only when applicable.
+        - Avoid architecture-level explanations for simple components.""".format(
+            max_lines=self.docstring_options.get("max_lines", 6)
+        )
 
         self.add_to_memory("system", self.base_prompt)
 
@@ -58,27 +70,16 @@ class Writer(BaseAgent):
            - Avoid repeating the class name or obvious terms
            - Focus on the core purpose or responsibility
         
-        2. Description: 
-           - WHY: Explain the motivation and purpose behind this class
-           - WHEN: Describe scenarios or conditions where this class should be used
-           - WHERE: Explain how it fits into the larger system architecture
-           - HOW: Provide a high-level overview of how it achieves its purpose
-        
-        3. Example: 
-           - Show a practical, real-world usage scenario
-           - Include initialization and common method calls
-           - Demonstrate typical workflow
+        2. Description:
+           - Use at most one short sentence when extra context is useful.
 
         Conditional sections:
         1. Parameters (if class's __init__ has parameters):
            - Focus on explaining the significance of each parameter
-           - Include valid value ranges or constraints
-           - Explain parameter relationships if they exist
         
         2. Attributes:
            - Explain the purpose and significance of each attribute
-           - Include type information and valid values
-           - Note any dependencies between attributes"""
+           - Include only the important public attributes"""
 
         # Function/Method-specific prompt
         self.function_prompt = """You are documenting a FUNCTION or METHOD. Focus on describing 
@@ -91,30 +92,31 @@ class Writer(BaseAgent):
            - Emphasize the outcome or effect
         
         2. Description:
-           - WHY: Explain the purpose and use cases
-           - WHEN: Describe when to use this function
-           - WHERE: Explain how it fits into the workflow
-           - HOW: Provide high-level implementation approach
+           - Use at most one short sentence when the summary alone is not enough.
 
         Conditional sections:
         1. Args (if present):
            - Explain the significance of each parameter
-           - Include valid value ranges or constraints
-           - Note any parameter interdependencies
         
         2. Returns:
            - Explain what the return value represents
-           - Include possible return values or ranges
-           - Note any conditions affecting the return value
         
         3. Raises:
            - List specific conditions triggering each exception
-           - Explain how to prevent or handle exceptions
-        
-        4. Examples (if public and not abstract):
-           - Show practical usage scenarios
-           - Include common parameter combinations
-           - Demonstrate error handling if relevant"""
+           - Explain how to prevent or handle exceptions"""
+
+    def _load_docstring_options(self, config_path: Optional[str]) -> Dict[str, Any]:
+        """Load docstring style options from the project config."""
+        if not config_path:
+            config_path = "config/agent_config.yaml"
+
+        try:
+            with open(config_path, "r") as f:
+                config = yaml.safe_load(f) or {}
+        except FileNotFoundError:
+            return {}
+
+        return config.get("docstring_options", {})
 
     def is_class_component(code: str) -> bool:
         """Determine if the given code component is a class definition.
@@ -194,6 +196,7 @@ class Writer(BaseAgent):
         2. First analysis the code component and then generate the docstring at the end based on the context.
         3. Do not add triple quotes (\"\"\") to your generated docstring.
         4. Always double check if the generated docstring is within the XML tags: <DOCSTRING> and </DOCSTRING>. This is critical for parsing the docstring.
+        5. Keep the docstring within {self.docstring_options.get("max_lines", 6)} non-empty lines.
         """
         self.add_to_memory("user", task_description)
         

@@ -1,247 +1,454 @@
 {
-  "helper.HelperClass": {
-    "id": "helper.HelperClass",
-    "component_type": "class",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/helper.py",
-    "relative_path": "helper.py",
-    "depends_on": [
-      "helper.HelperClass.get_result",
-      "helper.DataProcessor",
-      "helper.HelperClass._internal_process",
-      "helper.HelperClass.process_data"
-    ],
-    "start_line": 1,
-    "end_line": 14,
-    "has_docstring": false,
-    "docstring": ""
-  },
-  "helper.HelperClass.__init__": {
-    "id": "helper.HelperClass.__init__",
-    "component_type": "method",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/helper.py",
-    "relative_path": "helper.py",
-    "depends_on": [],
-    "start_line": 3,
-    "end_line": 4,
-    "has_docstring": false,
-    "docstring": ""
-  },
-  "helper.HelperClass.process_data": {
-    "id": "helper.HelperClass.process_data",
-    "component_type": "method",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/helper.py",
-    "relative_path": "helper.py",
-    "depends_on": [
-      "helper.DataProcessor"
-    ],
-    "start_line": 6,
-    "end_line": 8,
-    "has_docstring": false,
-    "docstring": ""
-  },
-  "helper.HelperClass._internal_process": {
-    "id": "helper.HelperClass._internal_process",
-    "component_type": "method",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/helper.py",
-    "relative_path": "helper.py",
-    "depends_on": [],
-    "start_line": 10,
-    "end_line": 11,
-    "has_docstring": false,
-    "docstring": ""
-  },
-  "helper.HelperClass.get_result": {
-    "id": "helper.HelperClass.get_result",
-    "component_type": "method",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/helper.py",
-    "relative_path": "helper.py",
-    "depends_on": [],
-    "start_line": 13,
-    "end_line": 14,
-    "has_docstring": false,
-    "docstring": ""
-  },
-  "helper.DataProcessor": {
-    "id": "helper.DataProcessor",
-    "component_type": "class",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/helper.py",
-    "relative_path": "helper.py",
-    "depends_on": [
-      "helper.DataProcessor.process",
-      "helper.DataProcessor._internal_process"
-    ],
-    "start_line": 16,
-    "end_line": 72,
-    "has_docstring": true,
-    "docstring": "\n    \"\"\"Handles basic data processing tasks within a system.\n\n        This class is designed to perform simple data processing operations, providing\n        utility methods that can be used in various scenarios where basic data manipulation\n        is required. It is particularly useful in contexts where a straightforward list of\n        integers is needed for further processing or testing.\n\n        The `DataProcessor` class fits into the larger system architecture as a utility\n        component, offering static and internal methods to handle specific processing tasks.\n        It achieves its purpose by providing a static method for general use and an internal\n        method for class-specific operations.\n\n        Example:\n            # Initialize the DataProcessor class\n            processor = DataProcessor()\n\n            # Use the static method to process data\n            result = DataProcessor.process()\n            print(result)  # Output: [1, 2, 3]\n\n            # Use the internal method for internal processing\n            internal_result = processor._internal_process()\n            print(internal_result)  # Output: 'processed'\n    \"\"\"\n    "
-  },
-  "helper.DataProcessor.process": {
-    "id": "helper.DataProcessor.process",
-    "component_type": "method",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/helper.py",
-    "relative_path": "helper.py",
-    "depends_on": [],
-    "start_line": 45,
-    "end_line": 57,
-    "has_docstring": true,
-    "docstring": "\n        \"\"\"Processes data and returns a list of integers.\n\n            This static method is designed to perform a basic data processing task\n            and return a predefined list of integers. It can be used whenever a simple\n            list of integers is required for further operations or testing purposes.\n\n            Returns:\n                list of int: A list containing the integers [1, 2, 3].\n        \"\"\"\n        "
-  },
-  "helper.DataProcessor._internal_process": {
-    "id": "helper.DataProcessor._internal_process",
-    "component_type": "method",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/helper.py",
-    "relative_path": "helper.py",
-    "depends_on": [],
-    "start_line": 59,
-    "end_line": 72,
-    "has_docstring": true,
-    "docstring": "\n        \"\"\"Processes internal data and returns a status message.\n\n            This method is used internally within the `DataProcessor` class to perform\n            specific data processing tasks that are not exposed publicly. It is typically\n            called by other methods within the class to handle intermediate processing\n            steps.\n\n            Returns:\n                str: A string indicating the processing status, specifically 'processed'.\n            \"\"\"\n        "
-  },
-  "main.main_function": {
-    "id": "main.main_function",
+  "example.main": {
+    "id": "example.main",
     "component_type": "function",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/main.py",
-    "relative_path": "main.py",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\example.py",
+    "relative_path": "example.py",
     "depends_on": [
-      "helper.HelperClass",
-      "inner.inner_functions.generate_timestamp",
-      "main.utility_function"
-    ],
-    "start_line": 5,
-    "end_line": 10,
-    "has_docstring": false,
-    "docstring": ""
-  },
-  "main.utility_function": {
-    "id": "main.utility_function",
-    "component_type": "function",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/main.py",
-    "relative_path": "main.py",
-    "depends_on": [],
-    "start_line": 13,
-    "end_line": 14,
-    "has_docstring": false,
-    "docstring": ""
-  },
-  "processor.AdvancedProcessor": {
-    "id": "processor.AdvancedProcessor",
-    "component_type": "class",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/processor.py",
-    "relative_path": "processor.py",
-    "depends_on": [
-      "processor.AdvancedProcessor.run",
-      "helper.HelperClass",
-      "processor.AdvancedProcessor.process_result",
-      "main.utility_function",
-      "processor.DataProcessor"
-    ],
-    "start_line": 6,
-    "end_line": 18,
-    "has_docstring": false,
-    "docstring": ""
-  },
-  "processor.AdvancedProcessor.__init__": {
-    "id": "processor.AdvancedProcessor.__init__",
-    "component_type": "method",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/processor.py",
-    "relative_path": "processor.py",
-    "depends_on": [
-      "helper.HelperClass",
-      "processor.DataProcessor"
+      "example.e",
+      "models.product.Item",
+      "vending_machine.SysErr",
+      "example.timedelta",
+      "vending_machine.Sys",
+      "example.pos",
+      "example.datetime",
+      "example.Decimal",
+      "example.ret",
+      "example.i",
+      "example.item"
     ],
     "start_line": 8,
-    "end_line": 10,
-    "has_docstring": false,
-    "docstring": ""
-  },
-  "processor.AdvancedProcessor.run": {
-    "id": "processor.AdvancedProcessor.run",
-    "component_type": "method",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/processor.py",
-    "relative_path": "processor.py",
-    "depends_on": [],
-    "start_line": 12,
-    "end_line": 15,
-    "has_docstring": false,
-    "docstring": ""
-  },
-  "processor.AdvancedProcessor.process_result": {
-    "id": "processor.AdvancedProcessor.process_result",
-    "component_type": "method",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/processor.py",
-    "relative_path": "processor.py",
-    "depends_on": [
-      "main.utility_function"
-    ],
-    "start_line": 17,
-    "end_line": 18,
-    "has_docstring": false,
-    "docstring": ""
-  },
-  "test_file.test_function": {
-    "id": "test_file.test_function",
-    "component_type": "function",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/test_file.py",
-    "relative_path": "test_file.py",
-    "depends_on": [],
-    "start_line": 1,
-    "end_line": 2,
-    "has_docstring": false,
-    "docstring": ""
-  },
-  "inner.inner_functions.inner_function": {
-    "id": "inner.inner_functions.inner_function",
-    "component_type": "function",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/inner/inner_functions.py",
-    "relative_path": "inner/inner_functions.py",
-    "depends_on": [],
-    "start_line": 1,
-    "end_line": 15,
-    "has_docstring": true,
-    "docstring": "\n    Returns a greeting message from an inner function.\n\n    This function is designed to return a simple greeting message, which can be used in nested or internal function calls to verify execution flow or for debugging purposes. It is typically used in development environments where confirming the execution of specific code paths is necessary.\n\n    Returns:\n        str: A greeting message stating 'Hello from inner function!'\n\n    Example:\n        >>> message = inner_function()\n        >>> print(message)\n        'Hello from inner function!'\n    "
-  },
-  "inner.inner_functions.get_random_quote": {
-    "id": "inner.inner_functions.get_random_quote",
-    "component_type": "function",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/inner/inner_functions.py",
-    "relative_path": "inner/inner_functions.py",
-    "depends_on": [],
-    "start_line": 17,
-    "end_line": 31,
-    "has_docstring": true,
-    "docstring": "\n    Fetches a predefined inspirational quote.\n\n    This function is designed to provide users with a motivational quote, which can be used in applications that aim to inspire or uplift users. It is particularly useful in scenarios where a quick, positive message is needed to enhance user experience.\n\n    Returns:\n        str: A quote string stating 'The best way to predict the future is to create it.'\n\n    Example:\n        >>> quote = get_random_quote()\n        >>> print(quote)\n        'The best way to predict the future is to create it.'\n    "
-  },
-  "inner.inner_functions.generate_timestamp": {
-    "id": "inner.inner_functions.generate_timestamp",
-    "component_type": "function",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/inner/inner_functions.py",
-    "relative_path": "inner/inner_functions.py",
-    "depends_on": [],
-    "start_line": 33,
     "end_line": 34,
     "has_docstring": false,
     "docstring": ""
   },
-  "inner.inner_functions.get_system_status": {
-    "id": "inner.inner_functions.get_system_status",
-    "component_type": "function",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/inner/inner_functions.py",
-    "relative_path": "inner/inner_functions.py",
+  "vending_machine.SysErr": {
+    "id": "vending_machine.SysErr",
+    "component_type": "class",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\vending_machine.py",
+    "relative_path": "vending_machine.py",
     "depends_on": [],
-    "start_line": 36,
-    "end_line": 50,
+    "start_line": 7,
+    "end_line": 32,
     "has_docstring": true,
-    "docstring": "\n    Provides a static message indicating the operational status of systems.\n\n    This function is used to retrieve a fixed status message that confirms all systems are functioning correctly. It is useful in monitoring dashboards or status pages where a quick confirmation of system health is required.\n\n    Returns:\n        str: A status message stating 'All systems operational.'\n\n    Example:\n        >>> status = get_system_status()\n        >>> print(status)\n        'All systems operational'\n    "
+    "docstring": "\n    Summary: Custom exception class for system errors.\n\n    Description: \n    The `SysErr` class is a custom exception class designed to handle system-level errors. It is a subclass of Python's built-in `Exception` class and is used to indicate that an error has occurred within the system. This class is useful for providing a clear and specific error handling mechanism for system-level issues.\n\n    Example:\n    ```python\n    try:\n        # Simulate a system error\n        raise SysErr(\"A system error occurred\")\n    except SysErr as e:\n        print(f\"Caught an error: {e}\")\n    ```\n\n    Args:\n    - None: This exception does not accept any arguments.\n\n    Returns:\n    - None: This exception does not return any value. It is used to raise an error.\n\n    Raises:\n    - None: This exception does not raise any additional exceptions. It is used to indicate that a system-level error has occurred.\n    "
   },
-  "inner.inner_functions.fetch_user_message": {
-    "id": "inner.inner_functions.fetch_user_message",
-    "component_type": "function",
-    "file_path": "/home/dayuyang/DocAgent/data/raw_test_repo/inner/inner_functions.py",
-    "relative_path": "inner/inner_functions.py",
-    "depends_on": [],
-    "start_line": 52,
-    "end_line": 67,
+  "vending_machine.Sys": {
+    "id": "vending_machine.Sys",
+    "component_type": "class",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\vending_machine.py",
+    "relative_path": "vending_machine.py",
+    "depends_on": [
+      "payment.payment_processor.Handler",
+      "vending_machine.amt",
+      "vending_machine.item",
+      "vending_machine.Sys.cancel",
+      "vending_machine.List",
+      "vending_machine.x",
+      "vending_machine.h",
+      "vending_machine.Sys.add_money",
+      "vending_machine.Sys.buy",
+      "vending_machine.Tuple",
+      "vending_machine.Decimal",
+      "vending_machine.Sys.ls",
+      "payment.payment_processor.Tx",
+      "vending_machine.Optional",
+      "payment.payment_processor.TxStatus",
+      "vending_machine.Sys.pick",
+      "payment.payment_processor.Cash",
+      "models.product.Item",
+      "vending_machine.SysErr",
+      "inventory.inventory_manager.Store"
+    ],
+    "start_line": 34,
+    "end_line": 374,
+    "has_docstring": false,
+    "docstring": ""
+  },
+  "vending_machine.Sys.__init__": {
+    "id": "vending_machine.Sys.__init__",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\vending_machine.py",
+    "relative_path": "vending_machine.py",
+    "depends_on": [
+      "payment.payment_processor.Cash",
+      "payment.payment_processor.Handler",
+      "payment.payment_processor.Tx",
+      "vending_machine.Optional",
+      "inventory.inventory_manager.Store"
+    ],
+    "start_line": 36,
+    "end_line": 39,
+    "has_docstring": false,
+    "docstring": ""
+  },
+  "vending_machine.Sys.ls": {
+    "id": "vending_machine.Sys.ls",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\vending_machine.py",
+    "relative_path": "vending_machine.py",
+    "depends_on": [
+      "models.product.Item",
+      "vending_machine.Tuple",
+      "vending_machine.item",
+      "vending_machine.List",
+      "vending_machine.x"
+    ],
+    "start_line": 41,
+    "end_line": 100,
     "has_docstring": true,
-    "docstring": "\n    \"\"\"Fetches a predefined user message indicating notifications.\n\n        This function is used to retrieve a static message that informs the user about the number of notifications they have. It is typically used in scenarios where a quick status update is needed for user engagement.\n\n        Returns:\n            str: A message string stating 'Welcome back! You have 3 notifications.'\n\n        Example:\n            >>> message = fetch_user_message()\n            >>> print(message)\n            'Welcome back! You have 3 notifications.'\n        \"\"\"\n    "
+    "docstring": "\n        Summary: Lists all items in the store with their positions.\n\n        Description: \n        The `ls` method is used to list all items in the store along with their positions. It retrieves the items from the store, finds their positions, and returns a sorted list of tuples containing the position and item.\n\n        Example:\n        ```python\n        class Item:\n            def __init__(self, code: str, val: Decimal):\n                self.code = code\n                self.val = val\n\n        class Store:\n            def ls(self) -> List[Item]:\n                return [Item('A1', Decimal('1.00')), Item('A2', Decimal('2.00'))]\n\n            def find(self, code: str) -> Optional[int]:\n                items = self.ls()\n                for i, item in enumerate(items):\n                    if item.code == code:\n                        return i\n                return None\n\n        class VendingMachine:\n            def __init__(self, store: Store):\n                self.store = store\n\n            def ls(self) -> List[Tuple[int, Item]]:\n                items = []\n                for item in self.store.ls():\n                    pos = self.store.find(item.code)\n                    if pos is not None:\n                        items.append((pos, item))\n                return sorted(items, key=lambda x: x[0])\n\n        # Usage example\n        store = Store()\n        vm = VendingMachine(store)\n        items = vm.ls()\n        for pos, item in items:\n            print(f\"Position: {pos}, Item: {item.code}, Value: {item.val}\")\n        ```\n\n        Args:\n        - None\n\n        Returns:\n        - List[Tuple[int, Item]]: A list of tuples containing the position and item.\n\n        Raises:\n        - None\n        "
+  },
+  "vending_machine.Sys.pick": {
+    "id": "vending_machine.Sys.pick",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\vending_machine.py",
+    "relative_path": "vending_machine.py",
+    "depends_on": [
+      "vending_machine.Optional",
+      "vending_machine.SysErr",
+      "models.product.Item"
+    ],
+    "start_line": 102,
+    "end_line": 161,
+    "has_docstring": true,
+    "docstring": "\n        Summary: Retrieves an item from the store at the specified position.\n\n        Description: \n        The `pick` method is used to retrieve an item from the store at the specified position. It checks if the item exists and is available before returning it. If the position is invalid or the item is unavailable, it raises an exception.\n\n        Example:\n        ```python\n        class Item:\n            def __init__(self, code: str, val: Decimal):\n                self.code = code\n                self.val = val\n\n            def check(self) -> bool:\n                return True\n\n        class Store:\n            def __init__(self):\n                self.items = [Item('A1', Decimal('1.00')), Item('A2', Decimal('2.00'))]\n\n            def get_at(self, pos: int) -> Optional[Item]:\n                if pos < 0 or pos >= len(self.items):\n                    return None\n                return self.items[pos]\n\n        class VendingMachine:\n            def __init__(self, store: Store):\n                self.store = store\n\n            def pick(self, pos: int) -> Optional[Item]:\n                item = self.store.get_at(pos)\n                if not item:\n                    raise SysErr('invalid pos')\n                if not item.check():\n                    raise SysErr('unavailable')\n                return item\n\n        # Usage example\n        store = Store()\n        vm = VendingMachine(store)\n        item = vm.pick(0)\n        print(f\"Item: {item.code}, Value: {item.val}\")\n        ```\n\n        Args:\n        - pos (int): The position of the item in the store.\n\n        Returns:\n        - Optional[Item]: The item at the specified position if available, otherwise None.\n\n        Raises:\n        - SysErr: Raised if the position is invalid or the item is unavailable. Check the position and availability of the item to avoid these errors.\n        "
+  },
+  "vending_machine.Sys.add_money": {
+    "id": "vending_machine.Sys.add_money",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\vending_machine.py",
+    "relative_path": "vending_machine.py",
+    "depends_on": [
+      "payment.payment_processor.Cash",
+      "vending_machine.SysErr",
+      "vending_machine.Decimal"
+    ],
+    "start_line": 163,
+    "end_line": 202,
+    "has_docstring": true,
+    "docstring": "\n        Summary: Adds money to the account using the specified handler.\n\n        Description: \n        The `add_money` method is used to add a specified amount of money to the account using a handler object. It checks if the handler is an instance of the `Cash` class and then calls the `add` method of the handler to add the money. This method is useful for depositing funds into an account using a cash handler.\n\n        Example:\n        ```python\n        class Cash:\n            def add(self, amt: Decimal) -> None:\n                print(f\"Adding {amt} to the account\")\n\n        class Account:\n            def __init__(self, handler: Cash):\n                self.h = handler\n\n            def add_money(self, amt: Decimal) -> None:\n                if not isinstance(self.h, Cash):\n                    raise SysErr('cash not supported')\n                self.h.add(amt)\n\n        # Usage example\n        cash_handler = Cash()\n        account = Account(cash_handler)\n        account.add_money(Decimal('50'))\n        ```\n\n        Args:\n        - `amt` (Decimal): The amount of money to add to the account.\n\n        Returns:\n        - None: This method does not return any value. It adds money to the account.\n\n        Raises:\n        - SysErr: Raised if the handler is not an instance of the `Cash` class. Ensure that the handler is a valid cash handler to avoid this error.\n        "
+  },
+  "vending_machine.Sys.buy": {
+    "id": "vending_machine.Sys.buy",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\vending_machine.py",
+    "relative_path": "vending_machine.py",
+    "depends_on": [
+      "payment.payment_processor.Cash",
+      "vending_machine.SysErr",
+      "models.product.Item",
+      "vending_machine.Optional",
+      "vending_machine.Tuple",
+      "payment.payment_processor.TxStatus",
+      "vending_machine.Decimal"
+    ],
+    "start_line": 204,
+    "end_line": 286,
+    "has_docstring": true,
+    "docstring": "\n        Summary: Buys an item from the vending machine.\n\n        Description: \n        The `buy` method is used to purchase an item from the vending machine. It takes the position of the item as an argument, processes the transaction using the handler, and handles the item's dispensing. If the transaction is successful and the item is dispensed, it returns the item and any refund amount. If the transaction fails or the item cannot be dispensed, it raises an exception.\n\n        Example:\n        ```python\n        class Item:\n            def __init__(self, val: Decimal):\n                self.val = val\n\n            def mod(self) -> bool:\n                return True\n\n        class Cash:\n            def add(self, amt: Decimal) -> None:\n                pass\n\n            def proc(self, amt: Decimal) -> Tx:\n                return Tx(id='123', amt=amt, st=TxStatus.DONE, mth='cash')\n\n            def rev(self, tx: Tx) -> bool:\n                return True\n\n            def ret(self) -> Decimal:\n                return Decimal('0.00')\n\n        class VendingMachine:\n            def __init__(self, items: List[Item], handler: Cash):\n                self.items = items\n                self.h = handler\n\n            def pick(self, pos: int) -> Item:\n                if pos < 0 or pos >= len(self.items):\n                    raise IndexError(\"Invalid position\")\n                return self.items[pos]\n\n            def buy(self, pos: int) -> Tuple[Item, Optional[Decimal]]:\n                item = self.pick(pos)\n                tx = self.h.proc(Decimal(str(item.val)))\n                self._tx = tx\n                if tx.st != TxStatus.DONE:\n                    raise SysErr(tx.msg or 'tx failed')\n                if not item.mod():\n                    self.h.rev(tx)\n                    raise SysErr('dispense failed')\n                ret = None\n                if isinstance(self.h, Cash):\n                    ret = self.h.ret()\n                return (item, ret)\n\n        # Usage example\n        items = [Item(Decimal('1.00')), Item(Decimal('2.00'))]\n        cash_handler = Cash()\n        vm = VendingMachine(items, cash_handler)\n        item, refund = vm.buy(0)\n        print(f\"Item bought: {item.val}, Refund: {refund}\")\n        ```\n\n        Args:\n        - `pos` (int): The position of the item to be purchased.\n\n        Returns:\n        - Tuple[Item, Optional[Decimal]]: A tuple containing the purchased item and any refund amount.\n\n        Raises:\n        - IndexError: Raised if the position is out of range. Ensure that the position is valid to avoid this error.\n        - SysErr: Raised if the transaction fails or the item cannot be dispensed. Check the transaction status and item mod method to handle these errors.\n        "
+  },
+  "vending_machine.Sys.cancel": {
+    "id": "vending_machine.Sys.cancel",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\vending_machine.py",
+    "relative_path": "vending_machine.py",
+    "depends_on": [
+      "payment.payment_processor.Cash",
+      "vending_machine.Optional",
+      "vending_machine.SysErr",
+      "vending_machine.Decimal"
+    ],
+    "start_line": 288,
+    "end_line": 374,
+    "has_docstring": true,
+    "docstring": "\n        Summary: Cancels the current transaction and returns any refund.\n\n        Description: \n        The `cancel` method is used to cancel the current transaction and return any refund amount. It checks if a transaction is currently in progress, reverses the transaction using the handler, and handles the refund if applicable. If the transaction is not in progress or the reversal fails, it raises an exception.\n\n        Example:\n        ```python\n        class Cash:\n            def add(self, amt: Decimal) -> None:\n                pass\n\n            def proc(self, amt: Decimal) -> Tx:\n                return Tx(id='123', amt=amt, st=TxStatus.DONE, mth='cash')\n\n            def rev(self, tx: Tx) -> bool:\n                return True\n\n            def ret(self) -> Decimal:\n                return Decimal('0.00')\n\n        class VendingMachine:\n            def __init__(self, items: List[Item], handler: Cash):\n                self.items = items\n                self.h = handler\n                self._tx = None\n\n            def pick(self, pos: int) -> Item:\n                if pos < 0 or pos >= len(self.items):\n                    raise IndexError(\"Invalid position\")\n                return self.items[pos]\n\n            def buy(self, pos: int) -> Tuple[Item, Optional[Decimal]]:\n                item = self.pick(pos)\n                tx = self.h.proc(Decimal(str(item.val)))\n                self._tx = tx\n                if tx.st != TxStatus.DONE:\n                    raise SysErr(tx.msg or 'tx failed')\n                if not item.mod():\n                    self.h.rev(tx)\n                    raise SysErr('dispense failed')\n                ret = None\n                if isinstance(self.h, Cash):\n                    ret = self.h.ret()\n                return (item, ret)\n\n            def cancel(self) -> Optional[Decimal]:\n                if not self._tx:\n                    raise SysErr('no tx')\n                ok = self.h.rev(self._tx)\n                if not ok:\n                    raise SysErr('rev failed')\n                ret = None\n                if isinstance(self.h, Cash):\n                    ret = self.h.ret()\n                self._tx = None\n                return ret\n\n        # Usage example\n        items = [Item(Decimal('1.00')), Item(Decimal('2.00'))]\n        cash_handler = Cash()\n        vm = VendingMachine(items, cash_handler)\n        vm.buy(0)\n        refund = vm.cancel()\n        print(f\"Refund: {refund}\")\n        ```\n\n        Args:\n        - None\n\n        Returns:\n        - Optional[Decimal]: The refund amount if applicable, otherwise None.\n\n        Raises:\n        - SysErr: Raised if there is no current transaction or if the reversal fails. Check if a transaction is in progress and handle the reversal to avoid these errors.\n        "
+  },
+  "inventory.inventory_manager.Store": {
+    "id": "inventory.inventory_manager.Store",
+    "component_type": "class",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\inventory\\inventory_manager.py",
+    "relative_path": "inventory\\inventory_manager.py",
+    "depends_on": [
+      "models.product.Item",
+      "inventory.inventory_manager.Store.rm",
+      "inventory.inventory_manager.Store.find",
+      "inventory.inventory_manager.Store.get",
+      "inventory.inventory_manager.Store.ls",
+      "inventory.inventory_manager.Store.get_at",
+      "inventory.inventory_manager.Store.put"
+    ],
+    "start_line": 4,
+    "end_line": 290,
+    "has_docstring": true,
+    "docstring": "\n    Summary:\n    Represents a store for managing items with a fixed capacity.\n\n    Description:\n    The `Store` class is designed to manage a collection of items with a fixed capacity. It provides methods for adding, removing, and retrieving items, as well as checking their validity. The store uses two internal dictionaries: `_data` to map item codes to `Item` objects and `_map` to track item positions. This class is essential for inventory management in systems where items need to be stored, accessed, and managed efficiently.\n\n    WHY: This class is used when you need to manage a collection of items with a fixed capacity, providing functionalities to add, remove, and retrieve items.\n    WHEN: Use this class when you need to implement inventory management features in your application.\n    WHERE: This class is part of the inventory management module and is used in scenarios where items need to be stored and accessed.\n    HOW: The class uses two dictionaries to manage items: `_data` for item code to `Item` object mapping and `_map` for position to item code mapping. Methods like `put`, `get`, `get_at`, `ls`, and `find` provide the necessary functionalities to manage the items.\n\n    Attributes:\n    - `cap` (int): The fixed capacity of the store.\n    - `_data` (Dict[str, Item]): A dictionary mapping item codes to `Item` objects.\n    - `_map` (Dict[int, str]): A dictionary mapping positions to item codes.\n\n    Methods:\n    - `put(code: str, item: Item) -> bool`: Adds an item to the store if there is space available.\n    - `get(code: str) -> Optional[Item]`: Retrieves an item by its code.\n    - `get_at(pos: int) -> Optional[Item]`: Retrieves an item by its position.\n    - `ls() -> List[Item]`: Lists all valid items in the store.\n    - `find(code: str) -> Optional[int]`: Finds the position of an item by its code.\n\n    Examples:\n    ```python\n    # Create a store with a capacity of 10\n    store = Store(10)\n\n    # Add an item to the store\n    item = Item(code=\"001\", name=\"Widget\", quantity=10)\n    store.put(\"001\", item)\n\n    # Retrieve an item by its code\n    retrieved_item = store.get(\"001\")\n    if retrieved_item:\n        print(f\"Retrieved item: {retrieved_item}\")\n\n    # List all valid items in the store\n    valid_items = store.ls()\n    for item in valid_items:\n        print(f\"Valid item: {item}\")\n\n    # Find the position of an item by its code\n    position = store.find(\"001\")\n    if position is not None:\n        print(f\"Item found at position: {position}\")\n    ```\n    "
+  },
+  "inventory.inventory_manager.Store.__init__": {
+    "id": "inventory.inventory_manager.Store.__init__",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\inventory\\inventory_manager.py",
+    "relative_path": "inventory\\inventory_manager.py",
+    "depends_on": [
+      "models.product.Item"
+    ],
+    "start_line": 55,
+    "end_line": 58,
+    "has_docstring": false,
+    "docstring": ""
+  },
+  "inventory.inventory_manager.Store.put": {
+    "id": "inventory.inventory_manager.Store.put",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\inventory\\inventory_manager.py",
+    "relative_path": "inventory\\inventory_manager.py",
+    "depends_on": [
+      "models.product.Item"
+    ],
+    "start_line": 60,
+    "end_line": 111,
+    "has_docstring": true,
+    "docstring": "\n        Summary:\n        Adds an item to the store.\n\n        Description:\n        The `put` method is used to add an item to the store. This method handles two main scenarios: updating the count of an existing item and adding a new item with a specified or default position. The method first checks if the item already exists in the store by its code. If it does, it increments the count of the existing item. If the item does not exist, it attempts to add the item to the store at a specified position or the next available position.\n\n        WHY: This method is used when you need to add a new item to the store or update the count of an existing item.\n        WHEN: Use this method when you need to add items to the store or update their counts.\n        WHERE: This method is part of the `Store` class and is used in scenarios where items need to be added or updated.\n        HOW: The method first checks if the item's code exists in the `_data` dictionary. If it does, it increments the count of the existing item. If not, it checks if a position is specified and valid. If a position is specified, it checks if the position is already occupied. If the position is valid and not occupied, it adds the item to the store at that position. If no position is specified, it finds the next available position and adds the item there. If no valid position is found, it returns `False`.\n\n        Args:\n        obj (Item): The item to add to the store. This item must have a unique code.\n        pos (Optional[int]): The position at which to add the item. This position must be within the valid range of the store's capacity (0 to `cap-1`). If not specified, the item will be added to the next available position.\n\n        Returns:\n        bool: `True` if the item was successfully added or updated, otherwise `False`.\n\n        Raises:\n        N/A\n\n        Examples:\n        ```python\n        # Assuming 'store' is an instance of Store and 'item' is an instance of Item\n        success = store.put(item, pos=5)\n        if success:\n            print(\"Item added successfully.\")\n        else:\n            print(\"Failed to add item.\")\n        ```\n        "
+  },
+  "inventory.inventory_manager.Store.rm": {
+    "id": "inventory.inventory_manager.Store.rm",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\inventory\\inventory_manager.py",
+    "relative_path": "inventory\\inventory_manager.py",
+    "depends_on": [],
+    "start_line": 113,
+    "end_line": 151,
+    "has_docstring": true,
+    "docstring": "\n        Summary:\n        Removes an item from the store.\n\n        Description:\n        The `rm` method is used to remove an item from the store by its unique code. This method is essential for managing the store's inventory by removing items that are no longer needed or are outdated. The method first checks if the item exists in the store. If it does, it removes the item from both the internal `_data` dictionary and the `_map` dictionary, which tracks item positions.\n\n        WHY: This method is used when you need to remove an item from the store.\n        WHEN: Use this method when you need to delete items from the store.\n        WHERE: This method is part of the `Store` class and is used in scenarios where items need to be removed.\n        HOW: The method first checks if the item's code exists in the `_data` dictionary. If it does, it iterates through the `_map` dictionary to remove any entries that reference the item's code. After removing the item from the `_map`, it deletes the item from the `_data` dictionary. If the item does not exist, it returns `False`.\n\n        Args:\n        code (str): The unique code of the item to remove from the store.\n\n        Returns:\n        bool: `True` if the item was successfully removed, otherwise `False`.\n\n        Raises:\n        N/A\n\n        Examples:\n        ```python\n        # Assuming 'store' is an instance of Store and 'item_code' is the code of the item to remove\n        success = store.rm(item_code)\n        if success:\n            print(\"Item removed successfully.\")\n        else:\n            print(\"Failed to remove item.\")\n        ```\n        "
+  },
+  "inventory.inventory_manager.Store.get": {
+    "id": "inventory.inventory_manager.Store.get",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\inventory\\inventory_manager.py",
+    "relative_path": "inventory\\inventory_manager.py",
+    "depends_on": [
+      "models.product.Item"
+    ],
+    "start_line": 153,
+    "end_line": 185,
+    "has_docstring": true,
+    "docstring": "\n        Summary:\n        Retrieves an item from the store by its unique code.\n\n        Description:\n        The `get` method is used to fetch an item from the store using its unique code. This method is essential for accessing item details without needing to know its position in the store. The method looks up the item in the internal `_data` dictionary, which maps item codes to `Item` objects.\n\n        WHY: This method is used when you need to access the details of an item based on its code.\n        WHEN: Use this method when you need to retrieve an item's information.\n        WHERE: This method is part of the `Store` class and is used in scenarios where item details need to be accessed.\n        HOW: The method uses the `get` method of the `_data` dictionary to retrieve the `Item` object associated with the provided code. If the code does not exist in the dictionary, it returns `None`.\n\n        Args:\n        code (str): The unique code of the item to retrieve. This code must match an existing item in the store.\n\n        Returns:\n        Optional[Item]: The `Item` object associated with the provided code if found, otherwise `None`.\n\n        Raises:\n        N/A\n\n        Examples:\n        ```python\n        # Assuming 'store' is an instance of Store and 'item_code' is a valid item code\n        item = store.get(item_code)\n        if item is not None:\n            print(f\"Item details: {item}\")\n        else:\n            print(\"Item not found in the store.\")\n        ```\n        "
+  },
+  "inventory.inventory_manager.Store.get_at": {
+    "id": "inventory.inventory_manager.Store.get_at",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\inventory\\inventory_manager.py",
+    "relative_path": "inventory\\inventory_manager.py",
+    "depends_on": [
+      "models.product.Item"
+    ],
+    "start_line": 187,
+    "end_line": 222,
+    "has_docstring": true,
+    "docstring": "\n        Summary:\n        Retrieves an item from the store by its position.\n\n        Description:\n        The `get_at` method is used to fetch an item from the store using its position. This method is essential for accessing item details when the position is known, without needing to know the item's code. The method looks up the item in the internal `_map` dictionary, which maps positions to item codes, and then retrieves the corresponding `Item` object from the `_data` dictionary.\n\n        WHY: This method is used when you need to access the details of an item based on its position.\n        WHEN: Use this method when you need to retrieve an item's information using its position.\n        WHERE: This method is part of the `Store` class and is used in scenarios where item details need to be accessed by position.\n        HOW: The method first checks if the provided position exists in the `_map` dictionary. If it does, it retrieves the item code associated with that position and then uses this code to fetch the `Item` object from the `_data` dictionary. If the position does not exist, it returns `None`.\n\n        Args:\n        pos (int): The position of the item to retrieve. This position must be within the valid range of the store's capacity (0 to `cap-1`).\n\n        Returns:\n        Optional[Item]: The `Item` object associated with the provided position if found, otherwise `None`.\n\n        Raises:\n        N/A\n\n        Examples:\n        ```python\n        # Assuming 'store' is an instance of Store and 'position' is a valid position within the store's capacity\n        item = store.get_at(position)\n        if item is not None:\n            print(f\"Item details: {item}\")\n        else:\n            print(\"Item not found at the specified position.\")\n        ```\n        "
+  },
+  "inventory.inventory_manager.Store.ls": {
+    "id": "inventory.inventory_manager.Store.ls",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\inventory\\inventory_manager.py",
+    "relative_path": "inventory\\inventory_manager.py",
+    "depends_on": [
+      "models.product.Item"
+    ],
+    "start_line": 224,
+    "end_line": 254,
+    "has_docstring": true,
+    "docstring": "\n        Summary:\n        Lists all valid items in the store.\n\n        Description:\n        The `ls` method is used to retrieve a list of all items that are currently valid in the store. This method is essential for generating reports or performing inventory checks. The method iterates through the internal `_data` dictionary, which contains all items, and applies the `check` method to each item to determine its validity. Only items that return `True` from the `check` method are included in the resulting list.\n\n        WHY: This method is used when you need to generate a list of all valid items in the store.\n        WHEN: Use this method when you need to perform inventory checks or generate reports based on the current state of the store.\n        WHERE: This method is part of the `Store` class and is used in scenarios where a list of valid items is required.\n        HOW: The method iterates over the values in the `_data` dictionary, applying the `check` method to each item. If the `check` method returns `True`, the item is included in the resulting list. If no items are valid, the method returns an empty list.\n\n        Args:\n        N/A\n\n        Returns:\n        List[Item]: A list of `Item` objects that are currently valid in the store. If no items are valid, an empty list is returned.\n\n        Raises:\n        N/A\n\n        Examples:\n        ```python\n        # Assuming 'store' is an instance of Store\n        valid_items = store.ls()\n        for item in valid_items:\n            print(f\"Valid item: {item}\")\n        ```\n        "
+  },
+  "inventory.inventory_manager.Store.find": {
+    "id": "inventory.inventory_manager.Store.find",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\inventory\\inventory_manager.py",
+    "relative_path": "inventory\\inventory_manager.py",
+    "depends_on": [],
+    "start_line": 256,
+    "end_line": 290,
+    "has_docstring": true,
+    "docstring": "\n        Summary:\n        Finds the position of an item in the store by its code.\n\n        Description:\n        The `find` method searches for an item in the store using its unique code and returns the position where the item is stored. This method is useful when you need to locate an item's position without retrieving the item itself. The method iterates through the internal `_map` dictionary, which maps positions to item codes, to find the matching code.\n\n        WHEN: Use this method when you need to determine the storage position of an item based on its code.\n        WHERE: This method is part of the `Store` class and is used in scenarios where item positions need to be tracked or accessed.\n        HOW: The method iterates over the `_map` dictionary, checking each value (item code) against the provided code. If a match is found, it returns the corresponding key (position). If no match is found, it returns `None`.\n\n        Args:\n        code (str): The unique code of the item to find. This code must match an existing item in the store.\n\n        Returns:\n        Optional[int]: The position of the item in the store if found, otherwise `None`.\n\n        Raises:\n        N/A\n\n        Examples:\n        ```python\n        # Assuming 'store' is an instance of Store and 'item_code' is a valid item code\n        position = store.find(item_code)\n        if position is not None:\n            print(f\"Item found at position: {position}\")\n        else:\n            print(\"Item not found in the store.\")\n        ```\n        "
+  },
+  "models.product.Item": {
+    "id": "models.product.Item",
+    "component_type": "class",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\models\\product.py",
+    "relative_path": "models\\product.py",
+    "depends_on": [
+      "models.product.Item.mod",
+      "models.product.Item.check"
+    ],
+    "start_line": 7,
+    "end_line": 113,
+    "has_docstring": true,
+    "docstring": "\n    Summary:\n    Represents an item with associated attributes for tracking and management in various contexts.\n\n    Description:\n    This class serves as a blueprint for creating items that can be tracked and managed within a system. Each item has attributes such as a unique code, a label, a value, a count, an optional expiration date, and a group classification. The primary motivation behind this class is to facilitate resource management, inventory tracking, or any scenario where items need to be monitored for validity and availability.\n\n    Use this class when you need to represent items that may have a limited lifespan or quantity, such as in inventory systems, gaming resources, or token management. It provides methods to check the validity of an item and to modify its count, ensuring that operations on the item are safe and consistent.\n\n    The class fits into larger systems by allowing for easy integration with resource management workflows, enabling developers to track item states and manage their lifecycle effectively.\n\n    Example:\n    ```python\n    from datetime import datetime, timedelta\n\n    # Create an item with a specific expiration date\n    item = Item(code='A123', label='Sample Item', val=10.0, count=5, exp=datetime.now() + timedelta(days=1))\n\n    # Check if the item is valid\n    is_valid = item.check()  # Returns True if count > 0 and not expired\n\n    # Modify the count of the item\n    item.mod(2)  # Decreases count by 2, returns True\n    ```\n\n    Parameters:\n    - code (str): A unique identifier for the item.\n    - label (str): A descriptive name for the item.\n    - val (float): The value associated with the item, representing its worth.\n    - count (int): The quantity of the item available. Must be a non-negative integer.\n    - exp (Optional[datetime]): An optional expiration date for the item. If set, the item will be considered invalid after this date.\n    - grp (str): A classification group for the item, defaulting to 'misc'.\n\n    Attributes:\n    - code (str): The unique identifier for the item.\n    - label (str): The name or description of the item.\n    - val (float): The monetary or functional value of the item.\n    - count (int): The current quantity of the item available, must be non-negative.\n    - exp (Optional[datetime]): The expiration date of the item, if applicable.\n    - grp (str): The group classification of the item, useful for categorization.\n    "
+  },
+  "models.product.Item.check": {
+    "id": "models.product.Item.check",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\models\\product.py",
+    "relative_path": "models\\product.py",
+    "depends_on": [],
+    "start_line": 56,
+    "end_line": 77,
+    "has_docstring": true,
+    "docstring": "\n        Validates the current object's state based on count and expiration.\n\n        Checks whether the object is still valid by verifying two key conditions:\n        1. The object's count is greater than zero\n        2. The object has not exceeded its expiration timestamp\n\n        This method is typically used to determine if an object is still usable\n        or has become stale/invalid. It provides a quick state validation check\n        that can be used in resource management, token validation, or lifecycle\n        tracking scenarios.\n\n        Returns:\n            bool: True if the object is valid (count > 0 and not expired),\n                  False otherwise.\n        "
+  },
+  "models.product.Item.mod": {
+    "id": "models.product.Item.mod",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\models\\product.py",
+    "relative_path": "models\\product.py",
+    "depends_on": [],
+    "start_line": 79,
+    "end_line": 113,
+    "has_docstring": true,
+    "docstring": "\n        Summary:\n        Determines if the current count can be decremented by a specified value.\n\n        Description:\n        This method checks if the `count` attribute is greater than or equal to the provided integer `n`. If so, it decrements `count` by `n` and returns `True`. If `count` is less than `n`, it returns `False`, indicating that the operation could not be performed.\n\n        Use this function when managing resources or operations that require a controlled decrement of a count, ensuring that the count does not drop below zero. This is particularly useful in scenarios such as resource allocation, gaming mechanics, or iterative processes.\n\n        The method is integral to classes that require precise control over a count, allowing for safe decrements while maintaining the integrity of the count value.\n\n        Args:\n        n (int, optional): The value to decrement from `count`. Must be a positive integer that does not exceed the current `count`. Default is 1.\n\n        Returns:\n        bool: Returns `True` if the decrement was successful (i.e., `count` was greater than or equal to `n`), otherwise returns `False`.\n\n        Raises:\n        No exceptions are raised by this method. Ensure that `n` is a positive integer and does not exceed the current `count` to avoid logical errors.\n\n        Examples:\n        ```python\n        obj = YourClass()\n        obj.count = 5\n        result = obj.mod(2)  # result will be True, obj.count will be 3\n        result = obj.mod(4)  # result will be False, obj.count remains 3\n        result = obj.mod(0)  # result will be False, as n should be greater than 0\n        result = obj.mod(-1) # result will be False, as n should be a positive integer\n        ```\n        "
+  },
+  "payment.payment_processor.TxStatus": {
+    "id": "payment.payment_processor.TxStatus",
+    "component_type": "class",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
+    "relative_path": "payment\\payment_processor.py",
+    "depends_on": [],
+    "start_line": 7,
+    "end_line": 41,
+    "has_docstring": true,
+    "docstring": "\n    Summary: Enum representing the status of a transaction.\n\n    Description: \n    The `TxStatus` enum is used to define the possible statuses of a transaction in a system. It includes four states: `WAIT` for pending transactions, `DONE` for completed transactions, `ERR` for failed transactions, and `RET` for refunded transactions. This enum helps in managing and tracking the state of transactions throughout their lifecycle.\n\n    Example:\n    ```python\n    from enum import Enum\n\n    class TxStatus(Enum):\n        WAIT = 'pending'\n        DONE = 'completed'\n        ERR = 'failed'\n        RET = 'refunded'\n\n    # Usage example\n    transaction_status = TxStatus.DONE\n    if transaction_status == TxStatus.DONE:\n        print(\"Transaction completed successfully.\")\n    ```\n\n    Parameters: None\n\n    Attributes:\n    - `WAIT`: Enum member representing a pending transaction status.\n    - `DONE`: Enum member representing a completed transaction status.\n    - `ERR`: Enum member representing a failed transaction status.\n    - `RET`: Enum member representing a refunded transaction status.\n    "
+  },
+  "payment.payment_processor.Tx": {
+    "id": "payment.payment_processor.Tx",
+    "component_type": "class",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
+    "relative_path": "payment\\payment_processor.py",
+    "depends_on": [
+      "payment.payment_processor.TxStatus"
+    ],
+    "start_line": 44,
+    "end_line": 93,
+    "has_docstring": true,
+    "docstring": "\n    Summary: Represents a transaction in the system.\n\n    Description: \n    The `Tx` class is used to model a transaction in a system. It encapsulates essential details about a transaction, including its unique identifier, amount, status, method, and an optional message. This class is crucial for tracking and managing transactions within the system.\n\n    Example:\n    ```python\n    from decimal import Decimal\n    from enum import Enum\n    from typing import Optional\n\n    class TxStatus(Enum):\n        WAIT = 'pending'\n        DONE = 'completed'\n        ERR = 'failed'\n        RET = 'refunded'\n\n    class Tx:\n        id: str\n        amt: Decimal\n        st: TxStatus\n        mth: str\n        msg: Optional[str] = None\n\n    # Usage example\n    transaction = Tx(id='12345', amt=Decimal('100.00'), st=TxStatus.DONE, mth='credit_card', msg='Transaction completed successfully.')\n    print(f\"Transaction ID: {transaction.id}, Amount: {transaction.amt}, Status: {transaction.st}, Method: {transaction.mth}, Message: {transaction.msg}\")\n    ```\n\n    Parameters:\n    - `id`: A string representing the unique identifier of the transaction. It must be a non-empty string.\n    - `amt`: A `Decimal` representing the amount of the transaction. It must be a non-negative value.\n    - `st`: An instance of `TxStatus` representing the current status of the transaction. It must be one of the predefined statuses: `WAIT`, `DONE`, `ERR`, or `RET`.\n    - `mth`: A string representing the method used for the transaction. It must be a non-empty string.\n    - `msg`: An optional string representing a message related to the transaction. It can be `None` or a non-empty string.\n\n    Attributes:\n    - `id`: A string representing the unique identifier of the transaction.\n    - `amt`: A `Decimal` representing the amount of the transaction.\n    - `st`: An instance of `TxStatus` representing the current status of the transaction.\n    - `mth`: A string representing the method used for the transaction.\n    - `msg`: An optional string representing a message related to the transaction.\n    "
+  },
+  "payment.payment_processor.Handler": {
+    "id": "payment.payment_processor.Handler",
+    "component_type": "class",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
+    "relative_path": "payment\\payment_processor.py",
+    "depends_on": [
+      "payment.payment_processor.Handler.proc",
+      "payment.payment_processor.Handler.rev",
+      "payment.payment_processor.Tx"
+    ],
+    "start_line": 95,
+    "end_line": 244,
+    "has_docstring": true,
+    "docstring": "\n    Summary: Abstract base class for handling transactions.\n\n    Description: \n    The `Handler` class is an abstract base class designed to handle transactions. It defines two abstract methods: `proc` and `rev`. These methods must be implemented by any concrete subclass to process and reverse transactions, respectively. The `Handler` class is intended to be used in systems where transaction processing and reversal are required, such as financial applications or payment gateways.\n\n    Example:\n    ```python\n    from decimal import Decimal\n    from abc import ABC, abstractmethod\n\n    class Tx:\n        id: str\n        amt: Decimal\n        st: str\n        mth: str\n        msg: Optional[str] = None\n\n    class AccountHandler(Handler):\n        def __init__(self, initial_bal: Decimal):\n            self.bal = initial_bal\n\n        def proc(self, amt: Decimal) -> Tx:\n            if self.bal >= amt:\n                self.bal -= amt\n                return Tx(id=f'C_{id(self)}', amt=amt, st='DONE', mth='cash')\n            return Tx(id=f'C_{id(self)}', amt=amt, st='ERR', mth='cash', msg='insufficient')\n\n        def rev(self, tx: Tx) -> bool:\n            if tx.st == 'DONE':\n                self.bal += tx.amt\n                tx.st = 'RET'\n                return True\n            return False\n\n    # Usage example\n    account_handler = AccountHandler(initial_bal=Decimal('100.00'))\n    transaction = account_handler.proc(Decimal('50.00'))\n    if transaction.st == 'DONE':\n        success = account_handler.rev(transaction)\n        print(f\"Transaction reversal successful: {success}\")\n    else:\n        print(f\"Transaction reversal not applicable: {transaction.st}\")\n    ```\n\n    Parameters:\n    - `initial_bal`: A `Decimal` representing the initial balance of the account.\n\n    Attributes:\n    - `bal`: A `Decimal` representing the current balance of the account.\n\n    HOW:\n    The `Handler` class provides a framework for processing and reversing transactions. Concrete subclasses must implement the `proc` and `rev` methods to define the specific behavior for these operations. The `proc` method processes a transaction and returns a `Tx` object, while the `rev` method reverses a transaction and returns a boolean indicating success.\n    "
+  },
+  "payment.payment_processor.Handler.proc": {
+    "id": "payment.payment_processor.Handler.proc",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
+    "relative_path": "payment\\payment_processor.py",
+    "depends_on": [
+      "payment.payment_processor.Tx"
+    ],
+    "start_line": 152,
+    "end_line": 193,
+    "has_docstring": true,
+    "docstring": "\n        Summary: Processes a transaction.\n\n        Description: \n        The `proc` method is used to process a transaction. It takes an amount as input and returns a `Tx` object representing the transaction. The specific implementation of this method is not provided in the given code component.\n\n        Example:\n        ```python\n        from decimal import Decimal\n        from typing import Optional\n\n        class Tx:\n            id: str\n            amt: Decimal\n            st: str\n            mth: str\n            msg: Optional[str] = None\n\n        class Account:\n            def __init__(self, initial_bal: Decimal):\n                self.bal = initial_bal\n\n            def proc(self, amt: Decimal) -> Tx:\n                pass\n\n        # Usage example\n        account = Account(initial_bal=Decimal('100.00'))\n        transaction = account.proc(Decimal('50.00'))\n        print(f\"Transaction: {transaction.id}, Amount: {transaction.amt}, Status: {transaction.st}\")\n        ```\n\n        Args:\n        - `amt`: A `Decimal` representing the amount of the transaction.\n\n        Returns:\n        - A `Tx` object representing the processed transaction.\n\n        Raises:\n        - No exceptions are raised by this method.\n        "
+  },
+  "payment.payment_processor.Handler.rev": {
+    "id": "payment.payment_processor.Handler.rev",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
+    "relative_path": "payment\\payment_processor.py",
+    "depends_on": [
+      "payment.payment_processor.Tx"
+    ],
+    "start_line": 196,
+    "end_line": 244,
+    "has_docstring": true,
+    "docstring": "\n        Summary: Reverses a transaction.\n\n        Description: \n        The `rev` method is used to reverse a transaction. It takes a `Tx` object as input and returns a boolean indicating whether the reversal was successful. The specific implementation of this method is not provided in the given code component.\n\n        Example:\n        ```python\n        from decimal import Decimal\n        from typing import Optional\n\n        class Tx:\n            id: str\n            amt: Decimal\n            st: str\n            mth: str\n            msg: Optional[str] = None\n\n        class Account:\n            def __init__(self, initial_bal: Decimal):\n                self.bal = initial_bal\n\n            def proc(self, amt: Decimal) -> Tx:\n                pass\n\n            def rev(self, tx: Tx) -> bool:\n                pass\n\n        # Usage example\n        account = Account(initial_bal=Decimal('100.00'))\n        transaction = account.proc(Decimal('50.00'))\n        if transaction.st == 'DONE':\n            success = account.rev(transaction)\n            print(f\"Transaction reversal successful: {success}\")\n        else:\n            print(f\"Transaction reversal not applicable: {transaction.st}\")\n        ```\n\n        Args:\n        - `tx`: A `Tx` object representing the transaction to be reversed.\n\n        Returns:\n        - A `bool` indicating whether the transaction was successfully reversed.\n\n        Raises:\n        - No exceptions are raised by this method.\n        "
+  },
+  "payment.payment_processor.Cash": {
+    "id": "payment.payment_processor.Cash",
+    "component_type": "class",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
+    "relative_path": "payment\\payment_processor.py",
+    "depends_on": [
+      "payment.payment_processor.Cash.ret",
+      "payment.payment_processor.Handler",
+      "payment.payment_processor.Cash.proc",
+      "payment.payment_processor.Tx",
+      "payment.payment_processor.Cash.add",
+      "payment.payment_processor.TxStatus",
+      "payment.payment_processor.Cash.rev"
+    ],
+    "start_line": 246,
+    "end_line": 539,
+    "has_docstring": true,
+    "docstring": "\n    Summary: Manages account transactions using cash.\n\n    Description: \n    The `Cash` class is a concrete implementation of the `Handler` abstract base class, designed to manage account transactions using cash. It provides methods for adding funds, processing transactions, reversing transactions, and refunding the account balance. This class is essential for financial applications where cash transactions need to be handled efficiently and accurately.\n\n    Example:\n    ```python\n    from decimal import Decimal\n    from enum import Enum\n    from typing import Optional\n\n    class TxStatus(Enum):\n        WAIT = 'pending'\n        DONE = 'completed'\n        ERR = 'failed'\n        RET = 'refunded'\n\n    class Tx:\n        id: str\n        amt: Decimal\n        st: TxStatus\n        mth: str\n        msg: Optional[str] = None\n\n    class Account:\n        def __init__(self, initial_bal: Decimal):\n            self.bal = initial_bal\n\n        def add(self, amt: Decimal) -> None:\n            if amt < 0:\n                raise ValueError(\"Amount must be positive\")\n            self.bal += amt\n\n        def proc(self, amt: Decimal) -> Tx:\n            if amt < 0:\n                raise ValueError(\"Amount must be non-negative\")\n            if self.bal >= amt:\n                self.bal -= amt\n                return Tx(id=f'C_{id(self)}', amt=amt, st=TxStatus.DONE, mth='cash')\n            return Tx(id=f'C_{id(self)}', amt=amt, st=TxStatus.ERR, mth='cash', msg='insufficient')\n\n        def rev(self, tx: Tx) -> bool:\n            if tx.st != TxStatus.DONE:\n                return False\n            self.bal += tx.amt\n            tx.st = TxStatus.RET\n            return True\n\n        def ret(self) -> Decimal:\n            tmp = self.bal\n            self.bal = Decimal('0.00')\n            return tmp\n\n    # Usage example\n    account = Account(initial_bal=Decimal('100.00'))\n    account.add(Decimal('50'))\n    print(account.bal)  # Output: 150\n\n    transaction = account.proc(Decimal('30'))\n    if transaction.st == TxStatus.DONE:\n        print(f\"Transaction successful: {transaction.id}, Amount: {transaction.amt}\")\n    else:\n        print(f\"Transaction failed: {transaction.id}, Message: {transaction.msg}\")\n\n    if account.rev(transaction):\n        print(f\"Transaction reversed: {transaction.id}, New balance: {account.bal}\")\n    else:\n        print(f\"Transaction reversal failed: {transaction.id}\")\n\n    refund_amount = account.ret()\n    print(f\"Refund amount: {refund_amount}, New balance: {account.bal}\")\n    ```\n\n    Args:\n    - `initial_bal` (Decimal): The initial balance of the account.\n\n    Returns:\n    - None: This class does not return any value. It manages the account balance and transactions in place.\n\n    Raises:\n    - ValueError: Raised if the amount is negative in the `add` and `proc` methods. Ensure that the amount is always positive to avoid this error.\n    "
+  },
+  "payment.payment_processor.Cash.__init__": {
+    "id": "payment.payment_processor.Cash.__init__",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
+    "relative_path": "payment\\payment_processor.py",
+    "depends_on": [],
+    "start_line": 331,
+    "end_line": 332,
+    "has_docstring": false,
+    "docstring": ""
+  },
+  "payment.payment_processor.Cash.add": {
+    "id": "payment.payment_processor.Cash.add",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
+    "relative_path": "payment\\payment_processor.py",
+    "depends_on": [],
+    "start_line": 334,
+    "end_line": 368,
+    "has_docstring": true,
+    "docstring": "\n        Summary:\n        Adds a specified amount to the account balance.\n\n        Description:\n        The `add` method increases the account balance by a specified amount. This method is used to credit the account with funds, reflecting transactions such as deposits or income.\n\n        WHY: This method is used to update the account balance when funds are added to the account.\n        WHEN: Use this method when you need to credit the account with a specific amount, such as during a deposit or income transaction.\n        WHERE: This method is part of the account management module and is used in scenarios where account balances need to be updated.\n        HOW: The method simply adds the specified amount to the current balance stored in the `bal` attribute.\n\n        Args:\n        - `amt` (Decimal): The amount to be added to the account balance. Must be a positive decimal value.\n\n        Returns:\n        - None: This method does not return any value. It modifies the account balance in place.\n\n        Raises:\n        - ValueError: Raised if the amount is negative. Ensure that the amount is always positive to avoid this error.\n\n        Examples:\n        ```python\n        # Create an account with an initial balance of 100\n        account = Account(initial_balance=100)\n\n        # Add 50 to the account balance\n        account.add(Decimal('50'))\n\n        # The account balance should now be 150\n        print(account.bal)  # Output: 150\n        ```\n        "
+  },
+  "payment.payment_processor.Cash.proc": {
+    "id": "payment.payment_processor.Cash.proc",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
+    "relative_path": "payment\\payment_processor.py",
+    "depends_on": [
+      "payment.payment_processor.TxStatus",
+      "payment.payment_processor.Tx"
+    ],
+    "start_line": 370,
+    "end_line": 427,
+    "has_docstring": true,
+    "docstring": "\n        Summary: Processes a transaction by deducting the amount from the balance if sufficient funds are available.\n\n        Description: \n        The `proc` method is used to process a transaction by deducting the specified amount from the account balance if there are sufficient funds. If the balance is insufficient, it returns a transaction with an error status. This method is essential for managing account balances and tracking transactions.\n\n        Example:\n        ```python\n        from decimal import Decimal\n        from enum import Enum\n        from typing import Optional\n\n        class TxStatus(Enum):\n            WAIT = 'pending'\n            DONE = 'completed'\n            ERR = 'failed'\n            RET = 'refunded'\n\n        class Tx:\n            id: str\n            amt: Decimal\n            st: TxStatus\n            mth: str\n            msg: Optional[str] = None\n\n        class Account:\n            def __init__(self, initial_bal: Decimal):\n                self.bal = initial_bal\n\n            def proc(self, amt: Decimal) -> Tx:\n                if self.bal >= amt:\n                    self.bal -= amt\n                    return Tx(id=f'C_{id(self)}', amt=amt, st=TxStatus.DONE, mth='cash')\n                return Tx(id=f'C_{id(self)}', amt=amt, st=TxStatus.ERR, mth='cash', msg='insufficient')\n\n        # Usage example\n        account = Account(initial_bal=Decimal('100.00'))\n        transaction = account.proc(Decimal('50.00'))\n        if transaction.st == TxStatus.DONE:\n            print(f\"Transaction successful: {transaction.id}, Amount: {transaction.amt}\")\n        else:\n            print(f\"Transaction failed: {transaction.id}, Message: {transaction.msg}\")\n        ```\n\n        Args:\n        - `amt`: A `Decimal` representing the amount to be deducted from the account balance. It must be a non-negative value.\n\n        Returns:\n        - A `Tx` object representing the transaction. If the transaction is successful, the status will be `DONE`. If the transaction fails due to insufficient funds, the status will be `ERR` and a message will be provided.\n\n        Raises:\n        - No exceptions are raised by this method. However, it is important to ensure that the `amt` parameter is non-negative to avoid unexpected behavior.\n        "
+  },
+  "payment.payment_processor.Cash.rev": {
+    "id": "payment.payment_processor.Cash.rev",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
+    "relative_path": "payment\\payment_processor.py",
+    "depends_on": [
+      "payment.payment_processor.TxStatus",
+      "payment.payment_processor.Tx"
+    ],
+    "start_line": 429,
+    "end_line": 503,
+    "has_docstring": true,
+    "docstring": "\n        Summary: Reverses a completed transaction by adding the transaction amount back to the account balance.\n\n        Description: \n        The `rev` method is used to reverse a completed transaction. It adds the transaction amount back to the account balance and updates the transaction status to `RET` (refunded). This method is useful when you need to undo a previously completed transaction.\n\n        Example:\n        ```python\n        from decimal import Decimal\n        from enum import Enum\n        from typing import Optional\n\n        class TxStatus(Enum):\n            WAIT = 'pending'\n            DONE = 'completed'\n            ERR = 'failed'\n            RET = 'refunded'\n\n        class Tx:\n            id: str\n            amt: Decimal\n            st: TxStatus\n            mth: str\n            msg: Optional[str] = None\n\n        class Account:\n            def __init__(self, initial_bal: Decimal):\n                self.bal = initial_bal\n\n            def ret(self) -> Decimal:\n                tmp = self.bal\n                self.bal = Decimal('0.00')\n                return tmp\n\n            def proc(self, amt: Decimal) -> Tx:\n                if self.bal >= amt:\n                    self.bal -= amt\n                    return Tx(id=f'C_{id(self)}', amt=amt, st=TxStatus.DONE, mth='cash')\n                return Tx(id=f'C_{id(self)}', amt=amt, st=TxStatus.ERR, mth='cash', msg='insufficient')\n\n            def rev(self, tx: Tx) -> bool:\n                if tx.st == TxStatus.DONE:\n                    self.bal += tx.amt\n                    tx.st = TxStatus.RET\n                    return True\n                return False\n\n        # Usage example\n        account = Account(initial_bal=Decimal('100.00'))\n        transaction = account.proc(Decimal('50.00'))\n        if transaction.st == TxStatus.DONE:\n            print(f\"Transaction successful: {transaction.id}, Amount: {transaction.amt}\")\n            if account.rev(transaction):\n                print(f\"Transaction reversed: {transaction.id}, New balance: {account.bal}\")\n            else:\n                print(f\"Transaction reversal failed: {transaction.id}\")\n        else:\n            print(f\"Transaction failed: {transaction.id}, Message: {transaction.msg}\")\n        ```\n\n        Args:\n        - `tx`: A `Tx` object representing the transaction to be reversed. The transaction must have a status of `DONE`.\n\n        Returns:\n        - A `bool` indicating whether the transaction was successfully reversed. If the transaction status is not `DONE`, the method will return `False`.\n\n        Raises:\n        - No exceptions are raised by this method. However, it is important to ensure that the transaction status is `DONE` to avoid unexpected behavior.\n        "
+  },
+  "payment.payment_processor.Cash.ret": {
+    "id": "payment.payment_processor.Cash.ret",
+    "component_type": "method",
+    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
+    "relative_path": "payment\\payment_processor.py",
+    "depends_on": [],
+    "start_line": 505,
+    "end_line": 539,
+    "has_docstring": true,
+    "docstring": "\n        Summary: Refunds the current balance of the account.\n\n        Description: \n        The `ret` method is used to refund the entire balance of the account. It returns the current balance and sets the account balance to zero. This method is useful when you need to process a full refund of an account.\n\n        Example:\n        ```python\n        from decimal import Decimal\n\n        class Account:\n            def __init__(self, initial_bal: Decimal):\n                self.bal = initial_bal\n\n            def ret(self) -> Decimal:\n                tmp = self.bal\n                self.bal = Decimal('0.00')\n                return tmp\n\n        # Usage example\n        account = Account(initial_bal=Decimal('100.00'))\n        refund_amount = account.ret()\n        print(f\"Refund amount: {refund_amount}, New balance: {account.bal}\")\n        ```\n\n        Returns:\n        - A `Decimal` representing the refunded amount. This will be the same as the current balance before the refund.\n\n        Raises:\n        - No exceptions are raised by this method.\n        "
   }
 }

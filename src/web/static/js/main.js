@@ -65,6 +65,7 @@ function testApiConnection() {
     const config = {
         llm_type: $('#llm-type').val(),
         api_key: $('#llm-api-key').val(),
+        api_base: $('#llm-api-base').val(),
         model: $('#llm-model').val()
     };
     

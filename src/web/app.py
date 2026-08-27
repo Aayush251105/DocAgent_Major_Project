@@ -65,16 +65,23 @@ def create_app(debug=True):
         """Test the LLM API connection with a simple query."""
         data = request.json
         
-        if not data or 'api_key' not in data or not data['api_key']:
+        if not data:
             return jsonify({
                 'status': 'error',
-                'message': 'API key is required'
+                'message': 'LLM configuration is required'
             })
         
         # Get the configuration
         llm_type = data.get('llm_type', 'claude')
         api_key = data.get('api_key', '')
         model = data.get('model', 'claude-3-5-haiku-latest')
+        api_base = data.get('api_base', '')
+
+        if llm_type.lower() != 'ollama' and not api_key:
+            return jsonify({
+                'status': 'error',
+                'message': 'API key is required'
+            })
         
         try:
             # Import the appropriate LLM client based on type
@@ -110,10 +117,16 @@ def create_app(debug=True):
                         'message': f'Error connecting to Claude API: {str(e)}'
                     })
                     
-            elif llm_type.lower() == 'openai':
+            elif llm_type.lower() in ['openai', 'ollama']:
                 try:
                     import openai
-                    client = openai.OpenAI(api_key=api_key)
+                    client_kwargs = {'api_key': api_key or 'ollama'}
+                    if api_base:
+                        client_kwargs['base_url'] = api_base
+                    elif llm_type.lower() == 'ollama':
+                        client_kwargs['base_url'] = 'http://localhost:11434/v1/'
+
+                    client = openai.OpenAI(**client_kwargs)
                     
                     # Send a simple test message
                     response = client.chat.completions.create(
@@ -132,14 +145,14 @@ def create_app(debug=True):
                     
                     return jsonify({
                         'status': 'success',
-                        'message': 'Successfully connected to OpenAI API',
+                        'message': f'Successfully connected to {llm_type} API',
                         'model_response': model_response
                     })
                     
                 except Exception as e:
                     return jsonify({
                         'status': 'error',
-                        'message': f'Error connecting to OpenAI API: {str(e)}'
+                        'message': f'Error connecting to {llm_type} API: {str(e)}'
                     })
             
             else:

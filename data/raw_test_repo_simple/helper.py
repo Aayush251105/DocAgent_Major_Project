@@ -1,4 +1,3 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates
 class HelperClass:
     """
     Represents a utility for managing and processing data.
@@ -39,13 +38,23 @@ class HelperClass:
 
     def _internal_process(self):
         """
-        No docstring provided.
+        Finalizes the data processing and returns the processed data.
+
+        This method is a private method within the `HelperClass` that completes the data processing workflow. It is called after the main data processing is done by the `DataProcessor.process()` method. This method's primary role is to finalize any additional processing steps required and return the processed data.
+
+        Returns:
+            list: The processed data.
         """
         return self.data
 
     def get_result(self):
         """
-        No docstring provided.
+        Retrieves the processed data as a string.
+
+        This method returns the processed data stored in the `data` attribute of the `HelperClass` instance as a string. It is used to access the final result of the data processing workflow.
+
+        Returns:
+            str: The processed data converted to a string.
         """
         return str(self.data)
 

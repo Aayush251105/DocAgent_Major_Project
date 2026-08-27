@@ -41,6 +41,7 @@ class LLMFactory:
             # Map LLM types to provider names in rate_limits section
             provider_map = {
                 "openai": "openai",
+                "ollama": "ollama",
                 "claude": "claude",
                 "gemini": "gemini"
             }
@@ -49,10 +50,15 @@ class LLMFactory:
             if provider_limits:
                 rate_limits = provider_limits
         
-        if llm_type == "openai":
+        if llm_type in ["openai", "ollama"]:
+            api_base = config.get("api_base")
+            if llm_type == "ollama" and not api_base:
+                api_base = "http://localhost:11434/v1/"
+
             return OpenAILLM(
-                api_key=config["api_key"],
+                api_key=config.get("api_key", "ollama"),
                 model=model,
+                api_base=api_base,
                 rate_limits=rate_limits
             )
         elif llm_type == "claude":

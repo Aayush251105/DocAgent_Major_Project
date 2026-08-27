@@ -48,12 +48,12 @@ class BaseAgent(ABC):
         llm_config = agent_config if agent_config else config.get("llm", {})
         
         # Verify api_key is provided in config
-        if ("api_key" not in llm_config or not llm_config["api_key"]) and (llm_config["type"] not in ["huggingface", "local"]):
+        if ("api_key" not in llm_config or not llm_config["api_key"]) and (llm_config["type"] not in ["huggingface", "local", "ollama"]):
             raise ValueError("API key must be specified directly in the config file")
 
         # Extract LLM parameters
         llm_params = {
-            "max_output_tokens": llm_config.get("max_output_tokens", 4096),
+            "max_output_tokens": llm_config.get("max_output_tokens", llm_config.get("max_tokens", 4096)),
             "temperature": llm_config.get("temperature", 0.1),
             "model": llm_config.get("model")
         }

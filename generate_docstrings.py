@@ -259,7 +259,7 @@ def set_docstring_in_file(file_path: str, component: CodeComponent, docstring: s
         return False
     
     # Set the docstring
-    set_node_docstring(component_node, docstring)
+    set_node_docstring(component_node, clean_generated_docstring(docstring))
     
     # Unparse the AST back to source code
     if hasattr(ast, "unparse"):
@@ -280,6 +280,23 @@ def set_docstring_in_file(file_path: str, component: CodeComponent, docstring: s
         f.write(new_source)
     
     return True
+
+
+def clean_generated_docstring(docstring: str) -> str:
+    """
+    Normalize model output before inserting it as a Python docstring.
+
+    Local models sometimes return a complete triple-quoted string. Since the AST
+    insertion treats the returned value as docstring content, keeping those
+    wrapper quotes would create nested quotes inside the final docstring.
+    """
+    cleaned = docstring.strip()
+
+    for quote in ('"""', "'''"):
+        if cleaned.startswith(quote) and cleaned.endswith(quote):
+            return cleaned[len(quote):-len(quote)].strip()
+
+    return cleaned
 
 
 def set_node_docstring(node: ast.AST, docstring: str):

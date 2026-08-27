@@ -1,17 +1,25 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates
 from decimal import Decimal
 from datetime import datetime, timedelta
 from models.product import Item
 from vending_machine import Sys, SysErr
 
-
 def main():
+    """
+    Summary: Runs the main functionality of the vending machine system.
+
+    Description: The `main` function initializes the vending machine system, populates it with items, and demonstrates the process of listing items, adding money, and purchasing an item.
+
+    Args:
+    - None
+
+    Returns:
+    - None
+
+    Raises:
+    - SysErr: Raised if any operation fails, such as invalid positions, unavailable items, or transaction errors. Handle these exceptions to ensure the system operates correctly.
+    """
     s = Sys()
-    items = [Item(code='D1', label='Drink1', val=1.5, count=10, grp='d',
-        exp=datetime.now() + timedelta(days=90)), Item(code='S1', label=
-        'Snack1', val=1.0, count=15, grp='s', exp=datetime.now() +
-        timedelta(days=30)), Item(code='S2', label='Snack2', val=2.0, count
-        =8, grp='s', exp=datetime.now() + timedelta(days=60))]
+    items = [Item(code='D1', label='Drink1', val=1.5, count=10, grp='d', exp=datetime.now() + timedelta(days=90)), Item(code='S1', label='Snack1', val=1.0, count=15, grp='s', exp=datetime.now() + timedelta(days=30)), Item(code='S2', label='Snack2', val=2.0, count=8, grp='s', exp=datetime.now() + timedelta(days=60))]
     for i, item in enumerate(items):
         s.store.put(item, i)
     try:
@@ -27,12 +35,8 @@ def main():
             print(f'Return: ${ret:.2f}')
         print('\nUpdated Items:')
         for pos, item in s.ls():
-            print(
-                f'Pos {pos}: {item.label} - ${item.val:.2f} (Count: {item.count})'
-                )
+            print(f'Pos {pos}: {item.label} - ${item.val:.2f} (Count: {item.count})')
     except SysErr as e:
         print(f'Err: {str(e)}')
-
-
 if __name__ == '__main__':
     main()
