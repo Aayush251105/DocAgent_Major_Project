@@ -147,27 +147,27 @@ ssh -L 5001:localhost:5001 <your_remote_username>@<your_remote_host>
 
 Once the tunnel is established, access the evaluation UI in your local web browser at `http://localhost:5001`.
 
-## Optional: Using a Local LLM
+## Using Ollama locally
 
-If you prefer to use a local LLM (e.g., one hosted via Hugging Face), you can configure DocAgent to interact with it via an API endpoint.
+DocAgent runs against a local Ollama model by default. Install Ollama, pull the
+configured model, and start the server before running generation:
 
-1.  **Serve the Local LLM**: Use a tool like `vllm` to serve your model. A convenience script is provided:
+1.  **Start Ollama**:
     ```bash
-    # Ensure vllm is installed: pip install vllm
-    bash tool/serve_local_llm.sh
+    ollama pull qwen2.5-coder:7b
+    ollama serve
     ```
-    This script will likely start an OpenAI-compatible API server (check the script details). Note the URL where the model is served (e.g., `http://localhost:8000/v1`).
+    Ollama exposes an OpenAI-compatible API at `http://localhost:11434/v1/`.
 
 2.  **Configure DocAgent**: Update your `config/agent_config.yaml` to point to the local LLM API endpoint. You'll typically need to set:
-    - The `provider` to `openai` (if using an OpenAI-compatible server like vllm's default).
-    - The `api_base` or equivalent URL parameter to your local server address (e.g., `http://localhost:8000/v1`).
-    - The `model_name` to the appropriate identifier for your local model.
-    - Set the `api_key` to `None` or an empty string if no key is required by your local server.
+    - Set `type` to `ollama`.
+    - Use `api_base: http://localhost:11434/v1/`.
+    - Set `model` to an installed Ollama model, such as `qwen2.5-coder:7b`.
+    - Keep `api_key: ollama`; it is a placeholder required by the compatibility client.
 
 3.  **Run DocAgent**: Run the generation process as usual (CLI or Web UI). DocAgent will now send requests to your local LLM.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 
