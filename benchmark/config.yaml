@@ -1,0 +1,47 @@
+# ============================================================
+# Benchmark Configuration
+# ============================================================
+# List your 5 generator models here. Names must match the
+# subfolder names under benchmark/results/raw_generations/.
+# Judge models are derived automatically via leave-one-out:
+# when judging A vs B, the judges are C, D, E.
+
+models:
+  - name: "model_a"          # human-readable label (used as folder name and in report)
+    ollama_model: "qwen2.5-coder:7b"   # Ollama model tag
+
+  - name: "model_b"
+    ollama_model: "llama3.1:8b"
+
+  - name: "model_c"
+    ollama_model: "deepseek-coder:6.7b"
+
+  - name: "model_d"
+    ollama_model: "codestral:7b"
+
+  - name: "model_e"
+    ollama_model: "starcoder2:7b"
+
+# Ollama endpoint
+ollama:
+  api_base: "http://localhost:11434/v1"
+  api_key: "ollama"
+  temperature: 0.1
+  max_tokens: 1024
+
+# Sampling settings for LLM-judged metrics
+sampling:
+  n_samples: 50   # number of components to evaluate per model pair
+  seed: 42
+
+# Paths (relative to project root)
+paths:
+  # Source repo to document — this folder is NEVER modified.
+  # One copy per model is made under raw_generations/<model_name>/
+  source_repo: "data/raw_test_repo"
+
+  raw_generations: "benchmark/results/raw_generations"
+  comparison_dataset: "benchmark/results/comparison_dataset.json"
+  objective_output: "benchmark/results/objective"
+  llm_judgments: "benchmark/results/llm_judgments"
+  final_report: "benchmark/results/final_report.md"
