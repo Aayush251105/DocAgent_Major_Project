@@ -5,7 +5,6 @@ import yaml
 
 from .base import BaseLLM
 from .openai_llm import OpenAILLM
-from .claude_llm import ClaudeLLM
 from .huggingface_llm import HuggingFaceLLM
 from .gemini_llm import GeminiLLM
 
@@ -42,7 +41,6 @@ class LLMFactory:
             provider_map = {
                 "openai": "openai",
                 "ollama": "ollama",
-                "claude": "claude",
                 "gemini": "gemini"
             }
             provider_key = provider_map.get(llm_type, llm_type)
@@ -59,12 +57,6 @@ class LLMFactory:
                 api_key=config.get("api_key", "ollama"),
                 model=model,
                 api_base=api_base,
-                rate_limits=rate_limits
-            )
-        elif llm_type == "claude":
-            return ClaudeLLM(
-                api_key=config["api_key"],
-                model=model,
                 rate_limits=rate_limits
             )
         elif llm_type == "gemini":

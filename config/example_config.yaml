@@ -1,19 +1,18 @@
 # Example configuration file for DocAgent
-# Copy this file to agent_config.yaml and add your own API keys
+# Copy this file to agent_config.yaml.  DocAgent uses Ollama locally by default.
 
 # LLM configuration for all agents
 llm:
-  # Choose ONE of the following LLM provider configurations by uncommenting
-  
-  # Option 1: Claude (Anthropic)
-  type: "claude"  
-  api_key: "your-anthropic-api-key-here"  
-  model: "claude-3-5-haiku-latest"  # Options: claude-3-5-sonnet, claude-3-opus, etc.
+  # Local Ollama server (OpenAI-compatible endpoint)
+  type: "ollama"
+  api_key: "ollama"  # Required by the compatibility client; Ollama does not validate it.
+  api_base: "http://localhost:11434/v1/"
+  model: "qwen2.5-coder:7b"
   temperature: 0.1
   max_output_tokens: 4096
   max_input_tokens: 100000  # Maximum number of tokens for input context
   
-  # Option 2: OpenAI
+  # Optional remote OpenAI configuration
   # type: "openai"
   # api_key: "your-openai-api-key-here"
   # model: "gpt-4o"  # Options: gpt-4o, gpt-4-turbo, gpt-3.5-turbo, etc.
@@ -21,7 +20,7 @@ llm:
   # max_output_tokens: 4096
   # max_input_tokens: 100000
 
-  # Option 3: Gemini
+  # Optional remote Gemini configuration
   # type: "gemini"
   # api_key: "your-gemini-api-key-here"
   # model: "gemini-1.5-pro"
@@ -29,7 +28,7 @@ llm:
   # max_output_tokens: 4096
   # max_input_tokens: 100000
 
-  # Option 4: HuggingFace (for local models)
+  # Optional HuggingFace configuration
   # type: "huggingface"
   # model: "codellama/CodeLlama-34b-Instruct-hf"
   # api_base: "http://localhost:8000/v1"  # Local API endpoint
@@ -43,13 +42,14 @@ llm:
 # Rate limit settings for different LLM providers
 # These are default values - adjust based on your specific API tier
 rate_limits:
-  # Claude rate limits
-  claude:
-    requests_per_minute: 50
-    input_tokens_per_minute: 20000
-    output_tokens_per_minute: 8000
-    input_token_price_per_million: 3.0
-    output_token_price_per_million: 15.0
+  # Ollama runs locally, so there is no API charge.  These limits prevent a
+  # multi-agent run from overwhelming a single local model server.
+  ollama:
+    requests_per_minute: 30
+    input_tokens_per_minute: 100000
+    output_tokens_per_minute: 30000
+    input_token_price_per_million: 0.0
+    output_token_price_per_million: 0.0
 
   # OpenAI rate limits
   openai:
@@ -82,4 +82,4 @@ perplexity:
   api_key: "your-perplexity-api-key-here"  # Replace with your actual Perplexity API key
   model: "sonar"  # Default model
   temperature: 0.1
-  max_output_tokens: 250 
+  max_output_tokens: 250

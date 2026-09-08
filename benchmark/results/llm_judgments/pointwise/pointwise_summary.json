@@ -1,0 +1,106 @@
+{
+  "qwen2.5-coder-1.5b": {
+    "summary": {
+      "average": 3.089,
+      "n": 56
+    },
+    "description": {
+      "average": 4.672,
+      "n": 58
+    },
+    "parameters": {
+      "average": 3.466,
+      "n": 58
+    },
+    "correctness": {
+      "average": 4.93,
+      "n": 57
+    },
+    "clarity": {
+      "average": 4.397,
+      "n": 58
+    },
+    "conciseness": {
+      "average": 3.357,
+      "n": 56
+    }
+  },
+  "qwen3-4b": {
+    "summary": {
+      "average": 3.049,
+      "n": 82
+    },
+    "description": {
+      "average": 2.762,
+      "n": 84
+    },
+    "parameters": {
+      "average": 2.795,
+      "n": 83
+    },
+    "correctness": {
+      "average": 3.44,
+      "n": 84
+    },
+    "clarity": {
+      "average": 3.393,
+      "n": 84
+    },
+    "conciseness": {
+      "average": 3.905,
+      "n": 84
+    }
+  },
+  "qwen2.5-coder-3b": {
+    "summary": {
+      "average": 2.75,
+      "n": 56
+    },
+    "description": {
+      "average": 4.143,
+      "n": 56
+    },
+    "parameters": {
+      "average": 3.31,
+      "n": 58
+    },
+    "correctness": {
+      "average": 4.404,
+      "n": 57
+    },
+    "clarity": {
+      "average": 4.143,
+      "n": 56
+    },
+    "conciseness": {
+      "average": 3.625,
+      "n": 56
+    }
+  },
+  "qwen2.5-coder-7b": {
+    "summary": {
+      "average": 3.875,
+      "n": 56
+    },
+    "description": {
+      "average": 3.804,
+      "n": 56
+    },
+    "parameters": {
+      "average": 3.456,
+      "n": 57
+    },
+    "correctness": {
+      "average": 3.947,
+      "n": 57
+    },
+    "clarity": {
+      "average": 3.839,
+      "n": 56
+    },
+    "conciseness": {
+      "average": 4.018,
+      "n": 56
+    }
+  }
+}

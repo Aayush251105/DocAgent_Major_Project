@@ -2,30 +2,30 @@
   "example.main": {
     "id": "example.main",
     "component_type": "function",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\example.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/example.py",
     "relative_path": "example.py",
     "depends_on": [
-      "example.e",
+      "vending_machine.Sys",
+      "example.ret",
+      "example.Decimal",
+      "example.timedelta",
       "models.product.Item",
       "vending_machine.SysErr",
-      "example.timedelta",
-      "vending_machine.Sys",
-      "example.pos",
+      "example.item",
+      "example.e",
       "example.datetime",
-      "example.Decimal",
-      "example.ret",
-      "example.i",
-      "example.item"
+      "example.pos",
+      "example.i"
     ],
-    "start_line": 8,
-    "end_line": 34,
-    "has_docstring": false,
-    "docstring": ""
+    "start_line": 6,
+    "end_line": 40,
+    "has_docstring": true,
+    "docstring": "\n    Summary: Runs the main functionality of the vending machine system.\n\n    Description: The `main` function initializes the vending machine system, populates it with items, and demonstrates the process of listing items, adding money, and purchasing an item.\n\n    Args:\n    - None\n\n    Returns:\n    - None\n\n    Raises:\n    - SysErr: Raised if any operation fails, such as invalid positions, unavailable items, or transaction errors. Handle these exceptions to ensure the system operates correctly.\n    "
   },
   "vending_machine.SysErr": {
     "id": "vending_machine.SysErr",
     "component_type": "class",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\vending_machine.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/vending_machine.py",
     "relative_path": "vending_machine.py",
     "depends_on": [],
     "start_line": 7,
@@ -36,147 +36,147 @@
   "vending_machine.Sys": {
     "id": "vending_machine.Sys",
     "component_type": "class",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\vending_machine.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/vending_machine.py",
     "relative_path": "vending_machine.py",
     "depends_on": [
-      "payment.payment_processor.Handler",
-      "vending_machine.amt",
-      "vending_machine.item",
-      "vending_machine.Sys.cancel",
-      "vending_machine.List",
-      "vending_machine.x",
-      "vending_machine.h",
-      "vending_machine.Sys.add_money",
-      "vending_machine.Sys.buy",
-      "vending_machine.Tuple",
-      "vending_machine.Decimal",
-      "vending_machine.Sys.ls",
-      "payment.payment_processor.Tx",
-      "vending_machine.Optional",
-      "payment.payment_processor.TxStatus",
-      "vending_machine.Sys.pick",
-      "payment.payment_processor.Cash",
       "models.product.Item",
+      "vending_machine.Optional",
+      "vending_machine.Sys.add_money",
+      "inventory.inventory_manager.Store",
+      "vending_machine.Tuple",
+      "vending_machine.List",
+      "vending_machine.h",
+      "vending_machine.item",
       "vending_machine.SysErr",
-      "inventory.inventory_manager.Store"
+      "vending_machine.amt",
+      "vending_machine.Sys.buy",
+      "payment.payment_processor.Tx",
+      "vending_machine.Sys.ls",
+      "vending_machine.x",
+      "payment.payment_processor.Handler",
+      "vending_machine.Sys.pick",
+      "vending_machine.Sys.cancel",
+      "payment.payment_processor.Cash",
+      "vending_machine.Decimal",
+      "payment.payment_processor.TxStatus"
     ],
     "start_line": 34,
-    "end_line": 374,
-    "has_docstring": false,
-    "docstring": ""
+    "end_line": 391,
+    "has_docstring": true,
+    "docstring": "\n    Summary: Manages the state and operations of a vending machine.\n\n    Description: The `Sys` class represents a vending machine system, handling item listing, purchasing, and transaction management.\n\n    Attributes:\n    - store (Store): The store containing items.\n    - h (Handler): The handler for processing transactions.\n    - _tx (Optional[Tx]): The current transaction.\n\n    Methods:\n    - ls(): Lists all items in the store with their positions.\n    - pick(pos: int): Retrieves an item from the store at the specified position.\n    - add_money(amt: Decimal): Adds money to the account using the specified handler.\n    - buy(pos: int): Buys an item from the vending machine.\n    - cancel(): Cancels the current transaction and returns any refund.\n    "
   },
   "vending_machine.Sys.__init__": {
     "id": "vending_machine.Sys.__init__",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\vending_machine.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/vending_machine.py",
     "relative_path": "vending_machine.py",
     "depends_on": [
-      "payment.payment_processor.Cash",
-      "payment.payment_processor.Handler",
       "payment.payment_processor.Tx",
+      "payment.payment_processor.Handler",
+      "payment.payment_processor.Cash",
       "vending_machine.Optional",
       "inventory.inventory_manager.Store"
     ],
-    "start_line": 36,
-    "end_line": 39,
+    "start_line": 53,
+    "end_line": 56,
     "has_docstring": false,
     "docstring": ""
   },
   "vending_machine.Sys.ls": {
     "id": "vending_machine.Sys.ls",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\vending_machine.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/vending_machine.py",
     "relative_path": "vending_machine.py",
     "depends_on": [
-      "models.product.Item",
-      "vending_machine.Tuple",
+      "vending_machine.x",
       "vending_machine.item",
+      "models.product.Item",
       "vending_machine.List",
-      "vending_machine.x"
+      "vending_machine.Tuple"
     ],
-    "start_line": 41,
-    "end_line": 100,
+    "start_line": 58,
+    "end_line": 117,
     "has_docstring": true,
     "docstring": "\n        Summary: Lists all items in the store with their positions.\n\n        Description: \n        The `ls` method is used to list all items in the store along with their positions. It retrieves the items from the store, finds their positions, and returns a sorted list of tuples containing the position and item.\n\n        Example:\n        ```python\n        class Item:\n            def __init__(self, code: str, val: Decimal):\n                self.code = code\n                self.val = val\n\n        class Store:\n            def ls(self) -> List[Item]:\n                return [Item('A1', Decimal('1.00')), Item('A2', Decimal('2.00'))]\n\n            def find(self, code: str) -> Optional[int]:\n                items = self.ls()\n                for i, item in enumerate(items):\n                    if item.code == code:\n                        return i\n                return None\n\n        class VendingMachine:\n            def __init__(self, store: Store):\n                self.store = store\n\n            def ls(self) -> List[Tuple[int, Item]]:\n                items = []\n                for item in self.store.ls():\n                    pos = self.store.find(item.code)\n                    if pos is not None:\n                        items.append((pos, item))\n                return sorted(items, key=lambda x: x[0])\n\n        # Usage example\n        store = Store()\n        vm = VendingMachine(store)\n        items = vm.ls()\n        for pos, item in items:\n            print(f\"Position: {pos}, Item: {item.code}, Value: {item.val}\")\n        ```\n\n        Args:\n        - None\n\n        Returns:\n        - List[Tuple[int, Item]]: A list of tuples containing the position and item.\n\n        Raises:\n        - None\n        "
   },
   "vending_machine.Sys.pick": {
     "id": "vending_machine.Sys.pick",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\vending_machine.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/vending_machine.py",
     "relative_path": "vending_machine.py",
     "depends_on": [
-      "vending_machine.Optional",
       "vending_machine.SysErr",
-      "models.product.Item"
+      "models.product.Item",
+      "vending_machine.Optional"
     ],
-    "start_line": 102,
-    "end_line": 161,
+    "start_line": 119,
+    "end_line": 178,
     "has_docstring": true,
     "docstring": "\n        Summary: Retrieves an item from the store at the specified position.\n\n        Description: \n        The `pick` method is used to retrieve an item from the store at the specified position. It checks if the item exists and is available before returning it. If the position is invalid or the item is unavailable, it raises an exception.\n\n        Example:\n        ```python\n        class Item:\n            def __init__(self, code: str, val: Decimal):\n                self.code = code\n                self.val = val\n\n            def check(self) -> bool:\n                return True\n\n        class Store:\n            def __init__(self):\n                self.items = [Item('A1', Decimal('1.00')), Item('A2', Decimal('2.00'))]\n\n            def get_at(self, pos: int) -> Optional[Item]:\n                if pos < 0 or pos >= len(self.items):\n                    return None\n                return self.items[pos]\n\n        class VendingMachine:\n            def __init__(self, store: Store):\n                self.store = store\n\n            def pick(self, pos: int) -> Optional[Item]:\n                item = self.store.get_at(pos)\n                if not item:\n                    raise SysErr('invalid pos')\n                if not item.check():\n                    raise SysErr('unavailable')\n                return item\n\n        # Usage example\n        store = Store()\n        vm = VendingMachine(store)\n        item = vm.pick(0)\n        print(f\"Item: {item.code}, Value: {item.val}\")\n        ```\n\n        Args:\n        - pos (int): The position of the item in the store.\n\n        Returns:\n        - Optional[Item]: The item at the specified position if available, otherwise None.\n\n        Raises:\n        - SysErr: Raised if the position is invalid or the item is unavailable. Check the position and availability of the item to avoid these errors.\n        "
   },
   "vending_machine.Sys.add_money": {
     "id": "vending_machine.Sys.add_money",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\vending_machine.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/vending_machine.py",
     "relative_path": "vending_machine.py",
     "depends_on": [
-      "payment.payment_processor.Cash",
       "vending_machine.SysErr",
+      "payment.payment_processor.Cash",
       "vending_machine.Decimal"
     ],
-    "start_line": 163,
-    "end_line": 202,
+    "start_line": 180,
+    "end_line": 219,
     "has_docstring": true,
     "docstring": "\n        Summary: Adds money to the account using the specified handler.\n\n        Description: \n        The `add_money` method is used to add a specified amount of money to the account using a handler object. It checks if the handler is an instance of the `Cash` class and then calls the `add` method of the handler to add the money. This method is useful for depositing funds into an account using a cash handler.\n\n        Example:\n        ```python\n        class Cash:\n            def add(self, amt: Decimal) -> None:\n                print(f\"Adding {amt} to the account\")\n\n        class Account:\n            def __init__(self, handler: Cash):\n                self.h = handler\n\n            def add_money(self, amt: Decimal) -> None:\n                if not isinstance(self.h, Cash):\n                    raise SysErr('cash not supported')\n                self.h.add(amt)\n\n        # Usage example\n        cash_handler = Cash()\n        account = Account(cash_handler)\n        account.add_money(Decimal('50'))\n        ```\n\n        Args:\n        - `amt` (Decimal): The amount of money to add to the account.\n\n        Returns:\n        - None: This method does not return any value. It adds money to the account.\n\n        Raises:\n        - SysErr: Raised if the handler is not an instance of the `Cash` class. Ensure that the handler is a valid cash handler to avoid this error.\n        "
   },
   "vending_machine.Sys.buy": {
     "id": "vending_machine.Sys.buy",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\vending_machine.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/vending_machine.py",
     "relative_path": "vending_machine.py",
     "depends_on": [
-      "payment.payment_processor.Cash",
-      "vending_machine.SysErr",
-      "models.product.Item",
-      "vending_machine.Optional",
       "vending_machine.Tuple",
-      "payment.payment_processor.TxStatus",
-      "vending_machine.Decimal"
+      "models.product.Item",
+      "vending_machine.SysErr",
+      "payment.payment_processor.Cash",
+      "vending_machine.Optional",
+      "vending_machine.Decimal",
+      "payment.payment_processor.TxStatus"
     ],
-    "start_line": 204,
-    "end_line": 286,
+    "start_line": 221,
+    "end_line": 303,
     "has_docstring": true,
     "docstring": "\n        Summary: Buys an item from the vending machine.\n\n        Description: \n        The `buy` method is used to purchase an item from the vending machine. It takes the position of the item as an argument, processes the transaction using the handler, and handles the item's dispensing. If the transaction is successful and the item is dispensed, it returns the item and any refund amount. If the transaction fails or the item cannot be dispensed, it raises an exception.\n\n        Example:\n        ```python\n        class Item:\n            def __init__(self, val: Decimal):\n                self.val = val\n\n            def mod(self) -> bool:\n                return True\n\n        class Cash:\n            def add(self, amt: Decimal) -> None:\n                pass\n\n            def proc(self, amt: Decimal) -> Tx:\n                return Tx(id='123', amt=amt, st=TxStatus.DONE, mth='cash')\n\n            def rev(self, tx: Tx) -> bool:\n                return True\n\n            def ret(self) -> Decimal:\n                return Decimal('0.00')\n\n        class VendingMachine:\n            def __init__(self, items: List[Item], handler: Cash):\n                self.items = items\n                self.h = handler\n\n            def pick(self, pos: int) -> Item:\n                if pos < 0 or pos >= len(self.items):\n                    raise IndexError(\"Invalid position\")\n                return self.items[pos]\n\n            def buy(self, pos: int) -> Tuple[Item, Optional[Decimal]]:\n                item = self.pick(pos)\n                tx = self.h.proc(Decimal(str(item.val)))\n                self._tx = tx\n                if tx.st != TxStatus.DONE:\n                    raise SysErr(tx.msg or 'tx failed')\n                if not item.mod():\n                    self.h.rev(tx)\n                    raise SysErr('dispense failed')\n                ret = None\n                if isinstance(self.h, Cash):\n                    ret = self.h.ret()\n                return (item, ret)\n\n        # Usage example\n        items = [Item(Decimal('1.00')), Item(Decimal('2.00'))]\n        cash_handler = Cash()\n        vm = VendingMachine(items, cash_handler)\n        item, refund = vm.buy(0)\n        print(f\"Item bought: {item.val}, Refund: {refund}\")\n        ```\n\n        Args:\n        - `pos` (int): The position of the item to be purchased.\n\n        Returns:\n        - Tuple[Item, Optional[Decimal]]: A tuple containing the purchased item and any refund amount.\n\n        Raises:\n        - IndexError: Raised if the position is out of range. Ensure that the position is valid to avoid this error.\n        - SysErr: Raised if the transaction fails or the item cannot be dispensed. Check the transaction status and item mod method to handle these errors.\n        "
   },
   "vending_machine.Sys.cancel": {
     "id": "vending_machine.Sys.cancel",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\vending_machine.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/vending_machine.py",
     "relative_path": "vending_machine.py",
     "depends_on": [
+      "vending_machine.SysErr",
       "payment.payment_processor.Cash",
       "vending_machine.Optional",
-      "vending_machine.SysErr",
       "vending_machine.Decimal"
     ],
-    "start_line": 288,
-    "end_line": 374,
+    "start_line": 305,
+    "end_line": 391,
     "has_docstring": true,
     "docstring": "\n        Summary: Cancels the current transaction and returns any refund.\n\n        Description: \n        The `cancel` method is used to cancel the current transaction and return any refund amount. It checks if a transaction is currently in progress, reverses the transaction using the handler, and handles the refund if applicable. If the transaction is not in progress or the reversal fails, it raises an exception.\n\n        Example:\n        ```python\n        class Cash:\n            def add(self, amt: Decimal) -> None:\n                pass\n\n            def proc(self, amt: Decimal) -> Tx:\n                return Tx(id='123', amt=amt, st=TxStatus.DONE, mth='cash')\n\n            def rev(self, tx: Tx) -> bool:\n                return True\n\n            def ret(self) -> Decimal:\n                return Decimal('0.00')\n\n        class VendingMachine:\n            def __init__(self, items: List[Item], handler: Cash):\n                self.items = items\n                self.h = handler\n                self._tx = None\n\n            def pick(self, pos: int) -> Item:\n                if pos < 0 or pos >= len(self.items):\n                    raise IndexError(\"Invalid position\")\n                return self.items[pos]\n\n            def buy(self, pos: int) -> Tuple[Item, Optional[Decimal]]:\n                item = self.pick(pos)\n                tx = self.h.proc(Decimal(str(item.val)))\n                self._tx = tx\n                if tx.st != TxStatus.DONE:\n                    raise SysErr(tx.msg or 'tx failed')\n                if not item.mod():\n                    self.h.rev(tx)\n                    raise SysErr('dispense failed')\n                ret = None\n                if isinstance(self.h, Cash):\n                    ret = self.h.ret()\n                return (item, ret)\n\n            def cancel(self) -> Optional[Decimal]:\n                if not self._tx:\n                    raise SysErr('no tx')\n                ok = self.h.rev(self._tx)\n                if not ok:\n                    raise SysErr('rev failed')\n                ret = None\n                if isinstance(self.h, Cash):\n                    ret = self.h.ret()\n                self._tx = None\n                return ret\n\n        # Usage example\n        items = [Item(Decimal('1.00')), Item(Decimal('2.00'))]\n        cash_handler = Cash()\n        vm = VendingMachine(items, cash_handler)\n        vm.buy(0)\n        refund = vm.cancel()\n        print(f\"Refund: {refund}\")\n        ```\n\n        Args:\n        - None\n\n        Returns:\n        - Optional[Decimal]: The refund amount if applicable, otherwise None.\n\n        Raises:\n        - SysErr: Raised if there is no current transaction or if the reversal fails. Check if a transaction is in progress and handle the reversal to avoid these errors.\n        "
   },
   "inventory.inventory_manager.Store": {
     "id": "inventory.inventory_manager.Store",
     "component_type": "class",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\inventory\\inventory_manager.py",
-    "relative_path": "inventory\\inventory_manager.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/inventory/inventory_manager.py",
+    "relative_path": "inventory/inventory_manager.py",
     "depends_on": [
+      "inventory.inventory_manager.Store.put",
       "models.product.Item",
-      "inventory.inventory_manager.Store.rm",
       "inventory.inventory_manager.Store.find",
-      "inventory.inventory_manager.Store.get",
-      "inventory.inventory_manager.Store.ls",
       "inventory.inventory_manager.Store.get_at",
-      "inventory.inventory_manager.Store.put"
+      "inventory.inventory_manager.Store.ls",
+      "inventory.inventory_manager.Store.rm",
+      "inventory.inventory_manager.Store.get"
     ],
     "start_line": 4,
     "end_line": 290,
@@ -186,8 +186,8 @@
   "inventory.inventory_manager.Store.__init__": {
     "id": "inventory.inventory_manager.Store.__init__",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\inventory\\inventory_manager.py",
-    "relative_path": "inventory\\inventory_manager.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/inventory/inventory_manager.py",
+    "relative_path": "inventory/inventory_manager.py",
     "depends_on": [
       "models.product.Item"
     ],
@@ -199,8 +199,8 @@
   "inventory.inventory_manager.Store.put": {
     "id": "inventory.inventory_manager.Store.put",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\inventory\\inventory_manager.py",
-    "relative_path": "inventory\\inventory_manager.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/inventory/inventory_manager.py",
+    "relative_path": "inventory/inventory_manager.py",
     "depends_on": [
       "models.product.Item"
     ],
@@ -212,8 +212,8 @@
   "inventory.inventory_manager.Store.rm": {
     "id": "inventory.inventory_manager.Store.rm",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\inventory\\inventory_manager.py",
-    "relative_path": "inventory\\inventory_manager.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/inventory/inventory_manager.py",
+    "relative_path": "inventory/inventory_manager.py",
     "depends_on": [],
     "start_line": 113,
     "end_line": 151,
@@ -223,8 +223,8 @@
   "inventory.inventory_manager.Store.get": {
     "id": "inventory.inventory_manager.Store.get",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\inventory\\inventory_manager.py",
-    "relative_path": "inventory\\inventory_manager.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/inventory/inventory_manager.py",
+    "relative_path": "inventory/inventory_manager.py",
     "depends_on": [
       "models.product.Item"
     ],
@@ -236,8 +236,8 @@
   "inventory.inventory_manager.Store.get_at": {
     "id": "inventory.inventory_manager.Store.get_at",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\inventory\\inventory_manager.py",
-    "relative_path": "inventory\\inventory_manager.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/inventory/inventory_manager.py",
+    "relative_path": "inventory/inventory_manager.py",
     "depends_on": [
       "models.product.Item"
     ],
@@ -249,8 +249,8 @@
   "inventory.inventory_manager.Store.ls": {
     "id": "inventory.inventory_manager.Store.ls",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\inventory\\inventory_manager.py",
-    "relative_path": "inventory\\inventory_manager.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/inventory/inventory_manager.py",
+    "relative_path": "inventory/inventory_manager.py",
     "depends_on": [
       "models.product.Item"
     ],
@@ -262,8 +262,8 @@
   "inventory.inventory_manager.Store.find": {
     "id": "inventory.inventory_manager.Store.find",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\inventory\\inventory_manager.py",
-    "relative_path": "inventory\\inventory_manager.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/inventory/inventory_manager.py",
+    "relative_path": "inventory/inventory_manager.py",
     "depends_on": [],
     "start_line": 256,
     "end_line": 290,
@@ -273,8 +273,8 @@
   "models.product.Item": {
     "id": "models.product.Item",
     "component_type": "class",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\models\\product.py",
-    "relative_path": "models\\product.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/models/product.py",
+    "relative_path": "models/product.py",
     "depends_on": [
       "models.product.Item.mod",
       "models.product.Item.check"
@@ -287,8 +287,8 @@
   "models.product.Item.check": {
     "id": "models.product.Item.check",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\models\\product.py",
-    "relative_path": "models\\product.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/models/product.py",
+    "relative_path": "models/product.py",
     "depends_on": [],
     "start_line": 56,
     "end_line": 77,
@@ -298,8 +298,8 @@
   "models.product.Item.mod": {
     "id": "models.product.Item.mod",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\models\\product.py",
-    "relative_path": "models\\product.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/models/product.py",
+    "relative_path": "models/product.py",
     "depends_on": [],
     "start_line": 79,
     "end_line": 113,
@@ -309,8 +309,8 @@
   "payment.payment_processor.TxStatus": {
     "id": "payment.payment_processor.TxStatus",
     "component_type": "class",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
-    "relative_path": "payment\\payment_processor.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/payment/payment_processor.py",
+    "relative_path": "payment/payment_processor.py",
     "depends_on": [],
     "start_line": 7,
     "end_line": 41,
@@ -320,8 +320,8 @@
   "payment.payment_processor.Tx": {
     "id": "payment.payment_processor.Tx",
     "component_type": "class",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
-    "relative_path": "payment\\payment_processor.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/payment/payment_processor.py",
+    "relative_path": "payment/payment_processor.py",
     "depends_on": [
       "payment.payment_processor.TxStatus"
     ],
@@ -333,12 +333,12 @@
   "payment.payment_processor.Handler": {
     "id": "payment.payment_processor.Handler",
     "component_type": "class",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
-    "relative_path": "payment\\payment_processor.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/payment/payment_processor.py",
+    "relative_path": "payment/payment_processor.py",
     "depends_on": [
       "payment.payment_processor.Handler.proc",
-      "payment.payment_processor.Handler.rev",
-      "payment.payment_processor.Tx"
+      "payment.payment_processor.Tx",
+      "payment.payment_processor.Handler.rev"
     ],
     "start_line": 95,
     "end_line": 244,
@@ -348,8 +348,8 @@
   "payment.payment_processor.Handler.proc": {
     "id": "payment.payment_processor.Handler.proc",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
-    "relative_path": "payment\\payment_processor.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/payment/payment_processor.py",
+    "relative_path": "payment/payment_processor.py",
     "depends_on": [
       "payment.payment_processor.Tx"
     ],
@@ -361,8 +361,8 @@
   "payment.payment_processor.Handler.rev": {
     "id": "payment.payment_processor.Handler.rev",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
-    "relative_path": "payment\\payment_processor.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/payment/payment_processor.py",
+    "relative_path": "payment/payment_processor.py",
     "depends_on": [
       "payment.payment_processor.Tx"
     ],
@@ -374,16 +374,16 @@
   "payment.payment_processor.Cash": {
     "id": "payment.payment_processor.Cash",
     "component_type": "class",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
-    "relative_path": "payment\\payment_processor.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/payment/payment_processor.py",
+    "relative_path": "payment/payment_processor.py",
     "depends_on": [
-      "payment.payment_processor.Cash.ret",
-      "payment.payment_processor.Handler",
-      "payment.payment_processor.Cash.proc",
       "payment.payment_processor.Tx",
+      "payment.payment_processor.Handler",
+      "payment.payment_processor.Cash.rev",
+      "payment.payment_processor.Cash.ret",
       "payment.payment_processor.Cash.add",
-      "payment.payment_processor.TxStatus",
-      "payment.payment_processor.Cash.rev"
+      "payment.payment_processor.Cash.proc",
+      "payment.payment_processor.TxStatus"
     ],
     "start_line": 246,
     "end_line": 539,
@@ -393,8 +393,8 @@
   "payment.payment_processor.Cash.__init__": {
     "id": "payment.payment_processor.Cash.__init__",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
-    "relative_path": "payment\\payment_processor.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/payment/payment_processor.py",
+    "relative_path": "payment/payment_processor.py",
     "depends_on": [],
     "start_line": 331,
     "end_line": 332,
@@ -404,8 +404,8 @@
   "payment.payment_processor.Cash.add": {
     "id": "payment.payment_processor.Cash.add",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
-    "relative_path": "payment\\payment_processor.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/payment/payment_processor.py",
+    "relative_path": "payment/payment_processor.py",
     "depends_on": [],
     "start_line": 334,
     "end_line": 368,
@@ -415,11 +415,11 @@
   "payment.payment_processor.Cash.proc": {
     "id": "payment.payment_processor.Cash.proc",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
-    "relative_path": "payment\\payment_processor.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/payment/payment_processor.py",
+    "relative_path": "payment/payment_processor.py",
     "depends_on": [
-      "payment.payment_processor.TxStatus",
-      "payment.payment_processor.Tx"
+      "payment.payment_processor.Tx",
+      "payment.payment_processor.TxStatus"
     ],
     "start_line": 370,
     "end_line": 427,
@@ -429,11 +429,11 @@
   "payment.payment_processor.Cash.rev": {
     "id": "payment.payment_processor.Cash.rev",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
-    "relative_path": "payment\\payment_processor.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/payment/payment_processor.py",
+    "relative_path": "payment/payment_processor.py",
     "depends_on": [
-      "payment.payment_processor.TxStatus",
-      "payment.payment_processor.Tx"
+      "payment.payment_processor.Tx",
+      "payment.payment_processor.TxStatus"
     ],
     "start_line": 429,
     "end_line": 503,
@@ -443,8 +443,8 @@
   "payment.payment_processor.Cash.ret": {
     "id": "payment.payment_processor.Cash.ret",
     "component_type": "method",
-    "file_path": "C:\\Users\\aayus\\OneDrive\\Desktop\\SRS_DOC_Generation\\DOC_Agent\\DocAgent\\data\\raw_test_repo\\payment\\payment_processor.py",
-    "relative_path": "payment\\payment_processor.py",
+    "file_path": "/home/aayush_sukhraj/Desktop/DocAgent_FinalProj/DocAgent_Major_Project/benchmark/results/raw_generations/qwen3-4b/payment/payment_processor.py",
+    "relative_path": "payment/payment_processor.py",
     "depends_on": [],
     "start_line": 505,
     "end_line": 539,

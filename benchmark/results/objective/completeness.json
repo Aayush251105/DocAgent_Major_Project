@@ -1,0 +1,2142 @@
+{
+  "per_component": {
+    "example.main": {
+      "qwen2.5-coder-1.5b": {
+        "score": 0.25,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": false,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": false,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.5,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": false,
+          "returns": false,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": false,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.75,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": false,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": false,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.75,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": false,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": false,
+          "raises": true,
+          "examples": true
+        }
+      }
+    },
+    "inventory.inventory_manager.Store": {
+      "qwen2.5-coder-1.5b": {
+        "score": 0.8,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": true,
+          "attributes": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.8,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": true,
+          "attributes": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": true,
+          "attributes": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.4,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": true,
+          "attributes": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.8,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": true,
+          "attributes": true,
+          "examples": true
+        }
+      }
+    },
+    "inventory.inventory_manager.Store.put": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.16666666666666669,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": false,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      }
+    },
+    "inventory.inventory_manager.Store.rm": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.6666666666666667,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      }
+    },
+    "inventory.inventory_manager.Store.get": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.16666666666666669,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": false,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      }
+    },
+    "inventory.inventory_manager.Store.get_at": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.16666666666666669,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": false,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      }
+    },
+    "inventory.inventory_manager.Store.ls": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.6000000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      }
+    },
+    "inventory.inventory_manager.Store.find": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.6666666666666667,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      }
+    },
+    "models.product.Item": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.7500000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.7500000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        }
+      }
+    },
+    "models.product.Item.check": {
+      "qwen2.5-coder-1.5b": {
+        "score": 0.6000000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.2,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": false,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.8,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": false,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.6000000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      }
+    },
+    "models.product.Item.mod": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.8,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": true
+        }
+      }
+    },
+    "payment.payment_processor.TxStatus": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.5,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "parameters": false,
+          "attributes": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.7500000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.7500000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        }
+      }
+    },
+    "payment.payment_processor.Tx": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.5,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "parameters": false,
+          "attributes": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.7500000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.7500000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": true
+        }
+      }
+    },
+    "payment.payment_processor.Handler": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.6666666666666666,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.6666666666666666,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.6666666666666666,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": true
+        }
+      }
+    },
+    "payment.payment_processor.Handler.proc": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.75,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.5,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.75,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        }
+      }
+    },
+    "payment.payment_processor.Handler.rev": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.75,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.5,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.75,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        }
+      }
+    },
+    "payment.payment_processor.Cash": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.3333333333333333,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "parameters": false,
+          "attributes": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.6666666666666666,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.6666666666666666,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": true
+        }
+      }
+    },
+    "payment.payment_processor.Cash.add": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.75,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": false,
+          "examples": true
+        }
+      }
+    },
+    "payment.payment_processor.Cash.proc": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.5000000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.8333333333333334,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.8333333333333334,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      }
+    },
+    "payment.payment_processor.Cash.rev": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.8,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.8,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.8,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": false,
+          "examples": true
+        }
+      }
+    },
+    "payment.payment_processor.Cash.ret": {
+      "qwen2.5-coder-1.5b": {
+        "score": 1.0,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.6000000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.8,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.8,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      }
+    },
+    "vending_machine.SysErr": {
+      "qwen2.5-coder-1.5b": {
+        "score": 0.3333333333333333,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "parameters": false,
+          "attributes": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.3333333333333333,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "parameters": false,
+          "attributes": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.6666666666666666,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.6666666666666666,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": false,
+          "examples": true
+        }
+      }
+    },
+    "vending_machine.Sys": {
+      "qwen2.5-coder-1.5b": {
+        "score": 0.2,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "parameters": false,
+          "attributes": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": true,
+          "attributes": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.6000000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "parameters": true,
+          "attributes": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": true,
+          "attributes": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.6000000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": true,
+          "attributes": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.6000000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "parameters": false,
+          "attributes": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "parameters": true,
+          "attributes": true,
+          "examples": true
+        }
+      }
+    },
+    "vending_machine.Sys.ls": {
+      "qwen2.5-coder-1.5b": {
+        "score": 0.2,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": false,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.6000000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.8,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.8,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      }
+    },
+    "vending_machine.Sys.pick": {
+      "qwen2.5-coder-1.5b": {
+        "score": 0.16666666666666669,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": false,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.5000000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.8333333333333334,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.8333333333333334,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      }
+    },
+    "vending_machine.Sys.add_money": {
+      "qwen2.5-coder-1.5b": {
+        "score": 0.2,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": false,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.6000000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": true,
+          "returns": false,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.8,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.8,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": false,
+          "raises": true,
+          "examples": true
+        }
+      }
+    },
+    "vending_machine.Sys.buy": {
+      "qwen2.5-coder-1.5b": {
+        "score": 0.16666666666666669,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": false,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.5000000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.8333333333333334,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.8333333333333334,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": true,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      }
+    },
+    "vending_machine.Sys.cancel": {
+      "qwen2.5-coder-1.5b": {
+        "score": 0.2,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": false,
+          "returns": false,
+          "raises": false,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen3-4b": {
+        "score": 0.6000000000000001,
+        "element_scores": {
+          "summary": true,
+          "description": false,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-3b": {
+        "score": 0.8,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      },
+      "qwen2.5-coder-7b": {
+        "score": 0.8,
+        "element_scores": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": false
+        },
+        "element_required": {
+          "summary": true,
+          "description": true,
+          "args": false,
+          "returns": true,
+          "raises": true,
+          "examples": true
+        }
+      }
+    }
+  },
+  "summary": {
+    "qwen2.5-coder-1.5b": {
+      "average_score": 0.7541666666666667,
+      "n": 28
+    },
+    "qwen3-4b": {
+      "average_score": 0.5488095238095239,
+      "n": 28
+    },
+    "qwen2.5-coder-3b": {
+      "average_score": 0.8053571428571429,
+      "n": 28
+    },
+    "qwen2.5-coder-7b": {
+      "average_score": 0.8214285714285714,
+      "n": 28
+    }
+  }
+}

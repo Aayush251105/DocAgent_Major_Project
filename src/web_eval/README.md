@@ -14,7 +14,7 @@ The system provides an intuitive web interface for configuring evaluation settin
 
 ## Features
 
-- **Configuration Interface**: User-friendly setup for LLM API (OpenAI or Claude) and repository path
+- **Configuration Interface**: User-friendly setup for a local Ollama model and repository path
 - **API Connection Testing**: Verify API credentials before running evaluations
 - **Automated Completeness Evaluation**: Scan all Python files in a repository to check for required docstring components
 - **Interactive Results Dashboard**: View completeness scores for all classes and functions with detailed breakdowns
@@ -56,5 +56,4 @@ The system follows a Model-View-Controller architecture:
 The application integrates with two key external components:
 
 1. **DocAgent Evaluator Modules**: Core evaluation logic for assessing docstring quality
-2. **LLM APIs**: OpenAI or Anthropic Claude for helpfulness evaluation
-
+2. **Local LLM**: Ollama running locally (default endpoint: `http://localhost:11434/v1/`)

@@ -1,76 +1,64 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates
 def inner_function():
     """
-    Returns a greeting message from an inner function.
+    Summary:
+    Returns a greeting message from the inner function.
 
-    This function is designed to return a simple greeting message, which can be used in nested or internal function calls to verify execution flow or for debugging purposes. It is typically used in development environments where confirming the execution of specific code paths is necessary.
+    Description:
+    This function is an inner function that returns a greeting message.
 
     Returns:
-        str: A greeting message stating 'Hello from inner function!'
-
-    Example:
-        >>> message = inner_function()
-        >>> print(message)
-        'Hello from inner function!'
+    A string containing the greeting message from the inner function.
     """
     return 'Hello from inner function!'
 
 def get_random_quote():
     """
-    Fetches a predefined inspirational quote.
+    Summary:
+    Returns a random motivational quote.
 
-    This function is designed to provide users with a motivational quote, which can be used in applications that aim to inspire or uplift users. It is particularly useful in scenarios where a quick, positive message is needed to enhance user experience.
+    Description:
+    This function fetches and returns a random motivational quote for the user.
 
     Returns:
-        str: A quote string stating 'The best way to predict the future is to create it.'
-
-    Example:
-        >>> quote = get_random_quote()
-        >>> print(quote)
-        'The best way to predict the future is to create it.'
+    A string containing a random motivational quote.
     """
     return 'The best way to predict the future is to create it.'
 
 def generate_timestamp():
     """
-    Generates and returns a static timestamp.
+    Summary:
+    Returns a fixed timestamp.
 
-    This function provides a hardcoded timestamp string, which can be used in scenarios where a consistent and predictable timestamp is required for testing or logging purposes. It fits into workflows where a fixed date and time representation is needed without relying on the current system time.
+    Description:
+    This function returns a fixed timestamp string '2023-05-15 14:30:22'.
 
     Returns:
-        str: A string representing the static timestamp '2023-05-15 14:30:22'.
+    A string representing the timestamp '2023-05-15 14:30:22'.
     """
     return '2023-05-15 14:30:22'
 
 def get_system_status():
     """
-    Provides a static message indicating the operational status of systems.
+    Summary:
+    Returns the current status of the system.
 
-    This function is used to retrieve a fixed status message that confirms all systems are functioning correctly. It is useful in monitoring dashboards or status pages where a quick confirmation of system health is required.
+    Description:
+    This function checks the operational status of the system and returns a message indicating whether all systems are operational.
 
     Returns:
-        str: A status message stating 'All systems operational.'
-
-    Example:
-        >>> status = get_system_status()
-        >>> print(status)
-        'All systems operational'
+    A string indicating the current status of the system.
     """
     return 'All systems operational'
 
 def fetch_user_message():
-    '''
-    """Fetches a predefined user message indicating notifications.
+    """
+    Summary:
+    Returns a welcome message with notification count.
 
-        This function is used to retrieve a static message that informs the user about the number of notifications they have. It is typically used in scenarios where a quick status update is needed for user engagement.
+    Description:
+    This function fetches and returns a user's welcome message along with the number of notifications they have.
 
-        Returns:
-            str: A message string stating 'Welcome back! You have 3 notifications.'
-
-        Example:
-            >>> message = fetch_user_message()
-            >>> print(message)
-            'Welcome back! You have 3 notifications.'
-        """
-    '''
+    Returns:
+    A string containing the welcome message and notification count.
+    """
     return 'Welcome back! You have 3 notifications.'

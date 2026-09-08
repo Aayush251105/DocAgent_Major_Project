@@ -1,24 +1,13 @@
 class HelperClass:
     """
-    Represents a utility for managing and processing data.
+    Summary:
+    Provides methods for data processing and manipulation.
 
-    The `HelperClass` is designed to facilitate data processing tasks by leveraging the `DataProcessor` class. It serves as an intermediary that manages the workflow of data processing, making it easier to handle data updates and retrievals within a system. This class is particularly useful in scenarios where data needs to be processed and accessed in a structured manner.
-
-    The `HelperClass` fits into the larger system architecture as a component that coordinates data processing tasks. It achieves its purpose by using the `DataProcessor` to perform the actual data processing and then managing the processed data internally.
-
-    Example:
-        # Initialize the HelperClass
-        helper = HelperClass()
-
-        # Process data using the helper
-        helper.process_data()
-
-        # Retrieve the processed data result
-        result = helper.get_result()
-        print(result)  # Output: '[1, 2, 3]'
+    Description:
+    This class offers methods to process data, handle internal operations, and retrieve data in various formats.
 
     Attributes:
-        data (list): Stores the processed data, initially an empty list.
+    - data (list): A list to store processed data.
     """
 
     def __init__(self):
@@ -26,92 +15,79 @@ class HelperClass:
 
     def process_data(self):
         """
-        Processes and updates the internal data.
+        Summary:
+        Processes data and handles internal operations.
 
-        This method orchestrates the data processing workflow by invoking the `DataProcessor.process()` method to perform the main data processing task. It then calls `_internal_process()` to finalize the processing and update the internal `data` attribute. Use this method when you need to refresh or initialize the data within the `HelperClass` instance.
+        Description:
+        This method processes data using the `DataProcessor.process()` method and then calls the `_internal_process()` method to handle any internal operations.
+
+        Args:
+        None
 
         Returns:
-            None: This method updates the internal state and does not return a value.
+        None
         """
         self.data = DataProcessor.process()
         self._internal_process()
 
     def _internal_process(self):
         """
-        Finalizes the data processing and returns the processed data.
+        Summary:
+        Returns the data stored in the instance.
 
-        This method is a private method within the `HelperClass` that completes the data processing workflow. It is called after the main data processing is done by the `DataProcessor.process()` method. This method's primary role is to finalize any additional processing steps required and return the processed data.
+        Description:
+        This method returns the data that is stored in the instance's `data` attribute.
 
         Returns:
-            list: The processed data.
+        The data stored in the instance's `data` attribute.
         """
         return self.data
 
     def get_result(self):
         """
-        Retrieves the processed data as a string.
+        Summary:
+        Converts and returns the data as a string.
 
-        This method returns the processed data stored in the `data` attribute of the `HelperClass` instance as a string. It is used to access the final result of the data processing workflow.
+        Description:
+        This method converts the data stored in the instance's `data` attribute to a string and returns it.
 
         Returns:
-            str: The processed data converted to a string.
+        A string representation of the data stored in the instance's `data` attribute.
         """
         return str(self.data)
 
 class DataProcessor:
-    '''
-    """Handles basic data processing tasks within a system.
-
-        This class is designed to perform simple data processing operations, providing
-        utility methods that can be used in various scenarios where basic data manipulation
-        is required. It is particularly useful in contexts where a straightforward list of
-        integers is needed for further processing or testing.
-
-        The `DataProcessor` class fits into the larger system architecture as a utility
-        component, offering static and internal methods to handle specific processing tasks.
-        It achieves its purpose by providing a static method for general use and an internal
-        method for class-specific operations.
-
-        Example:
-            # Initialize the DataProcessor class
-            processor = DataProcessor()
-
-            # Use the static method to process data
-            result = DataProcessor.process()
-            print(result)  # Output: [1, 2, 3]
-
-            # Use the internal method for internal processing
-            internal_result = processor._internal_process()
-            print(internal_result)  # Output: 'processed'
     """
-    '''
+    Summary:
+    Manages data processing operations.
+
+    Description:
+    This class provides methods for processing data and handling internal operations.
+    """
 
     @staticmethod
     def process():
-        '''
-        """Processes data and returns a list of integers.
-
-            This static method is designed to perform a basic data processing task
-            and return a predefined list of integers. It can be used whenever a simple
-            list of integers is required for further operations or testing purposes.
-
-            Returns:
-                list of int: A list containing the integers [1, 2, 3].
         """
-        '''
+        Summary:
+        Returns a list of integers.
+
+        Description:
+        This function processes data and returns a list containing the integers 1, 2, and 3.
+
+        Returns:
+        A list of integers.
+        """
         return [1, 2, 3]
 
     def _internal_process(self):
-        '''
-        """Processes internal data and returns a status message.
+        """
+        Summary:
+        Indicates that the internal process has been completed.
 
-            This method is used internally within the `DataProcessor` class to perform
-            specific data processing tasks that are not exposed publicly. It is typically
-            called by other methods within the class to handle intermediate processing
-            steps.
+        Description:
+        This method is an internal method that signifies the completion of a process and returns a confirmation message.
 
-            Returns:
-                str: A string indicating the processing status, specifically 'processed'.
-            """
-        '''
+        Returns:
+        A string indicating that the internal process has been completed.
+        """
         return 'processed'

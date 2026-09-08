@@ -1,0 +1,38 @@
+{
+  "qwen2.5-coder-1.5b vs qwen3-4b": {
+    "A_wins": 15,
+    "B_wins": 21,
+    "ties": 20,
+    "total": 56
+  },
+  "qwen2.5-coder-1.5b vs qwen2.5-coder-3b": {
+    "A_wins": 3,
+    "B_wins": 2,
+    "ties": 51,
+    "total": 56
+  },
+  "qwen2.5-coder-1.5b vs qwen2.5-coder-7b": {
+    "A_wins": 5,
+    "B_wins": 13,
+    "ties": 38,
+    "total": 56
+  },
+  "qwen3-4b vs qwen2.5-coder-3b": {
+    "A_wins": 5,
+    "B_wins": 19,
+    "ties": 32,
+    "total": 56
+  },
+  "qwen3-4b vs qwen2.5-coder-7b": {
+    "A_wins": 1,
+    "B_wins": 17,
+    "ties": 38,
+    "total": 56
+  },
+  "qwen2.5-coder-3b vs qwen2.5-coder-7b": {
+    "A_wins": 0,
+    "B_wins": 0,
+    "ties": 56,
+    "total": 56
+  }
+}

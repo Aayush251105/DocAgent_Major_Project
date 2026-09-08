@@ -1,0 +1,34 @@
+[
+  {
+    "model": "qwen2.5-coder-7b",
+    "wins": 30,
+    "losses": 6,
+    "ties": 132,
+    "total": 168,
+    "win_rate": 0.1786
+  },
+  {
+    "model": "qwen3-4b",
+    "wins": 27,
+    "losses": 51,
+    "ties": 90,
+    "total": 168,
+    "win_rate": 0.1607
+  },
+  {
+    "model": "qwen2.5-coder-1.5b",
+    "wins": 23,
+    "losses": 36,
+    "ties": 109,
+    "total": 168,
+    "win_rate": 0.1369
+  },
+  {
+    "model": "qwen2.5-coder-3b",
+    "wins": 21,
+    "losses": 8,
+    "ties": 139,
+    "total": 168,
+    "win_rate": 0.125
+  }
+]

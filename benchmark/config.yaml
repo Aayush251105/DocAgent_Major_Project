@@ -7,20 +7,17 @@
 # when judging A vs B, the judges are C, D, E.
 
 models:
-  - name: "model_a"          # human-readable label (used as folder name and in report)
-    ollama_model: "qwen2.5-coder:7b"   # Ollama model tag
+  - name: "qwen2.5-coder-1.5b"   # human-readable label (used as folder name and in report)
+    ollama_model: "qwen2.5-coder:1.5b"  # Ollama model tag
 
-  - name: "model_b"
-    ollama_model: "llama3.1:8b"
+  - name: "qwen3-4b"
+    ollama_model: "qwen3:4b"
 
-  - name: "model_c"
-    ollama_model: "deepseek-coder:6.7b"
+  - name: "qwen2.5-coder-3b"
+    ollama_model: "qwen2.5-coder:3b"
 
-  - name: "model_d"
-    ollama_model: "codestral:7b"
-
-  - name: "model_e"
-    ollama_model: "starcoder2:7b"
+  - name: "qwen2.5-coder-7b"
+    ollama_model: "qwen2.5-coder:7b"
 
 # Ollama endpoint
 ollama:
