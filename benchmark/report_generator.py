@@ -29,6 +29,23 @@ def load_config(config_path: str = "benchmark/config.yaml") -> Dict[str, Any]:
         return yaml.safe_load(f)
 
 
+def _load_timing(config: Dict[str, Any]) -> Dict[str, str]:
+    """
+    Read .benchmark_timing.json from each model's raw_generations folder.
+    Returns a dict of model_name -> human-readable duration string.
+    """
+    raw_root = PROJECT_ROOT / config["paths"]["raw_generations"]
+    timings: Dict[str, str] = {}
+    for m in config["models"]:
+        timing_file = raw_root / m["name"] / ".benchmark_timing.json"
+        if timing_file.exists():
+            data = json.loads(timing_file.read_text(encoding="utf-8"))
+            timings[m["name"]] = data.get("generation_time_human", "—")
+        else:
+            timings[m["name"]] = "—"
+    return timings
+
+
 def _fmt(val: Optional[float], decimals: int = 3) -> str:
     if val is None:
         return "—"
@@ -56,6 +73,8 @@ def generate_report(
         win_rate_ranking,
     )
 
+    timings = _load_timing(config)
+
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
     lines = []
 
@@ -69,7 +88,8 @@ def generate_report(
     ]
     ollama_map = {m["name"]: m["ollama_model"] for m in config["models"]}
     for m in model_names:
-        lines.append(f"- **{m}** (`{ollama_map.get(m, m)}`)")
+        t = timings.get(m, "—")
+        lines.append(f"- **{m}** (`{ollama_map.get(m, m)}`) — generation time: {t}")
     lines += [
         "",
         "> **Judge protocol:** Leave-one-out. "
@@ -98,9 +118,26 @@ def generate_report(
         )
     lines += ["", "---", ""]
 
-    # ── 2. Pairwise Head-to-Head Matrix ─────────────────────────────────────
+    # ── 2. Generation Time ───────────────────────────────────────────────────
     lines += [
-        "## 2. Pairwise Head-to-Head Results",
+        "## 2. Docstring Generation Time",
+        "",
+        "Wall-clock time for DocAgent to generate docstrings across the entire "
+        "test repository with each model. Measured end-to-end including reader, "
+        "searcher, writer, and verifier passes.",
+        "",
+        "| Model | Ollama Tag | Generation Time |",
+        "| ----- | ---------- | --------------- |",
+    ]
+    for m in model_names:
+        tag = ollama_map.get(m, m)
+        t = timings.get(m, "—")
+        lines.append(f"| {m} | `{tag}` | {t} |")
+    lines += ["", "---", ""]
+
+    # ── 3. Pairwise Head-to-Head Matrix ─────────────────────────────────────
+    lines += [
+        "## 3. Pairwise Head-to-Head Results",
         "",
         "Each cell shows `W / L / T` (wins, losses, ties) for the **row model** against the **column model**.",
         "",
@@ -131,19 +168,19 @@ def generate_report(
         lines.append("| " + " | ".join(cells) + " |")
 
     lines += ["", "---", ""]
-
-    # ── 3. Overall Summary Table ─────────────────────────────────────────────
     lines += [
-        "## 3. Full Metrics Summary",
+        "## 4. Full Metrics Summary",
         "",
         "Completeness is AST-based (0–1). All other scores are LLM-judged (1–5, averaged across leave-one-out judges).",
         "",
-        "| Model | Complete. | Summary | Desc. | Params | Correct. | Clarity | Concise. | LLM Avg | Win Rate |",
-        "| ----- | --------- | ------- | ----- | ------ | -------- | ------- | -------- | ------- | -------- |",
+        "| Model | Gen. Time | Complete. | Summary | Desc. | Params | Correct. | Clarity | Concise. | LLM Avg | Win Rate |",
+        "| ----- | --------- | --------- | ------- | ----- | ------ | -------- | ------- | -------- | ------- | -------- |",
     ]
     for row in summary_rows:
+        t = timings.get(row["model"], "—")
         lines.append(
             f"| {row['model']} "
+            f"| {t} "
             f"| {_fmt(row['completeness'])} "
             f"| {_fmt(row['summary_score'])} "
             f"| {_fmt(row['description_score'])} "
@@ -156,9 +193,9 @@ def generate_report(
         )
     lines += ["", "---", ""]
 
-    # ── 4. Objective Completeness Detail ────────────────────────────────────
+    # ── 5. Objective Completeness Detail ────────────────────────────────────
     lines += [
-        "## 4. Structural Completeness (AST-based)",
+        "## 5. Structural Completeness (AST-based)",
         "",
         "Score = fraction of required docstring sections present (0–1). "
         "Required sections are determined from the code itself (e.g. `Args` only "
@@ -171,9 +208,9 @@ def generate_report(
         lines.append(f"| {row['model']} | {_fmt(row['completeness'])} |")
     lines += ["", "---", ""]
 
-    # ── 5. Point-wise LLM Scores Detail ─────────────────────────────────────
+    # ── 6. Point-wise LLM Scores Detail ─────────────────────────────────────
     lines += [
-        "## 5. Point-wise LLM Judge Scores",
+        "## 6. Point-wise LLM Judge Scores",
         "",
         "Each score is 1–5, averaged across all leave-one-out judges and sampled components.",
         "",
@@ -192,10 +229,10 @@ def generate_report(
         )
     lines += ["", "---", ""]
 
-    # ── 6. Methodology ───────────────────────────────────────────────────────
+    # ── 7. Methodology ───────────────────────────────────────────────────────
     sampling = config["sampling"]
     lines += [
-        "## 6. Methodology",
+        "## 7. Methodology",
         "",
         f"- **Components sampled per evaluation:** {sampling['n_samples']}",
         f"- **Random seed:** {sampling['seed']}",

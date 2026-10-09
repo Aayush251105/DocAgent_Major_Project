@@ -28,10 +28,12 @@ Usage:
 """
 
 import argparse
+import json
 import shutil
 import subprocess
 import sys
 import tempfile
+import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -96,10 +98,10 @@ def copy_repo(source: Path, dest: Path, overwrite: bool) -> bool:
     return True
 
 
-def run_generation(model_name: str, repo_copy: Path, config_path: Path) -> bool:
+def run_generation(model_name: str, repo_copy: Path, config_path: Path) -> tuple[bool, float]:
     """
     Invoke generate_docstrings.py as a subprocess against the repo copy.
-    Returns True on success.
+    Returns (success, elapsed_seconds).
     """
     cmd = [
         sys.executable,
@@ -112,8 +114,10 @@ def run_generation(model_name: str, repo_copy: Path, config_path: Path) -> bool:
     print(f"\n  Running DocAgent for '{model_name}'...")
     print(f"  Command: {' '.join(cmd)}\n")
 
+    start = time.time()
     result = subprocess.run(cmd, cwd=str(PROJECT_ROOT))
-    return result.returncode == 0
+    elapsed = time.time() - start
+    return result.returncode == 0, elapsed
 
 
 def generate_for_model(
@@ -150,18 +154,39 @@ def generate_for_model(
         return True  # Already exists, not an error
 
     # 3. Run generation
-    success = run_generation(model_name, dest, model_config_path)
+    success, elapsed = run_generation(model_name, dest, model_config_path)
 
+    # 4. Persist timing alongside the generated repo
+    timing_path = dest / ".benchmark_timing.json"
     if success:
-        print(f"\n✓  '{model_name}' done — output at: {dest}")
+        timing_data = {
+            "model": model_name,
+            "ollama_model": model_entry["ollama_model"],
+            "generation_time_seconds": round(elapsed, 2),
+            "generation_time_human": _fmt_duration(elapsed),
+        }
+        timing_path.write_text(json.dumps(timing_data, indent=2), encoding="utf-8")
+        print(f"\n✓  '{model_name}' done in {_fmt_duration(elapsed)} — output at: {dest}")
     else:
-        print(f"\n✗  '{model_name}' generation FAILED. Check output above.")
+        print(f"\n✗  '{model_name}' generation FAILED after {_fmt_duration(elapsed)}. Check output above.")
         # Remove the partial output so a re-run starts clean
         if dest.exists():
             shutil.rmtree(dest)
             print(f"  Removed incomplete output folder: {dest}")
 
     return success
+
+
+def _fmt_duration(seconds: float) -> str:
+    """Format seconds into a human-readable string, e.g. '2m 34s'."""
+    seconds = int(seconds)
+    if seconds < 60:
+        return f"{seconds}s"
+    m, s = divmod(seconds, 60)
+    if m < 60:
+        return f"{m}m {s:02d}s"
+    h, m = divmod(m, 60)
+    return f"{h}h {m:02d}m {s:02d}s"
 
 
 def main():
@@ -214,15 +239,24 @@ def main():
         model_names = [m["name"] for m in config["models"]]
         print(f"\nGenerating for all models: {model_names}")
         results = {}
+        timings = {}
         for name in model_names:
             results[name] = generate_for_model(name, config, source_repo, args.overwrite)
+            # Read timing written by generate_for_model
+            timing_file = (
+                PROJECT_ROOT / config["paths"]["raw_generations"] / name / ".benchmark_timing.json"
+            )
+            if timing_file.exists():
+                import json as _j
+                timings[name] = _j.loads(timing_file.read_text())
 
         print(f"\n{'='*60}")
         print("GENERATION SUMMARY")
         print("=" * 60)
         for name, ok in results.items():
             status = "✓ done" if ok else "✗ failed"
-            print(f"  {name:<20} {status}")
+            t = timings.get(name, {}).get("generation_time_human", "—")
+            print(f"  {name:<25} {status:<10}  {t}")
 
         if not all(results.values()):
             sys.exit(1)
