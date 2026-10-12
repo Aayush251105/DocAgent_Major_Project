@@ -1,0 +1,6 @@
+{
+  "model": "llama3.1-8b",
+  "ollama_model": "llama3.1:8b",
+  "generation_time_seconds": 778.04,
+  "generation_time_human": "12m 58s"
+}

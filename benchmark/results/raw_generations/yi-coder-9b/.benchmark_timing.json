@@ -1,0 +1,6 @@
+{
+  "model": "yi-coder-9b",
+  "ollama_model": "yi-coder:9b",
+  "generation_time_seconds": 858.64,
+  "generation_time_human": "14m 18s"
+}

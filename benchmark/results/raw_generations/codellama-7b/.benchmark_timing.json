@@ -1,0 +1,6 @@
+{
+  "model": "codellama-7b",
+  "ollama_model": "codellama:7b",
+  "generation_time_seconds": 1070.97,
+  "generation_time_human": "17m 50s"
+}
