@@ -31,10 +31,10 @@ function loadDefaultConfig() {
 function applyConfigToForm(config) {
     // Set LLM configuration
     if (config.llm) {
-        $('#llm-type').val(config.llm.type || 'claude');
-        $('#llm-api-key').val(config.llm.api_key || '');
-        $('#llm-api-base').val(config.llm.api_base || '');
-        $('#llm-model').val(config.llm.model || 'claude-3-5-haiku-latest');
+        $('#llm-type').val(config.llm.type || 'ollama');
+        $('#llm-api-key').val(config.llm.api_key || 'ollama');
+        $('#llm-api-base').val(config.llm.api_base || 'http://localhost:11434/v1/');
+        $('#llm-model').val(config.llm.model || 'qwen2.5-coder:7b');
         $('#llm-temperature').val(config.llm.temperature || 0.1);
         $('#llm-max-tokens').val(config.llm.max_output_tokens || config.llm.max_tokens || 4096);
         $('#llm-max-input-tokens').val(config.llm.max_input_tokens || 10000);

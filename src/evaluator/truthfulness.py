@@ -108,12 +108,16 @@ def load_dependency_graph(repo_name: str) -> Dict[str, Any]:
         repo_name: Repository name
         
     Returns:
-        Dependency graph data
+        Dependency graph data (flat dict of component_id → component_data)
     """
     file_path = f"output/dependency_graphs/{repo_name}_dependency_graph.json"
     try:
         with open(file_path, 'r') as f:
-            return json.load(f)
+            data = json.load(f)
+        # V1 format wraps components under a "components" key
+        if "components" in data and isinstance(data["components"], dict):
+            return data["components"]
+        return data
     except FileNotFoundError:
         print(f"Dependency graph not found: {file_path}")
         return {}

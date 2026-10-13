@@ -22,9 +22,7 @@ Requires-Dist: urllib3>=2.3.0
 Requires-Dist: astor>=0.8.1
 Requires-Dist: code2flow>=2.5.1
 Requires-Dist: pydeps>=3.0.0
-Requires-Dist: anthropic>=0.45.0
 Requires-Dist: openai>=1.60.1
-Requires-Dist: langchain-anthropic>=0.3.4
 Requires-Dist: langchain-openai>=0.3.2
 Requires-Dist: langchain-core>=0.3.31
 Requires-Dist: langgraph>=0.2.67
@@ -266,5 +264,4 @@ If you prefer to use a local LLM (e.g., one hosted via Hugging Face), you can co
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 

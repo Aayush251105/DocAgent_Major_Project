@@ -1,0 +1,6 @@
+{
+  "model": "qwen3-8b",
+  "ollama_model": "qwen3:8b",
+  "generation_time_seconds": 1950.2,
+  "generation_time_human": "32m 30s"
+}

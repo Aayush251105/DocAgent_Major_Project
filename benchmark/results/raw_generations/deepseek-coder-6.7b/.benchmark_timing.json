@@ -1,0 +1,6 @@
+{
+  "model": "deepseek-coder-6.7b",
+  "ollama_model": "deepseek-coder:6.7b",
+  "generation_time_seconds": 1730.47,
+  "generation_time_human": "28m 50s"
+}

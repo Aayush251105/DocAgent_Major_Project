@@ -1,0 +1,66 @@
+[
+  {
+    "model": "codellama-7b",
+    "wins": 497,
+    "losses": 110,
+    "ties": 569,
+    "total": 1176,
+    "win_rate": 0.4226
+  },
+  {
+    "model": "yi-coder-9b",
+    "wins": 479,
+    "losses": 56,
+    "ties": 641,
+    "total": 1176,
+    "win_rate": 0.4073
+  },
+  {
+    "model": "deepseek-coder-6.7b",
+    "wins": 226,
+    "losses": 233,
+    "ties": 717,
+    "total": 1176,
+    "win_rate": 0.1922
+  },
+  {
+    "model": "qwen2.5-coder-7b",
+    "wins": 212,
+    "losses": 243,
+    "ties": 721,
+    "total": 1176,
+    "win_rate": 0.1803
+  },
+  {
+    "model": "mistral-7b",
+    "wins": 208,
+    "losses": 259,
+    "ties": 709,
+    "total": 1176,
+    "win_rate": 0.1769
+  },
+  {
+    "model": "qwen3-8b",
+    "wins": 137,
+    "losses": 335,
+    "ties": 704,
+    "total": 1176,
+    "win_rate": 0.1165
+  },
+  {
+    "model": "llama3.1-8b",
+    "wins": 113,
+    "losses": 355,
+    "ties": 708,
+    "total": 1176,
+    "win_rate": 0.0961
+  },
+  {
+    "model": "codegemma-7b",
+    "wins": 102,
+    "losses": 383,
+    "ties": 691,
+    "total": 1176,
+    "win_rate": 0.0867
+  }
+]

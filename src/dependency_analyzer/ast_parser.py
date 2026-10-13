@@ -4,6 +4,10 @@ AST-based Python code parser that extracts dependency information between code c
 
 This module identifies imports and references between Python code components (functions, classes, methods)
 and builds a dependency graph for topological sorting.
+
+V1 Enhancement: Also extracts typed relationships (calls, imports, inherits, instantiates, contains)
+and enriched component metadata (signature, parameters, return_type, containing_class) to support
+downstream Retrieval, Mapping, and Verification agents.
 """
 
 import ast
@@ -27,12 +31,79 @@ STANDARD_MODULES = {
 }
 EXCLUDED_NAMES = {'self', 'cls'}
 
+# ---------------------------------------------------------------------------
+# Typed relationship representation
+# ---------------------------------------------------------------------------
+
+# Valid relationship types derived purely from static analysis:
+#
+#   calls        – A (function or method) directly calls B (function or method).
+#                  B must be a known component in this repository.
+#
+#   imports      – A's AST body references a symbol that was imported into A's
+#                  module via a 'from X import Y' statement, AND that symbol
+#                  resolves to a known component B.
+#                  This is a per-component usage fact, not a per-file fact:
+#                  an imports edge from A to B means A's own code references
+#                  the imported name B, not merely that A's file imports it.
+#                  (alias imports and 'import X' bare-module imports are not
+#                  resolved in V1 and produce no edge.)
+#
+#   inherits     – A (class) directly inherits from B (class).
+#                  Only direct base-class relationships are recorded; transitive
+#                  inheritance is not stored in V1.
+#
+#   instantiates – A (function or method) creates an instance of B (class)
+#                  via a direct call B() where B is a known class component.
+#
+#   contains     – A (class) structurally contains B (method).
+#                  Derived from the containing_class field set on every method
+#                  during parsing.  Includes __init__, unlike depends_on which
+#                  intentionally excludes __init__ for documentation-ordering
+#                  purposes.
+RELATIONSHIP_TYPES = frozenset({"calls", "imports", "inherits", "instantiates", "contains"})
+
+
+@dataclass
+class TypedRelationship:
+    """
+    Represents a directional, typed relationship between two code components.
+
+    The canonical form is (source, target, type) where:
+      - source is the component ID of the component initiating the relationship
+      - target is the component ID of the component being referenced
+      - rel_type is one of: calls, imports, inherits, instantiates, contains
+    """
+    source: str    # component ID of the originating component
+    target: str    # component ID of the referenced component
+    rel_type: str  # one of RELATIONSHIP_TYPES
+
+    def to_dict(self) -> Dict[str, str]:
+        """Serialize to a JSON-compatible dictionary."""
+        return {"source": self.source, "target": self.target, "type": self.rel_type}
+
+    @staticmethod
+    def from_dict(data: Dict[str, str]) -> "TypedRelationship":
+        """Deserialize from a dictionary."""
+        return TypedRelationship(
+            source=data["source"],
+            target=data["target"],
+            rel_type=data["type"],
+        )
+
 @dataclass
 class CodeComponent:
     """
     Represents a single code component (function, class, or method) in a Python codebase.
-    
+
     Stores the component's identifier, AST node, dependencies, and other metadata.
+
+    V1 Enhancement fields (all optional, derived from the same AST traversal):
+      - signature: text signature of a function/method, e.g. "process_data(self, x: int)"
+      - parameters: list of parameter dicts with keys 'name', 'annotation', 'default'
+      - return_type: return annotation text, or None
+      - containing_class: component ID of the enclosing class (methods only)
+      - relationships: typed relationships originating from this component
     """
     # Unique identifier for the component, format: module_path.ClassName.method_name
     id: str
@@ -49,7 +120,7 @@ class CodeComponent:
     # Relative path within the repo
     relative_path: str
     
-    # Set of component IDs this component depends on
+    # Set of component IDs this component depends on (unchanged — used for ordering)
     depends_on: Set[str] = field(default_factory=set)
     
     # Original source code of the component
@@ -65,6 +136,27 @@ class CodeComponent:
     # Content of the docstring if it exists, empty string otherwise
     docstring: str = ""
 
+    # -----------------------------------------------------------------------
+    # V1 Enhancement — new optional metadata fields
+    # -----------------------------------------------------------------------
+
+    # Text signature of the function/method node (None for classes)
+    signature: Optional[str] = None
+
+    # Ordered list of parameters; each entry is a dict:
+    #   { "name": str, "annotation": str|None, "default": str|None }
+    # Empty list for classes or functions with no parameters (other than self/cls).
+    parameters: List[Dict[str, Any]] = field(default_factory=list)
+
+    # Return annotation text (None when not annotated or when component is a class)
+    return_type: Optional[str] = None
+
+    # Component ID of the immediately enclosing class; None for top-level functions/classes
+    containing_class: Optional[str] = None
+
+    # Typed relationships originating from this component (populated after pass 2/3)
+    relationships: List[TypedRelationship] = field(default_factory=list)
+
     def to_dict(self) -> Dict[str, Any]:
         """Convert this component to a dictionary representation for JSON serialization."""
         return {
@@ -73,10 +165,17 @@ class CodeComponent:
             'file_path': self.file_path,
             'relative_path': self.relative_path,
             'depends_on': list(self.depends_on),
+            'source_code': self.source_code,
             'start_line': self.start_line,
             'end_line': self.end_line,
             'has_docstring': self.has_docstring,
-            'docstring': self.docstring
+            'docstring': self.docstring,
+            # V1 enhancement fields
+            'signature': self.signature,
+            'parameters': self.parameters,
+            'return_type': self.return_type,
+            'containing_class': self.containing_class,
+            'relationships': [r.to_dict() for r in self.relationships],
         }
 
     @staticmethod
@@ -89,10 +188,20 @@ class CodeComponent:
             file_path=data['file_path'],
             relative_path=data['relative_path'],
             depends_on=set(data.get('depends_on', [])),
+            source_code=data.get('source_code'),
             start_line=data.get('start_line', 0),
             end_line=data.get('end_line', 0),
             has_docstring=data.get('has_docstring', False),
-            docstring=data.get('docstring', "")
+            docstring=data.get('docstring', ""),
+            # V1 enhancement fields
+            signature=data.get('signature'),
+            parameters=data.get('parameters', []),
+            return_type=data.get('return_type'),
+            containing_class=data.get('containing_class'),
+            relationships=[
+                TypedRelationship.from_dict(r)
+                for r in data.get('relationships', [])
+            ],
         )
         return component
 
@@ -314,6 +423,154 @@ def add_parent_to_nodes(tree: ast.AST) -> None:
             child.parent = node
 
 
+# ---------------------------------------------------------------------------
+# V1 Enhancement — AST-based metadata helpers
+# ---------------------------------------------------------------------------
+
+def _annotation_to_str(node: Optional[ast.expr]) -> Optional[str]:
+    """
+    Convert an AST annotation node to a human-readable string.
+
+    Uses ast.unparse when available (Python ≥ 3.9); falls back to a best-effort
+    walk for older versions.
+
+    Args:
+        node: An ast.expr annotation node, or None.
+
+    Returns:
+        A string representation of the annotation, or None if node is None.
+    """
+    if node is None:
+        return None
+    try:
+        if hasattr(ast, "unparse"):
+            return ast.unparse(node)
+        # Fallback: handle the most common annotation shapes
+        if isinstance(node, ast.Name):
+            return node.id
+        if isinstance(node, ast.Attribute):
+            parts = []
+            cur = node
+            while isinstance(cur, ast.Attribute):
+                parts.append(cur.attr)
+                cur = cur.value
+            if isinstance(cur, ast.Name):
+                parts.append(cur.id)
+            return ".".join(reversed(parts))
+        if isinstance(node, ast.Subscript):
+            val = _annotation_to_str(node.value)
+            slc = _annotation_to_str(node.slice)
+            return f"{val}[{slc}]"
+        if isinstance(node, ast.Constant):
+            return repr(node.value)
+        # Unknown: return empty string rather than crash
+        return ""
+    except Exception:
+        return None
+
+
+def _extract_function_metadata(
+    node: Union[ast.FunctionDef, ast.AsyncFunctionDef],
+) -> Tuple[str, List[Dict[str, Any]], Optional[str]]:
+    """
+    Extract signature text, parameter list, and return annotation from a function node.
+
+    The 'self' and 'cls' parameters are included in the signature string but
+    excluded from the returned parameters list (they carry no useful information
+    for downstream consumers).
+
+    Args:
+        node: An ast.FunctionDef or ast.AsyncFunctionDef node.
+
+    Returns:
+        A 3-tuple: (signature_str, parameters_list, return_type_str)
+        where parameters_list entries are:
+            {"name": str, "annotation": str|None, "default": str|None}
+    """
+    args = node.args
+
+    # Build default mapping: defaults align to the LAST n positional args
+    all_args = args.args + args.posonlyargs
+    n_defaults = len(args.defaults)
+    # Position of the first argument that has a default
+    default_start = len(all_args) - n_defaults
+    default_map: Dict[str, Optional[str]] = {}
+    for idx, arg in enumerate(all_args):
+        if idx >= default_start:
+            default_node = args.defaults[idx - default_start]
+            try:
+                default_map[arg.arg] = ast.unparse(default_node) if hasattr(ast, "unparse") else None
+            except Exception:
+                default_map[arg.arg] = None
+        else:
+            default_map[arg.arg] = None
+
+    # kwonly defaults: parallel list with None for unset
+    for arg, default_node in zip(args.kwonlyargs, args.kw_defaults):
+        if default_node is not None:
+            try:
+                default_map[arg.arg] = ast.unparse(default_node) if hasattr(ast, "unparse") else None
+            except Exception:
+                default_map[arg.arg] = None
+        else:
+            default_map[arg.arg] = None
+
+    parameters: List[Dict[str, Any]] = []
+    sig_parts: List[str] = []
+
+    def _arg_sig(a: ast.arg) -> str:
+        ann = _annotation_to_str(a.annotation)
+        part = a.arg
+        if ann:
+            part = f"{a.arg}: {ann}"
+        dflt = default_map.get(a.arg)
+        if dflt is not None:
+            part = f"{part} = {dflt}"
+        return part
+
+    all_positional = args.posonlyargs + args.args
+    for a in all_positional:
+        sig_parts.append(_arg_sig(a))
+        if a.arg not in EXCLUDED_NAMES:
+            parameters.append({
+                "name": a.arg,
+                "annotation": _annotation_to_str(a.annotation),
+                "default": default_map.get(a.arg),
+            })
+
+    if args.vararg:
+        sig_parts.append(f"*{_arg_sig(args.vararg)}")
+        parameters.append({
+            "name": f"*{args.vararg.arg}",
+            "annotation": _annotation_to_str(args.vararg.annotation),
+            "default": None,
+        })
+    elif args.kwonlyargs:
+        sig_parts.append("*")
+
+    for a in args.kwonlyargs:
+        sig_parts.append(_arg_sig(a))
+        parameters.append({
+            "name": a.arg,
+            "annotation": _annotation_to_str(a.annotation),
+            "default": default_map.get(a.arg),
+        })
+
+    if args.kwarg:
+        sig_parts.append(f"**{_arg_sig(args.kwarg)}")
+        parameters.append({
+            "name": f"**{args.kwarg.arg}",
+            "annotation": _annotation_to_str(args.kwarg.annotation),
+            "default": None,
+        })
+
+    return_type = _annotation_to_str(node.returns)
+    ret_str = f" -> {return_type}" if return_type else ""
+    signature = f"{node.name}({', '.join(sig_parts)}){ret_str}"
+
+    return signature, parameters, return_type
+
+
 class DependencyParser:
     """
     Parses Python code to build a dependency graph between code components.
@@ -352,6 +609,9 @@ class DependencyParser:
         
         # Third pass: add class dependencies on methods
         self._add_class_method_dependencies()
+
+        # Fourth pass (V1 Enhancement): extract typed relationships from the same AST info
+        self._extract_typed_relationships()
         
         logger.info(f"Found {len(self.components)} code components")
         return self.components
@@ -433,6 +693,9 @@ class DependencyParser:
                         # Extract docstring if it exists
                         method_docstring = self._get_docstring(source, item) if method_has_docstring else ""
                         
+                        # V1 Enhancement: extract function metadata
+                        sig, params, ret = _extract_function_metadata(item)
+
                         method_component = CodeComponent(
                             id=method_id,
                             node=item,
@@ -443,7 +706,12 @@ class DependencyParser:
                             start_line=item.lineno,
                             end_line=getattr(item, "end_lineno", item.lineno),
                             has_docstring=method_has_docstring,
-                            docstring=method_docstring
+                            docstring=method_docstring,
+                            # V1 Enhancement fields
+                            signature=sig,
+                            parameters=params,
+                            return_type=ret,
+                            containing_class=class_id,
                         )
                         
                         self.components[method_id] = method_component
@@ -463,6 +731,9 @@ class DependencyParser:
                     
                     # Extract docstring if it exists
                     docstring = self._get_docstring(source, node) if has_docstring else ""
+
+                    # V1 Enhancement: extract function metadata
+                    sig, params, ret = _extract_function_metadata(node)
                     
                     component = CodeComponent(
                         id=func_id,
@@ -474,7 +745,11 @@ class DependencyParser:
                         start_line=node.lineno,
                         end_line=getattr(node, "end_lineno", node.lineno),
                         has_docstring=has_docstring,
-                        docstring=docstring
+                        docstring=docstring,
+                        # V1 Enhancement fields
+                        signature=sig,
+                        parameters=params,
+                        return_type=ret,
                     )
                     
                     self.components[func_id] = component
@@ -591,6 +866,339 @@ class DependencyParser:
                 class_component = self.components[class_id]
                 for method_id in method_ids:
                     class_component.depends_on.add(method_id)
+
+    # ---------------------------------------------------------------------------
+    # V1 Enhancement — typed relationship extraction (pass 4)
+    # ---------------------------------------------------------------------------
+
+    def _extract_typed_relationships(self):
+        """
+        Fourth pass: populate each component's `relationships` list with typed
+        (source, target, rel_type) entries.
+
+        Relationship types extracted:
+          contains     – class → method (ALL methods including __init__), derived
+                         from the containing_class field set in pass 1.
+                         NOT derived from depends_on, which intentionally excludes
+                         __init__ for documentation-ordering purposes.
+          imports      – component references an imported symbol in its own AST body
+          inherits     – class → direct base class (when base is a known component)
+          calls        – function/method → called function/method
+          instantiates – function/method → class being instantiated via Call
+
+        The existing `depends_on` set is left unchanged — this pass only writes
+        to the new `relationships` field.
+        """
+        # --- Step 1: contains edges ---
+        # Derived from containing_class, which is set on every method during pass 1.
+        # This correctly includes __init__, unlike depends_on which excludes it.
+        # No depends_on data is used here.
+        for comp_id, component in self.components.items():
+            if component.component_type == "method" and component.containing_class is not None:
+                class_comp = self.components.get(component.containing_class)
+                if class_comp is not None:
+                    class_comp.relationships.append(
+                        TypedRelationship(
+                            source=component.containing_class,
+                            target=comp_id,
+                            rel_type="contains",
+                        )
+                    )
+
+        # --- Step 2: per-file AST re-traversal for imports, inherits, calls, instantiates ---
+        # Group components by file to avoid re-parsing each file more than once.
+        by_file: Dict[str, List[str]] = {}
+        for comp_id, component in self.components.items():
+            by_file.setdefault(component.file_path, []).append(comp_id)
+
+        for file_path, comp_ids in by_file.items():
+            try:
+                with open(file_path, "r", encoding="utf-8") as f:
+                    source = f.read()
+                tree = ast.parse(source)
+                add_parent_to_nodes(tree)
+
+                import_collector = ImportCollector()
+                import_collector.visit(tree)
+
+                module_path = self._file_to_module_path(
+                    os.path.relpath(file_path, self.repo_path)
+                )
+
+                for comp_id in comp_ids:
+                    component = self.components[comp_id]
+                    self._extract_relationships_for_component(
+                        component, tree, source, module_path,
+                        import_collector.imports, import_collector.from_imports
+                    )
+            except (SyntaxError, UnicodeDecodeError, OSError) as e:
+                logger.warning(f"Error extracting relationships from {file_path}: {e}")
+
+    def _extract_relationships_for_component(
+        self,
+        component: "CodeComponent",
+        tree: ast.AST,
+        source: str,
+        module_path: str,
+        imports: Set[str],
+        from_imports: Dict[str, List[str]],
+    ) -> None:
+        """
+        Populate `component.relationships` with imports, inherits, calls, and
+        instantiates edges for one component.
+
+        Args:
+            component: The CodeComponent to annotate.
+            tree: Full AST of the file containing this component.
+            source: Raw source text of the file.
+            module_path: Dotted module path of this file.
+            imports: Set of bare module names imported with 'import x'.
+            from_imports: Dict of module→[names] from 'from x import y'.
+        """
+        comp_id = component.id
+
+        # Locate the AST node for this component first (needed for all edges below)
+        comp_node = self._find_node_in_tree(tree, component)
+
+        # --- imports edges ---
+        # Only emit an "imports" edge when the imported name is actually referenced
+        # inside this specific component's AST subtree, so the edge is meaningful
+        # (not just "this file imports X" duplicated across every component in the file).
+        # For classes, scan the entire class body; for functions/methods, scan their node.
+        # For file-level imports that aren't used inside any component body, we skip them.
+        if comp_node is not None:
+            # Collect all Name nodes used inside this component
+            used_names: Set[str] = set()
+            for n in ast.walk(comp_node):
+                if isinstance(n, ast.Name):
+                    used_names.add(n.id)
+                elif isinstance(n, ast.Attribute):
+                    # Capture the root of attribute chains (e.g. module.func → 'module')
+                    cur = n
+                    while isinstance(cur, ast.Attribute):
+                        cur = cur.value
+                    if isinstance(cur, ast.Name):
+                        used_names.add(cur.id)
+
+            for mod, names in from_imports.items():
+                if mod in STANDARD_MODULES:
+                    continue
+                for name in names:
+                    candidate = f"{mod}.{name}"
+                    if (
+                        candidate in self.components
+                        and candidate != comp_id
+                        and name in used_names
+                        and not any(
+                            r.target == candidate and r.rel_type == "imports"
+                            for r in component.relationships
+                        )
+                    ):
+                        component.relationships.append(
+                            TypedRelationship(source=comp_id, target=candidate, rel_type="imports")
+                        )
+        if comp_node is None:
+            return
+
+        # --- inherits edges (classes only) ---
+        if component.component_type == "class" and isinstance(comp_node, ast.ClassDef):
+            for base in comp_node.bases:
+                base_id = self._resolve_name_to_component_id(base, module_path, imports, from_imports)
+                if base_id and base_id in self.components and base_id != comp_id:
+                    component.relationships.append(
+                        TypedRelationship(source=comp_id, target=base_id, rel_type="inherits")
+                    )
+
+        # --- calls and instantiates edges (functions and methods) ---
+        if component.component_type in ("function", "method"):
+            # Walk Call nodes inside the component body
+            for node in ast.walk(comp_node):
+                if not isinstance(node, ast.Call):
+                    continue
+
+                callee_id = self._resolve_call_to_component_id(
+                    node, module_path, imports, from_imports,
+                    containing_class=component.containing_class,
+                )
+                if callee_id is None or callee_id == comp_id:
+                    continue
+                if callee_id not in self.components:
+                    continue
+
+                callee = self.components[callee_id]
+                if callee.component_type == "class":
+                    rel_type = "instantiates"
+                else:
+                    rel_type = "calls"
+
+                # Deduplicate: avoid adding the same (source, target, type) twice
+                if not any(
+                    r.target == callee_id and r.rel_type == rel_type
+                    for r in component.relationships
+                ):
+                    component.relationships.append(
+                        TypedRelationship(source=comp_id, target=callee_id, rel_type=rel_type)
+                    )
+
+    def _find_node_in_tree(
+        self, tree: ast.AST, component: "CodeComponent"
+    ) -> Optional[ast.AST]:
+        """
+        Locate the AST node for a component within a file's AST.
+
+        Args:
+            tree: Parsed AST of the file.
+            component: The CodeComponent whose node is needed.
+
+        Returns:
+            The matching AST node, or None if not found.
+        """
+        parts = component.id.split(".")
+        if component.component_type == "function":
+            func_name = parts[-1]
+            for node in ast.iter_child_nodes(tree):
+                if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name == func_name:
+                    return node
+        elif component.component_type == "class":
+            class_name = parts[-1]
+            for node in ast.iter_child_nodes(tree):
+                if isinstance(node, ast.ClassDef) and node.name == class_name:
+                    return node
+        elif component.component_type == "method":
+            class_name = parts[-2]
+            method_name = parts[-1]
+            for node in ast.iter_child_nodes(tree):
+                if isinstance(node, ast.ClassDef) and node.name == class_name:
+                    for item in node.body:
+                        if isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef)) and item.name == method_name:
+                            return item
+        return None
+
+    def _resolve_name_to_component_id(
+        self,
+        name_node: ast.expr,
+        module_path: str,
+        imports: Set[str],
+        from_imports: Dict[str, List[str]],
+    ) -> Optional[str]:
+        """
+        Resolve a simple Name or Attribute AST node to a known component ID.
+
+        Args:
+            name_node: An ast.Name or ast.Attribute node.
+            module_path: Dotted module path of the current file.
+            imports: Set of bare module names from 'import x'.
+            from_imports: Dict of module→[names] from 'from x import y'.
+
+        Returns:
+            A component ID string if resolvable to a known component, else None.
+        """
+        if isinstance(name_node, ast.Name):
+            name = name_node.id
+            if name in BUILTIN_TYPES or name in EXCLUDED_NAMES:
+                return None
+            # Check from_imports
+            for mod, names in from_imports.items():
+                if mod in STANDARD_MODULES:
+                    continue
+                if name in names:
+                    return f"{mod}.{name}"
+            # Check local module
+            local_id = f"{module_path}.{name}"
+            if local_id in self.components:
+                return local_id
+        elif isinstance(name_node, ast.Attribute):
+            parts = []
+            cur = name_node
+            while isinstance(cur, ast.Attribute):
+                parts.insert(0, cur.attr)
+                cur = cur.value
+            if isinstance(cur, ast.Name):
+                parts.insert(0, cur.id)
+                if parts[0] in imports and parts[0] in self.modules and len(parts) > 1:
+                    return f"{parts[0]}.{parts[1]}"
+        return None
+
+    def _resolve_call_to_component_id(
+        self,
+        call_node: ast.Call,
+        module_path: str,
+        imports: Set[str],
+        from_imports: Dict[str, List[str]],
+        containing_class: Optional[str] = None,
+    ) -> Optional[str]:
+        """
+        Resolve an ast.Call node to a known component ID.
+
+        Handles:
+          - Direct calls: ``func()`` → Name node
+          - Attribute calls: ``obj.method()`` / ``module.func()`` → Attribute node
+          - ``self.method()`` is resolved using the focal component's
+            containing_class (e.g. "module.ClassName"), producing the exact ID
+            "module.ClassName.method_name".  This avoids false matches when two
+            classes in the same module define a method with the same name.
+
+        Args:
+            call_node: An ast.Call node.
+            module_path: Dotted module path of the current file.
+            imports: Set of bare module names from 'import x'.
+            from_imports: Dict of module→[names] from 'from x import y'.
+            containing_class: Component ID of the class that owns the focal
+                component (set when the focal component is a method).
+
+        Returns:
+            A component ID string if resolvable to a known component, else None.
+        """
+        func = call_node.func
+
+        if isinstance(func, ast.Name):
+            name = func.id
+            if name in BUILTIN_TYPES:
+                return None
+            # Check from_imports
+            for mod, names in from_imports.items():
+                if mod in STANDARD_MODULES:
+                    continue
+                if name in names:
+                    candidate = f"{mod}.{name}"
+                    if candidate in self.components:
+                        return candidate
+            # Check local module
+            local_id = f"{module_path}.{name}"
+            if local_id in self.components:
+                return local_id
+
+        elif isinstance(func, ast.Attribute):
+            attr_name = func.attr
+            value = func.value
+
+            # self.method() — use the focal component's containing_class to
+            # produce the exact component ID without any ambiguous suffix search.
+            if isinstance(value, ast.Name) and value.id == "self":
+                if containing_class is not None:
+                    candidate = f"{containing_class}.{attr_name}"
+                    if candidate in self.components:
+                        return candidate
+                return None
+
+            # module.name() or module.Class()
+            if isinstance(value, ast.Name):
+                prefix = value.id
+                if prefix in STANDARD_MODULES:
+                    return None
+                if prefix in imports and prefix in self.modules:
+                    candidate = f"{prefix}.{attr_name}"
+                    if candidate in self.components:
+                        return candidate
+                # from_imports: the value might itself be an imported name
+                for mod, names in from_imports.items():
+                    if prefix in names:
+                        # e.g. from helper import HelperClass; HelperClass.method()
+                        candidate = f"{mod}.{prefix}.{attr_name}"
+                        if candidate in self.components:
+                            return candidate
+
+        return None
     
     def _get_source_segment(self, source: str, node: ast.AST) -> str:
         """Get source code segment for an AST node."""
@@ -629,25 +1237,74 @@ class DependencyParser:
             return ""
     
     def save_dependency_graph(self, output_path: str):
-        """Save the dependency graph to a JSON file."""
+        """
+        Save the dependency graph to a JSON file.
+
+        The output format is:
+        {
+            "components": { <component_id>: { ...component fields... }, ... },
+            "relationships": [ { "source": ..., "target": ..., "type": ... }, ... ]
+        }
+
+        The "components" section preserves all existing fields (id, component_type,
+        file_path, relative_path, depends_on, start_line, end_line, has_docstring,
+        docstring) and adds the V1 enhancement fields (signature, parameters,
+        return_type, containing_class, source_code).
+
+        The "relationships" section is a flat list of all typed relationships
+        across all components, enabling efficient forward and reverse lookup by
+        downstream consumers.
+
+        For backwards compatibility the file also maintains the legacy flat
+        top-level dict format under the "components" key; existing consumers that
+        iterate ``json.load(f).items()`` would need updating, but the key change
+        is minimal.
+        """
         # Convert to serializable format
         serializable_components = {
             comp_id: component.to_dict()
             for comp_id, component in self.components.items()
+        }
+
+        # Collect all relationships into a single flat list
+        all_relationships: List[Dict[str, str]] = []
+        seen: Set[Tuple[str, str, str]] = set()
+        for component in self.components.values():
+            for rel in component.relationships:
+                key = (rel.source, rel.target, rel.rel_type)
+                if key not in seen:
+                    seen.add(key)
+                    all_relationships.append(rel.to_dict())
+
+        output = {
+            "components": serializable_components,
+            "relationships": all_relationships,
         }
         
         # Create directories if they don't exist
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         
         with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(serializable_components, f, indent=2)
+            json.dump(output, f, indent=2)
         
         logger.info(f"Saved dependency graph to {output_path}")
     
     def load_dependency_graph(self, input_path: str):
-        """Load the dependency graph from a JSON file."""
+        """
+        Load the dependency graph from a JSON file.
+
+        Supports both the legacy flat format (a dict of component dicts) and
+        the new V1 format ({"components": {...}, "relationships": [...]}).
+        """
         with open(input_path, "r", encoding="utf-8") as f:
-            serialized_components = json.load(f)
+            data = json.load(f)
+
+        # Detect format: V1 has a "components" key wrapping the component dict
+        if "components" in data and isinstance(data["components"], dict):
+            serialized_components = data["components"]
+        else:
+            # Legacy format: top-level keys are component IDs
+            serialized_components = data
         
         # Convert back to CodeComponent objects
         self.components = {
@@ -656,4 +1313,115 @@ class DependencyParser:
         }
         
         logger.info(f"Loaded {len(self.components)} components from {input_path}")
-        return self.components 
+        return self.components
+
+
+# ---------------------------------------------------------------------------
+# V1 Enhancement — RelationshipIndex for efficient forward/reverse lookups
+# ---------------------------------------------------------------------------
+
+
+class RelationshipIndex:
+    """
+    Builds and exposes forward (outgoing) and reverse (incoming) indexes over
+    a flat list of TypedRelationship objects.
+
+    This is intentionally kept separate from DependencyParser so that it can
+    be constructed cheaply from any list of relationships (e.g. after loading
+    a saved graph) without needing the full parser state.
+
+    Usage::
+
+        parser = DependencyParser(repo_path)
+        parser.parse_repository()
+        index = RelationshipIndex.from_components(parser.components)
+
+        # What does component A call?
+        index.outgoing("module.A", rel_type="calls")
+
+        # Who instantiates class B?
+        index.incoming("module.B", rel_type="instantiates")
+    """
+
+    def __init__(self, relationships: List[TypedRelationship]) -> None:
+        # outgoing[source] = list of TypedRelationship
+        self._outgoing: Dict[str, List[TypedRelationship]] = {}
+        # incoming[target] = list of TypedRelationship
+        self._incoming: Dict[str, List[TypedRelationship]] = {}
+
+        for rel in relationships:
+            self._outgoing.setdefault(rel.source, []).append(rel)
+            self._incoming.setdefault(rel.target, []).append(rel)
+
+    @classmethod
+    def from_components(cls, components: Dict[str, "CodeComponent"]) -> "RelationshipIndex":
+        """
+        Construct an index from a dict of CodeComponent objects.
+
+        Args:
+            components: Dict mapping component ID → CodeComponent.
+
+        Returns:
+            A populated RelationshipIndex.
+        """
+        all_rels: List[TypedRelationship] = []
+        seen: Set[Tuple[str, str, str]] = set()
+        for component in components.values():
+            for rel in component.relationships:
+                key = (rel.source, rel.target, rel.rel_type)
+                if key not in seen:
+                    seen.add(key)
+                    all_rels.append(rel)
+        return cls(all_rels)
+
+    def outgoing(
+        self,
+        source_id: str,
+        rel_type: Optional[str] = None,
+    ) -> List[TypedRelationship]:
+        """
+        Return relationships originating from *source_id*.
+
+        Args:
+            source_id: Component ID of the source.
+            rel_type: Optional filter — only return relationships of this type.
+
+        Returns:
+            List of matching TypedRelationship objects.
+        """
+        rels = self._outgoing.get(source_id, [])
+        if rel_type is not None:
+            rels = [r for r in rels if r.rel_type == rel_type]
+        return rels
+
+    def incoming(
+        self,
+        target_id: str,
+        rel_type: Optional[str] = None,
+    ) -> List[TypedRelationship]:
+        """
+        Return relationships targeting *target_id*.
+
+        Args:
+            target_id: Component ID of the target.
+            rel_type: Optional filter — only return relationships of this type.
+
+        Returns:
+            List of matching TypedRelationship objects.
+        """
+        rels = self._incoming.get(target_id, [])
+        if rel_type is not None:
+            rels = [r for r in rels if r.rel_type == rel_type]
+        return rels
+
+    def all_relationships(self) -> List[TypedRelationship]:
+        """Return all relationships in the index (deduplicated)."""
+        seen: Set[Tuple[str, str, str]] = set()
+        result: List[TypedRelationship] = []
+        for rels in self._outgoing.values():
+            for rel in rels:
+                key = (rel.source, rel.target, rel.rel_type)
+                if key not in seen:
+                    seen.add(key)
+                    result.append(rel)
+        return result 

@@ -1,0 +1,6 @@
+{
+  "model": "codegemma-7b",
+  "ollama_model": "codegemma:7b",
+  "generation_time_seconds": 537.67,
+  "generation_time_human": "8m 57s"
+}

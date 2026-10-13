@@ -24,9 +24,10 @@ def get_default_config():
     if not default_config_path.exists():
         return {
             'llm': {
-                'type': 'claude',
-                'api_key': '',
-                'model': 'claude-3-5-haiku-latest',
+                'type': 'ollama',
+                'api_key': 'ollama',
+                'api_base': 'http://localhost:11434/v1/',
+                'model': 'qwen2.5-coder:7b',
                 'temperature': 0.1,
                 'max_tokens': 4096
             },
@@ -91,4 +92,4 @@ def save_config(config):
     with open(config_file, 'w') as f:
         yaml.dump(config, f, default_flow_style=False)
     
-    return config_file 
+    return config_file

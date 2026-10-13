@@ -46,6 +46,16 @@ def extract_component_filter(docstring, component):
 evaluation_results = {}
 config = {}
 
+
+def create_ollama_client():
+    """Create a client for Ollama's local OpenAI-compatible endpoint."""
+    from openai import OpenAI
+
+    return OpenAI(
+        api_key=config.get('api_key') or 'ollama',
+        base_url=config.get('api_base') or 'http://localhost:11434/v1/',
+    )
+
 @app.route('/')
 def index():
     """
@@ -68,39 +78,24 @@ def test_api():
     # Save config for later use
     global config
     config = {
-        'llm_type': data.get('llm_type'),
-        'api_key': data.get('api_key'),
-        'model': data.get('model'),
+        'llm_type': 'ollama',
+        'api_key': data.get('api_key') or 'ollama',
+        'api_base': data.get('api_base') or 'http://localhost:11434/v1/',
+        'model': data.get('model') or 'qwen2.5-coder:7b',
         'temperature': float(data.get('temperature', 0.1)),
         'max_output_tokens': int(data.get('max_output_tokens', 4096))
     }
     
     # Test API connection based on LLM type
     try:
-        if config['llm_type'] == 'openai':
-            import openai
-            openai.api_key = config['api_key']
-            response = openai.chat.completions.create(
-                model=config['model'],
-                messages=[{"role": "user", "content": "Who are you?"}],
-                temperature=config['temperature'],
-                max_tokens=100
-            )
-            return jsonify({"success": True, "response": response.choices[0].message.content})
-            
-        elif config['llm_type'] == 'claude':
-            from anthropic import Anthropic
-            client = Anthropic(api_key=config['api_key'])
-            response = client.messages.create(
-                model=config['model'],
-                max_tokens=100,
-                temperature=config['temperature'],
-                messages=[{"role": "user", "content": "Who are you?"}]
-            )
-            return jsonify({"success": True, "response": response.content[0].text})
-            
-        else:
-            return jsonify({"success": False, "error": f"Unsupported LLM type: {config['llm_type']}"})
+        client = create_ollama_client()
+        response = client.chat.completions.create(
+            model=config['model'],
+            messages=[{"role": "user", "content": "Who are you?"}],
+            temperature=config['temperature'],
+            max_tokens=100,
+        )
+        return jsonify({"success": True, "response": response.choices[0].message.content})
             
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
@@ -170,31 +165,14 @@ def evaluate_helpfulness():
         # Generate prompt
         prompt = evaluator.get_evaluation_prompt(signature, docstring_content)
         
-        # Call LLM API based on configured type
-        if config['llm_type'] == 'openai':
-            import openai
-            openai.api_key = config['api_key']
-            response = openai.chat.completions.create(
-                model=config['model'],
-                messages=[{"role": "user", "content": prompt}],
-                temperature=config['temperature'],
-                max_tokens=config['max_output_tokens']
-            )
-            llm_response = response.choices[0].message.content
-            
-        elif config['llm_type'] == 'claude':
-            from anthropic import Anthropic
-            client = Anthropic(api_key=config['api_key'])
-            response = client.messages.create(
-                model=config['model'],
-                max_tokens=config['max_output_tokens'],
-                temperature=config['temperature'],
-                messages=[{"role": "user", "content": prompt}]
-            )
-            llm_response = response.content[0].text
-            
-        else:
-            return jsonify({"success": False, "error": f"Unsupported LLM type: {config['llm_type']}"})
+        client = create_ollama_client()
+        response = client.chat.completions.create(
+            model=config['model'],
+            messages=[{"role": "user", "content": prompt}],
+            temperature=config['temperature'],
+            max_tokens=config['max_output_tokens'],
+        )
+        llm_response = response.choices[0].message.content
         
         # Parse LLM response to get score
         score, explanation = parse_llm_score_from_text(llm_response)
@@ -460,4 +438,4 @@ if __name__ == '__main__':
         print("\nPress CTRL+C to stop the server\n")
     
     # Run the Flask app
-    app.run(host=args.host, port=args.port, debug=args.debug) 
+    app.run(host=args.host, port=args.port, debug=args.debug)

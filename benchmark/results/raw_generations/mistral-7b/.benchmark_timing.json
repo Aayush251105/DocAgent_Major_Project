@@ -1,0 +1,6 @@
+{
+  "model": "mistral-7b",
+  "ollama_model": "mistral:7b",
+  "generation_time_seconds": 604.08,
+  "generation_time_human": "10m 04s"
+}

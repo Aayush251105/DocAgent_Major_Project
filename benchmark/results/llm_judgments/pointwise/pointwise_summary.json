@@ -1,0 +1,210 @@
+{
+  "qwen2.5-coder-7b": {
+    "summary": {
+      "average": 3.059,
+      "n": 187
+    },
+    "description": {
+      "average": 4.144,
+      "n": 195
+    },
+    "parameters": {
+      "average": 3.61,
+      "n": 187
+    },
+    "correctness": {
+      "average": 4.301,
+      "n": 193
+    },
+    "clarity": {
+      "average": 4.204,
+      "n": 196
+    },
+    "conciseness": {
+      "average": 3.684,
+      "n": 196
+    }
+  },
+  "qwen3-8b": {
+    "summary": {
+      "average": 3.082,
+      "n": 196
+    },
+    "description": {
+      "average": 3.286,
+      "n": 196
+    },
+    "parameters": {
+      "average": 3.087,
+      "n": 196
+    },
+    "correctness": {
+      "average": 3.663,
+      "n": 196
+    },
+    "clarity": {
+      "average": 3.51,
+      "n": 194
+    },
+    "conciseness": {
+      "average": 3.821,
+      "n": 196
+    }
+  },
+  "llama3.1-8b": {
+    "summary": {
+      "average": 2.926,
+      "n": 188
+    },
+    "description": {
+      "average": 3.428,
+      "n": 194
+    },
+    "parameters": {
+      "average": 3.086,
+      "n": 185
+    },
+    "correctness": {
+      "average": 3.947,
+      "n": 187
+    },
+    "clarity": {
+      "average": 3.828,
+      "n": 186
+    },
+    "conciseness": {
+      "average": 3.885,
+      "n": 192
+    }
+  },
+  "mistral-7b": {
+    "summary": {
+      "average": 2.765,
+      "n": 183
+    },
+    "description": {
+      "average": 3.842,
+      "n": 190
+    },
+    "parameters": {
+      "average": 3.309,
+      "n": 188
+    },
+    "correctness": {
+      "average": 4.026,
+      "n": 191
+    },
+    "clarity": {
+      "average": 4.058,
+      "n": 189
+    },
+    "conciseness": {
+      "average": 3.738,
+      "n": 191
+    }
+  },
+  "deepseek-coder-6.7b": {
+    "summary": {
+      "average": 3.323,
+      "n": 186
+    },
+    "description": {
+      "average": 4.095,
+      "n": 190
+    },
+    "parameters": {
+      "average": 3.647,
+      "n": 184
+    },
+    "correctness": {
+      "average": 3.984,
+      "n": 189
+    },
+    "clarity": {
+      "average": 3.937,
+      "n": 190
+    },
+    "conciseness": {
+      "average": 3.396,
+      "n": 192
+    }
+  },
+  "codegemma-7b": {
+    "summary": {
+      "average": 2.77,
+      "n": 183
+    },
+    "description": {
+      "average": 3.562,
+      "n": 192
+    },
+    "parameters": {
+      "average": 3.08,
+      "n": 188
+    },
+    "correctness": {
+      "average": 4.163,
+      "n": 190
+    },
+    "clarity": {
+      "average": 4.047,
+      "n": 192
+    },
+    "conciseness": {
+      "average": 3.789,
+      "n": 194
+    }
+  },
+  "codellama-7b": {
+    "summary": {
+      "average": 2.926,
+      "n": 189
+    },
+    "description": {
+      "average": 4.321,
+      "n": 193
+    },
+    "parameters": {
+      "average": 3.59,
+      "n": 188
+    },
+    "correctness": {
+      "average": 4.022,
+      "n": 185
+    },
+    "clarity": {
+      "average": 4.021,
+      "n": 189
+    },
+    "conciseness": {
+      "average": 3.156,
+      "n": 192
+    }
+  },
+  "yi-coder-9b": {
+    "summary": {
+      "average": 2.989,
+      "n": 185
+    },
+    "description": {
+      "average": 4.397,
+      "n": 194
+    },
+    "parameters": {
+      "average": 3.806,
+      "n": 186
+    },
+    "correctness": {
+      "average": 4.39,
+      "n": 187
+    },
+    "clarity": {
+      "average": 4.122,
+      "n": 189
+    },
+    "conciseness": {
+      "average": 3.544,
+      "n": 195
+    }
+  }
+}

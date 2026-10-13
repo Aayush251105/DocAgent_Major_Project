@@ -16,7 +16,6 @@ src/agent/workflow.py
 src/agent/writer.py
 src/agent/llm/__init__.py
 src/agent/llm/base.py
-src/agent/llm/claude_llm.py
 src/agent/llm/factory.py
 src/agent/llm/gemini_llm.py
 src/agent/llm/huggingface_llm.py

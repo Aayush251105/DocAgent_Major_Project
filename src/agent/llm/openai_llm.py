@@ -6,7 +6,7 @@ from .base import BaseLLM
 from .rate_limiter import RateLimiter
 
 class OpenAILLM(BaseLLM):
-    """OpenAI API wrapper."""
+    """OpenAI-compatible API wrapper, used for the local Ollama server."""
     
     def __init__(
         self,
@@ -18,9 +18,9 @@ class OpenAILLM(BaseLLM):
         """Initialize OpenAI LLM.
         
         Args:
-            api_key: OpenAI API key
-            model: Model identifier (e.g., "gpt-4", "gpt-3.5-turbo")
-            api_base: Optional OpenAI-compatible API base URL
+            api_key: Compatibility API key (Ollama does not validate it)
+            model: Ollama model identifier (e.g., "qwen2.5-coder:7b")
+            api_base: Ollama's OpenAI-compatible API base URL
             rate_limits: Optional dictionary with rate limit settings
         """
         client_kwargs = {"api_key": api_key}
@@ -37,7 +37,7 @@ class OpenAILLM(BaseLLM):
             # Fallback to cl100k_base for new models
             self.tokenizer = tiktoken.get_encoding("cl100k_base")
         
-        # Default rate limits for GPT-4o-mini
+        # Conservative defaults appropriate for one local Ollama server.
         default_limits = {
             "requests_per_minute": 500,
             "input_tokens_per_minute": 200000,
@@ -51,7 +51,7 @@ class OpenAILLM(BaseLLM):
         
         # Initialize rate limiter
         self.rate_limiter = RateLimiter(
-            provider="OpenAI",
+            provider="Ollama",
             requests_per_minute=limits.get("requests_per_minute", default_limits["requests_per_minute"]),
             input_tokens_per_minute=limits.get("input_tokens_per_minute", default_limits["input_tokens_per_minute"]),
             output_tokens_per_minute=limits.get("output_tokens_per_minute", default_limits["output_tokens_per_minute"]),
@@ -140,8 +140,9 @@ class OpenAILLM(BaseLLM):
         result_text = response.choices[0].message.content
         
         # Count output tokens and record request
-        output_tokens = response.usage.completion_tokens if hasattr(response, 'usage') else self._count_tokens(result_text)
-        input_tokens = response.usage.prompt_tokens if hasattr(response, 'usage') else input_tokens
+        usage = getattr(response, "usage", None)
+        output_tokens = getattr(usage, "completion_tokens", None) or self._count_tokens(result_text)
+        input_tokens = getattr(usage, "prompt_tokens", None) or input_tokens
         
         self.rate_limiter.record_request(input_tokens, output_tokens)
         

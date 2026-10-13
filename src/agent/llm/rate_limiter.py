@@ -31,7 +31,7 @@ class RateLimiter:
         Initialize the rate limiter.
         
         Args:
-            provider: LLM provider name ("openai" or "claude")
+            provider: LLM provider name (for example, "ollama")
             requests_per_minute: Maximum requests per minute
             input_tokens_per_minute: Maximum input tokens per minute
             output_tokens_per_minute: Maximum output tokens per minute

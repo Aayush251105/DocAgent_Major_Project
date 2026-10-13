@@ -21,21 +21,19 @@
                             <h4 class="mb-4">LLM Configuration</h4>
                             
                             <div class="mb-3">
-                                <label for="llm_type" class="form-label">LLM Type</label>
-                                <select class="form-select" id="llm_type" name="llm_type" required>
-                                    <option value="openai">OpenAI</option>
-                                    <option value="claude">Claude (Anthropic)</option>
-                                </select>
+                                <label class="form-label">LLM Type</label>
+                                <input class="form-control" value="Ollama (local)" readonly>
+                                <input type="hidden" id="llm_type" name="llm_type" value="ollama">
                             </div>
                             
                             <div class="mb-3">
-                                <label for="api_key" class="form-label">API Key</label>
-                                <input type="password" class="form-control" id="api_key" name="api_key" required>
+                                <label for="api_key" class="form-label">Compatibility API Key</label>
+                                <input type="text" class="form-control" id="api_key" name="api_key" value="ollama">
                             </div>
                             
                             <div class="mb-3">
                                 <label for="model" class="form-label">Model</label>
-                                <input type="text" class="form-control" id="model" name="model" placeholder="e.g., gpt-4, claude-3-opus-20240229" required>
+                                <input type="text" class="form-control" id="model" name="model" value="qwen2.5-coder:7b" required>
                             </div>
                             
                             <div class="row">
@@ -96,7 +94,7 @@
                 const maxTokens = document.getElementById('max_tokens').value;
                 
                 // Validate form
-                if (!llmType || !apiKey || !model || !temperature || !maxTokens) {
+                if (!llmType || !model || !temperature || !maxTokens) {
                     resultDiv.innerHTML = '<div class="alert alert-danger">Please fill in all LLM configuration fields</div>';
                     return;
                 }
@@ -166,7 +164,7 @@
                 const temperature = document.getElementById('temperature').value;
                 const maxTokens = document.getElementById('max_tokens').value;
                 
-                if (!llmType || !apiKey || !model || !temperature || !maxTokens) {
+                if (!llmType || !model || !temperature || !maxTokens) {
                     alert('Please fill in all LLM configuration fields');
                     return;
                 }
@@ -206,4 +204,4 @@
         });
     </script>
 </body>
-</html> 
+</html>

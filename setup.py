@@ -73,9 +73,7 @@ setup(
         "pydeps>=3.0.0",
         
         # AI/LLM related dependencies
-        "anthropic>=0.45.0",
         "openai>=1.60.1",
-        "langchain-anthropic>=0.3.4",
         "langchain-openai>=0.3.2",
         "langchain-core>=0.3.31",
         "langgraph>=0.2.67",

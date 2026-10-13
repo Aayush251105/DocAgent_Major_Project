@@ -1,20 +1,16 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates
 from helper import HelperClass
 from inner.inner_functions import inner_function, get_random_quote, generate_timestamp, get_system_status, fetch_user_message
 
 def main_function():
     """
-    Executes data processing and utility operations, returning the processed data as a string.
+    Summary:
+    Executes data processing and returns the result.
 
-    This function initializes a `HelperClass` instance to manage and process data, invokes a utility function to provide a placeholder value, and generates a static timestamp for consistency in logging or testing scenarios. The function is useful when a complete data processing sequence is needed, integrating utility operations to produce a final result.
+    Description:
+    This function creates an instance of `HelperClass`, processes data, calls utility functions, and returns the processed result.
 
     Returns:
-        str: The processed data result as a string, derived from the `HelperClass` instance after executing the data processing and utility functions.
-
-    Example:
-        # Execute the main function to process data and retrieve the result
-        result = main_function()
-        print(result)  # Output: '[1, 2, 3]'
+    The result of the data processing as returned by `HelperClass.get_result()`.
     """
     helper = HelperClass()
     helper.process_data()
@@ -24,11 +20,13 @@ def main_function():
 
 def utility_function():
     """
-    Returns a utility string.
+    Summary:
+    Returns a fixed string 'utility'.
 
-    This function provides a simple utility string, which can be used in various contexts where a placeholder or a generic return value is needed. It is typically used within workflows that require a consistent return value for testing or demonstration purposes.
+    Description:
+    This function returns the string 'utility'.
 
     Returns:
-        str: The string 'utility', serving as a generic utility value.
+    A string with the value 'utility'.
     """
     return 'utility'

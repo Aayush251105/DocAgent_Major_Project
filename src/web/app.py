@@ -72,9 +72,9 @@ def create_app(debug=True):
             })
         
         # Get the configuration
-        llm_type = data.get('llm_type', 'claude')
-        api_key = data.get('api_key', '')
-        model = data.get('model', 'claude-3-5-haiku-latest')
+        llm_type = data.get('llm_type', 'ollama')
+        api_key = data.get('api_key', 'ollama')
+        model = data.get('model', 'qwen2.5-coder:7b')
         api_base = data.get('api_base', '')
 
         if llm_type.lower() != 'ollama' and not api_key:
@@ -85,39 +85,7 @@ def create_app(debug=True):
         
         try:
             # Import the appropriate LLM client based on type
-            if llm_type.lower() == 'claude':
-                try:
-                    import anthropic
-                    client = anthropic.Anthropic(api_key=api_key)
-                    
-                    # Send a simple test message
-                    response = client.messages.create(
-                        model=model,
-                        max_tokens=100,
-                        messages=[
-                            {"role": "user", "content": "Who are you? Please keep your answer very brief."}
-                        ]
-                    )
-                    
-                    # Extract the response text
-                    if response and hasattr(response, 'content') and len(response.content) > 0:
-                        model_response = response.content[0].text
-                    else:
-                        model_response = "No response content"
-                    
-                    return jsonify({
-                        'status': 'success',
-                        'message': 'Successfully connected to Claude API',
-                        'model_response': model_response
-                    })
-                    
-                except Exception as e:
-                    return jsonify({
-                        'status': 'error',
-                        'message': f'Error connecting to Claude API: {str(e)}'
-                    })
-                    
-            elif llm_type.lower() in ['openai', 'ollama']:
+            if llm_type.lower() in ['openai', 'ollama']:
                 try:
                     import openai
                     client_kwargs = {'api_key': api_key or 'ollama'}
